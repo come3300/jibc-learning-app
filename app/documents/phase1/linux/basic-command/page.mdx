@@ -1,0 +1,110 @@
+
+{/* http://localhost:3000/documents/phase1/linux/basic-command */}
+<div class="bg-white">
+    <div class="whitespace-nowrap mx-auto max-w-screen-md ">
+    ## Linuxの基本的なコマンド
+
+    <img src="/phase1/linux/linux_logo.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    このセクションではLinuxの基本的な操作方法について
+    解説していきます。
+
+    ### 階層とは
+
+     <img src="/phase1/linux/ディレクトリ.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    ### 絶対パス相対パス
+
+    <img src="/phase1/linux/絶対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    #### 絶対パスとは
+
+    <img src="/phase1/linux/絶対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+     #### 相対パスとは
+
+    <img src="/phase1/linux/相対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    #### VSCでの参照の仕方
+
+     <img src="/phase1/linux/VSCのパスの解説.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+     <img src="/phase1/linux/VSCのパスの解説 ズーム.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    ### Linuxの基本的なコマンド
+
+    #### pwdコマンド
+
+    ```
+    yonekuradaisuke@yonekuradaisukenoMacBook-Pro-2 ~ % pwd
+    /Users/yonekuradaisuke
+    ```
+
+    pwdコマンドはルートディレクトリから今いる階層までを絶対パスで表示してくれます
+
+    #### lsコマンド
+    ```
+    yonekuradaisuke@yonekuradaisukenoMacBook-Pro-2 ~ % ls
+    Applications		Music			sample.txt
+    Creative Cloud Files	Pictures		sample1
+    Desktop			Postman			unimatrix
+    Documents		Public			www
+    Downloads		Sites			zshrc
+    Library			go
+    Movies			kouda
+    ```
+
+    lsコマンドは今いる階層より一つ下にある階層のファイルや
+    ディレクトリを表示してくれるコマンドになります。
+
+    #### cdコマンド
+
+    ```
+    $ cd  sample2
+    ```
+
+    cdコマンドは階層を移動したい時に使用することができます。
+
+
+    #### mkdirコマンド
+    ```
+    $ mkdir sample4
+    ```
+
+    mkdirコマンドはmake direcrotyの略です。
+    mkdir ディレクトリ名 
+    でディレクトリを作成することのできるコマンドです。
+
+
+    #### rmdirコマンド
+    ```
+    $ rmdir sample2
+    ```
+    空のディレクトリを削除できるコマンドです。
+
+
+    #### rmコマンド
+    ```
+    $ rm sample3
+    ```
+
+    rmコマンド(removefile)コマンドは空のファイルやディレクトリを
+    削除できるコマンドになります。
+
+    ```
+    $ rm -r sample3
+    ```
+
+    ちなみに、rmの右隣に半角スペース打って -r と入力することで
+    中身のあるディレクトリやファイルも削除することができます。
+    この-rをオプションコマンドと呼びます。
+
+
+    #### catコマンド
+    ```
+    $ cat sample2.txt
+    ```
+
+    catコマンドはファイルの中身を閲覧できるコマンドになります。
+
+    </div>
+</div>

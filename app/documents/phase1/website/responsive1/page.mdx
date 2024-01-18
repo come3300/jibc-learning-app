@@ -1,0 +1,197 @@
+
+{/* http://localhost:3000/documents/phase1/website/responsive1*/}
+<div class="bg-white">
+    <div class="whitespace-nowrap mx-auto max-w-screen-md ">
+    ### レスポンシブ講座 Vol.1
+
+        ### はじめに（ゴール）
+
+        HTML/CSS基礎講座で作成したWebサイトをcssを用いてレスポンシブ対応(PC画面だけでなく、
+        スマホやタブレット画面でもデザインを崩さず綺麗に表示)させます。
+        ※レスポンシブ対応のことを本講座ではこれからはsp(smartphone)と呼んでいきます
+
+        ### 前提知識
+
+        HTML/CSS基礎講座を修了した前提での教材になります。
+        まだHTML/CSS基礎講座を受けていない方は先に基礎講座を受講してから本講座に取り組んでください。
+
+        ### デザインカンプ
+
+        また今回もAdobeのXDでデザインカンプを共有するので、
+        このリンクから詳しいスタイルを確認してください。
+
+        ### 作成手順
+        * headerセクション,footerセクション作成
+        * first-viewセクション,entryセクション作成
+        * aboutセクション,newsセクション作成
+        * contactセクション
+        * メディアクエリでの調整
+        といった手順で進めます。
+        headerとfooter、first-viewとentry、
+        aboutとnewsセクションがそれぞれ似ているので、
+        一つのステップで解説しています。
+        前回も取り上げましたが今回作成する
+        Webサイトも以下の画像の構成になっています。
+
+        <img src="/phase1/website/responsive/practice3-web.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        それでは作成していきましょう。
+
+        ### Step1 事前準備・共通部分作成
+        ### ファイル・フォルダ準備
+
+        まずはファイル、フォルダを作成します。
+
+        <img src="/phase1/website/responsive/directory-sp.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        ### spのセットアップ
+
+        sp用のファイルにメディアクエリを追加していきます。
+
+        ```
+        /*-------------------------------------------
+        SP
+        -------------------------------------------*/
+        @media screen and (max-width: 600px) {
+
+        /*-------------------------------------------
+        hero
+        -------------------------------------------*/
+        #mainvisual img {
+            height: calc(100vh - 60px);
+        }
+
+        }
+
+        ```
+
+        今回のSassを用いたレスポンシブ化では画面の幅がスムーズに切り替わるよう、
+        font-sizeをpx単位ではなく、親要素のサイズによって文字サイズが変わるem,remを用いて記述していきます。
+        em,remでも単位がわかりやすくなるように_lib.scssにhtml,bodyのスタイルを追加します。
+        remは最上位のHTML要素である「HTML」の文字サイズを基準とした相対値で文字サイズを決められるので、
+        html要素にfont-size:62.5%;と指定して10px=1remになるように設定しましょう。
+        emも同様に相対要素ですが、基準となる要素が親要素となります。
+
+        ```
+        /* 共通部分 */
+        html{
+            font-size: 62.5%; //10px=1remになる
+        }
+
+        body{
+            font-size:12px;
+            line-height:1.67;
+        }
+        ```
+
+        ### heroセクションのsp実装
+
+        <img src="/phase1/website/responsive/hero-sp.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        ```
+        /* 共通部分 */
+        #mainvisual img {
+            height: calc(100vh - 60px);
+        }
+
+        ```
+
+        ### aboutのsp実装
+
+        <img src="/phase1/website/responsive/about-sp.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        aboutのsp実装をしていきます。
+        pc幅との違いとして画像が横並びから縦並びになっているのがわかると思います。
+
+        こちらを実装するために必要になってくるのが
+
+        ```
+        flex-direction: column;
+        ```
+
+        になります。このセレクタを実装することにより横長びになっている画像が
+        縦一列に並び変えることが可能です。
+
+        <img src="/phase1/website/responsive/flex-figure.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        この状態では余白が整っていないため
+        marginで整えます。
+
+        ```
+        /*-------------------------------------------
+        About
+        -------------------------------------------*/
+        #about .content {
+            flex-direction: column;
+        }
+        #about img {
+            margin-right: 0;
+        }
+        
+        ```
+
+        ### blogセクションのsp実装
+
+        <img src="/phase1/website/responsive/blog-sp.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+        先ほどと同様に flex-direction: column;を使い縦一列に画像が
+        並ぶようにしましょう。
+
+        画像の幅と位置を調整すれば完了です。
+        
+        ```
+        /*-------------------------------------------
+        Bicycle
+        -------------------------------------------*/
+        #bicycle ul {
+            flex-direction: column;
+        }
+        #bicycle li {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        ```
+
+        ### sp全文
+
+        ```
+        /*-------------------------------------------
+        SP
+        -------------------------------------------*/
+        @media screen and (max-width: 600px) {
+
+        /*-------------------------------------------
+        Mainvisual
+        -------------------------------------------*/
+        #mainvisual img {
+            height: calc(100vh - 60px);
+        }
+
+        /*-------------------------------------------
+        About
+        -------------------------------------------*/
+        #about .content {
+            flex-direction: column;
+        }
+        #about img {
+            margin-right: 0;
+        }
+
+        /*-------------------------------------------
+        Bicycle
+        -------------------------------------------*/
+        #bicycle ul {
+            flex-direction: column;
+        }
+        #bicycle li {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        }
+        
+        ```
+
+
+    </div>
+</div>

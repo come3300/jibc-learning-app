@@ -1,0 +1,282 @@
+
+
+{/* http://localhost:3000/documents/phase2/php-basic/third-step */}
+<div class="bg-white">
+    <div class="whitespace-nowrap mx-auto max-w-screen-md ">
+    ## DB操作
+    <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    ### データベースの作成
+
+    今回作成するデータベースの仕様を下記に記載します。この仕様に沿ったDBを作成して行きます。
+
+    ```
+    DB名: testDB
+    文字コード： utf8
+    DBアクセスユーザー名: root
+    DBアクセスパスワード: root_password
+    ```
+    DBの作成には、MySQLサーバーに対して命令を実行して行います。
+    そのためには、MySQLサーバーにコマンドを送る状態になる必要があります。
+    まず、その状態になるためのmysqlコマンドが実行出来るか？を念のため確認しましょう。
+
+    ```
+    > mysql —version
+    ///mysql Ver 14.14 Distrib 5.6.35, for osx10.9 (x86_64)のように返って来ればOKです
+    ```
+
+    次にDBを作成していきます。まず、上述したようにコマンドをMySQLサーバーに対して送ることができる状態になるために、
+    以下のコマンドを実行してください。
+
+    ```
+    > mysql
+    ///mysql>と返ってくればOK
+    ```
+
+    次に下記コマンドを打っていきましょう。
+
+    ```
+    mysql>create database testDB default character set utf8;
+    ```
+
+    ここで、以下のようなエラーが表示された方は、rootユーザーに対して、まずパスワードを設定しましょう。
+    まずexitコマンドでMySQLコマンド入力モードから抜けます。
+
+    ```
+    mysql>exit
+    ```
+    そして、以下のコマンドでMySQLサーバーがデフォルトで持っているrootユーザーに対してパスワードを設定します。
+    パスワードは、適当に各自で設定頂いても大丈夫です。
+
+    ```
+    >/Applications/MAMP/Library/bin/myqladmin -u root password 'root_password'
+    ```
+    以下のコマンドでmysqlモードに入りましょう。
+
+    ```
+    >/Applications/MAMP/Library/bin/mysql -uroot -p root_password
+    ```
+
+    ### PHPファイルの配置
+    データベースの作成が完了しました。
+    では、PHPプログラムから先ほど作成したtestDBデータベースに接続をしてみます。
+    今回は、プログラムの実行をWebブラウザから起動する方法にします。そのため、記述するPHPプログラムファイルはMAMPで実行される
+    WEBサーバーのドキュメントルート直下に置くことにします。ドキュメントルートは、以下MAMPの設定画面から確認することが出来ます。
+    赤枠箇所（図5）をクリックするとドキュメントルートのフォルダーが開きますので、念のため確認しておきましょう。
+    標準では、/Applications/MAMP/htdocs になっています。
+
+    では、次にPHPプログラムのファイル名を決めておきます。名前は何でも良いですが、
+    今回は仮にdb_access.phpとしました。PHPファイルの置き場所は、こうなります。
+
+    /Applications/MAMP/htdocs/db_access.php
+
+    ### DBへの接続
+
+    PHPでDBへ接続するためには、いくつか方法があります。現在は、PDOクラスを使用する方法が主流です。
+    今回は、このPDOクラスで接続してみます。いきなりですが、下記が、接続するまでのコード全体になります。
+
+    db_access.php
+
+    ```
+    try {
+
+        // データベースに接続
+        $pdo = new PDO(
+            'mysql:dbname=testDB;host=localhost;charset=utf8',
+            'root',
+            'root_password',
+            [
+                PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION
+            ]
+        );
+        echo "success connecting DB";
+
+    } catch (PDOException $e) {
+
+        /* エラー時は、とりあえず、エラーメッセージを表示 */
+        header('Content-Type: text/plain; charset=UTF-8', true, 500);
+        exit($e-&gt;getMessage());
+    }
+    ```
+
+    では、作成したdb_access.phpを実行してみましょう。MAMPのWebサーバー（今回は、Apacheを選択しています。）が起動していることを確認し、
+    ブラウザを起動します。そして、ブラウザからhttp://localhost:8080/db_access.php にアクセスしてみてください。
+    画面にsuccess connecting DBと表示されたらDB接続成功です!
+
+    ### データを作成
+    ```
+    // データベース作成
+    CREATE DATABASE foodatabase;
+    // ユーザ作成
+    GRANT ALL ON foodatabase.* to 'foo-user'@'localhost' IDENTIFIED BY 'foo-pass'
+    ```
+
+    MySQLに入ってこれらのSQLクエリでデータベース作成とユーザ作成をしておきます。
+
+    それではPHPでこのデータベースに接続しましょう。
+
+    PHPでデータベースを扱うにはPDO（PHP Data Objects）というデータベース抽象化レイヤを使います。
+
+    PDOはデータベースを取り扱いやすくするPHPの拡張機能です。
+
+    ```
+    // PDOのインスタンス生成
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    ```
+
+    これで先程作成したユーザでfoodatabaseデータベースに接続します。
+
+    もしなんらかの理由で接続できなかった場合はPDOは例外を発生します。
+
+    なので、PDOのインスタンス生成時は以下のように記述します。
+
+    ```
+    try {
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    } catech (PDOException $e) {
+    print '接続できませんでした' . $e->getMessage();
+    }
+    ```
+
+    うまく接続できると$db変数にPDOのインスタンスが格納されて、
+    データベースを操作する機能が使えるようになります。
+
+    データを格納するテーブルを作成する際には格納したいデータの種類を整理し、
+    それぞれを列の型として定義します。
+
+    ここでは趣味で集めたコレクションの情報をデータベースに格納するためのテーブルを作ります。
+
+    テーブル名は「collection」にし、格納したい情報は以下とします。
+
+    ID（項目番号）
+    名前（集めているものの名前）
+    価格（集めているものの価格）
+    好き度（集めているものを気に入っている度合い）
+    これらのデータを格納するためのテーブルを以下のように作成します。
+
+
+    ```
+    try {
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $q = $db->exec("CREATE TABLE collection (
+                                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                                name VARCHAR(255),
+                                price INT,
+                                favorite INT) DEFAULT CHARACTER SET=utf8");
+    } catech (PDOException $e) {
+    print '作成できませんでした' . $e->getMessage();
+    }
+    ```
+    通常はテーブルに格納するデータには必ず主キーが含まれます。
+
+    これはデータを一意のものと識別できる唯一のデータとなります。
+
+    ここでは「id」を主キーとして整数を自動的に割り当てることができるようにしています。
+
+    これで「collection」テーブルが作成できました。
+
+
+    ### データの登録
+
+    データを格納するときもテーブル作成と同じようにデータベースへ接続してSQLクエリを発行します。
+
+    ここでは以下の内容を格納します。
+
+    ID（自動割当なので指定しない）
+    名前（赤べこ）
+    価格（2,500円）
+    好き度（4）
+    このコードでデータを格納します。
+
+    ```
+    try {
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $q = $db->exec("INSERT INTO collection (name, price, favorite)
+                                VALUES ('赤べこ', 2500, 4)");
+    } catech (PDOException $e) {
+    print '書き込みできませんでした' . $e->getMessage();
+    }
+    ```
+    SQLクエリの「INSERT INTO」を使います。
+
+    これでデータの格納ができます。
+
+    ### データの取得
+
+    ではデータの取得を行なっていきましょう
+    データを取得するときはSELECT文を書いていきます。
+
+    ```
+
+    try {
+        // データベース接続
+        $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // SELECT文の実行
+        $stmt = $db->query("SELECT * FROM collection");
+
+        // 結果を取得
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // 結果を出力
+        foreach ($result as $row) {
+            echo "ID: {$row['id']}, Name: {$row['name']}, Price: {$row['price']}, Favorite: {$row['favorite']}" . PHP_EOL;
+        }
+    } catch (PDOException $e) {
+        // エラーハンドリング
+        print '取得できませんでした' . $e->getMessage();
+    }
+
+    ```
+
+
+    ### データの更新と削除
+
+    すでにあるデータの内容を更新したい場合は更新のSQLクエリを発行します。
+
+    ここでは赤べこの価格を2,500円から3,500円へ変更します。
+
+    このコードでデータを更新します。
+
+    ```
+    try {
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $q = $db->exec("UPDATE collection SET price = 3500
+                            WHERE name = '赤べこ'");
+    } catech (PDOException $e) {
+    print '更新できませんでした' . $e->getMessage();
+    }
+    ```
+    SQLクエリの「UPDATE SET」を使います。
+
+    これでデータの更新ができます。
+
+    #### データの削除
+    データを削除したい場合は削除のSQLクエリを発行します。
+
+    ただし、削除の場合は対象を明確に指定しないとすべてのデータを削除する危険があるので気をつけましょう。
+
+    削除で使うSQLクエリは「DELETE FROM」ですが、WHERE句を指定せず実行するとすべて削除されます。
+
+    ここでは赤べこのデータを削除します。
+
+    ```
+    try {
+    $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $q = $db->exec("UPDATE collection SET price = 3500
+                                WHERE name = '赤べこ'");
+    } catech (PDOException $e) {
+    print '削除できませんでした' . $e->getMessage();
+    }
+    ```
+
+    これでデータの削除ができます。
+
+
+    </div>
+</div>

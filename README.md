@@ -12,6 +12,9 @@ https://zenn.dev/hathle/books/next-prisma-auth-book
 参考記事
 https://zenn.dev/hathle/books/next-prisma-auth-book/viewer/11_login
 
+Github ソースコード
+https://github.com/haruyasu/nextjs-prisma-auth-tutorial
+
 AppRouter
 画像保存はCloudinaryを使用
 データベース　PostreSQL

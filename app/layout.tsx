@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="flex min-h-screen flex-col">
             <Navigation currentUser={currentUser} />
 
-            <main className="container mx-auto max-w-screen-sm flex-1 px-1 py-5">
+            <main className="container mx-auto max-w-screen-xl flex-1 px-1">
               {/* 新しい Layout コンポーネントを追加 */}
               <Layout>{children}</Layout>
             </main>

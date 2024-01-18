@@ -1,0 +1,289 @@
+
+{/* http://localhost:3000/documents/phase3/Laravel/tweet/section1 */}
+
+<div class="bg-white">
+    <div class="whitespace-nowrap mx-auto max-w-screen-md ">
+
+## 環境構築について
+
+Laravelでtwitter風アプリを作るために
+まずは環境構築を行なっていきましょう。
+
+
+### wslのインストール
+
+```
+$ wsl --install
+```
+
+まずは上記コマンドを使ってwslのインストールを行います。
+同時にWindowsTerminalが入ってない方はWindowsのスタート画面に『WindowsTerminal』と入力して
+インストールしましょう。
+
+Ubuntuの立ち上げがより簡単になります。
+
+### Dockerのセットアップ
+
+Dovckerのセットアップを行います。
+Dockerの公式サイト（https://www.docker.com） にアクセスし、画面右上部の「Get Started」をクリックする
+
+遷移先の画面で「Download for Windows」をクリックする。※「Docker Desktop for Windows」の
+インストーラがダウンロードされます。
+
+Dockerがインストールされていることは、Windows Terminal上から以下のように確認できます
+
+```
+yonekuradaisuke@yonekuradaisukenoMacBook-Pro-2 ~ % docker -v
+Docker version 20.10.12, build e91ed57
+```
+
+### ubuntuのセットアップ
+次にUbuntuをインストールしましょう
+Windowsの「スタートボタン」→「Microsoft Store」と進む
+
+検索欄に「Ubuntu」と入力して検索を実行する
+検索結果の中から「Ubuntu」を選択して、次の画面で「入手」をクリックする
+
+インストールが完了したらUbuntuを立ち上げてみましょう。
+立ち上げてみたらUserNameとPassWordを入力する欄が出てくると思うので
+UserNameとPassWordを入力してください。
+※忘れないようにメモしておいてください。
+
+Ubuntuを立ち上げれたら
+
+```
+$ sudo apt update && sudo apt upgrade -y
+
+$ sudo chmod 666 /var/run/docker.sock
+```
+
+上記コマンドを入力してください。
+
+ここまでで環境構築は完了です。
+
+## MVCとは
+
+では実際にこれからLaravelを使ってTwitter風アプリを
+作成していきます。
+
+その前にLaravelというPHPのフレームワークを解説していきます。
+
+## Laravelのセットアップ
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+```
+sudo chmod 666 /var/run/docker.sock
+```
+
+```
+curl -s "https://laravel.build/example-app?php=81" | bash
+```
+
+```
+cd example-app
+./vendor/bin/sail up
+```
+
+http://localhost:3000/
+
+
+## Laravelとは
+
+LaravelとはPHPを使用したフレームワークになります。
+Laravelを使用することによりより効率的にシステムやアプリWebサイトを構築することができます。
+
+
+### LaravelとPHPの違い
+
+ではなぜPHPではなく実際の開発現場ではLaravelといった
+フレームワークを使用するのでしょうか？
+
+laravelを使用するメリットとしては以下を挙げることができます
+
+ #### コード量がPHPよりも少なくて済む
+
+ #### 他のツールや開発との連携が容易
+
+ #### 豊富なライブラリやパッケージが存在している
+
+
+
+  ##### コード量がPHPよりも少なくて済む
+
+phpで書いたコード
+
+```
+<?php
+
+try {
+    $pdo = new PDO('mysql:dbname=example_app;host=mysql:3306', 'user', 'password', [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    ]);
+    $stmt = $pdo->query('SELECT * FROM users');
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        echo $row['name'], '</br>';
+    }
+} catch (PDOException $e) {
+    exit($e->getMessage());
+}
+```
+
+Laravelで書いたコード
+
+```
+<?php
+
+use App\Models\User;
+
+…クラス定義等の形式的な記述は省略…
+
+$users = User::all();
+foreach($users as $user) {
+    echo $user->name . '</br>';
+}
+```
+
+
+
+## MVCとは
+
+MVCとはLaravelにて使用されている設計構造です。
+Model,View,Controllerの頭文字をとってMVCと呼びます。
+
+### Model
+
+Modelには主にデータベースと連携したり、
+データベースからとってきた値を処理して他に渡してくれる役割があります。
+
+Laravelは先ほどPHPを使ったフレームワークとお伝えしました。
+PHPの強みの一つとしてはDBの処理ができるというものがあります。
+
+このPHPの強みを最大限生かしてくれるのがModelになります。
+このModelがないとDBとの連携ができないためPHPの良さがほとんどなくなってしまいます。
+
+では具体的にどういったことをModelでしていくのかを解説していきましょう。
+
+```
+    public function up()
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->string('password');
+        $table->timestamps();
+    });
+}
+```
+上記処理を実行することによって
+DB内に簡単にuserのアカウントのテーブルを作成することができます。
+この処理はModelという設計構造を使ってより簡単に扱えているのです。
+
+### View
+
+Viewとは日本語に訳すと観るという意味があります。
+その名の通りViewは主に画面に表示する処理を行なってくれます。
+
+では具体的な例を挙げてみましょう。
+
+welcome.blade.phpにHTMLコードとデータ表示のための
+Bladeテンプレートを記述します。
+
+welcome.blade.php
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laravel View Example</title>
+</head>
+<body>
+    <h1>Welcome to Laravel View Example</h1>
+    <p>{{ $message }}</p>
+</body>
+</html>
+```
+
+上記処理を用いて
+
+routes/web.phpにHTMLコードとデータ表示のための
+
+```
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome', ['message' => 'Hello, Laravel!']);
+});
+
+```
+
+このように記すことでブラウザ上にHello, Laravel!と
+表示することができます。
+
+### Controller
+
+Controllerとは日本語で制御といった意味があります。
+こちらもその名の通り様々な処理やデータを制御してくれます。
+橋渡しや仲介役をしてくれると思ってください。
+
+主な役割は以下になります
+
+・処理と処理をつないでくれる（橋渡し）
+・HTTPリクエストの処理
+・Viewの表示
+・DBの情報を他に渡してくれる
+
+では、ControllerがLaravelから消えてしまうとどうなるのでしょうか。
+
+・DBの情報が表示できない
+・サーバーとの連携ができない(HTTPリクエスの処理ができない)
+・処理した内容がViewに渡せないために表示できない
+
+このようにMVCとはLaravelにおいて非常に大切なもので
+どれもなくてはならないものと言えます。
+
+## Hello Worldを出力しよう!
+
+
+## コマンドを省略しよう
+
+毎回./vendor/bin/sail upと起動するのもコマンド入力が面倒だという方はエイリアスを
+設定しましょう。
+
+まず、次のコマンdを実行してシェルの設定ファイルを開きます。
+```
+vim ~/.zshrc //macの場合
+vi ~/.profile //Winの場合
+```
+
+iキーを押してインサートモードにし次のエイリアスを入力します。
+
+```
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+```
+
+完了したらescキーを押してインサートモードを終了し
+『:wq』と入力することで保存して終了します。
+次のコマンドで設定ファイルを再読み込みし設定を反映させましょう。
+```
+source ~/.zshrc //macの場合
+source ~/.profile
+```
+
+ここまで実行が完了すると
+以下のコマンドを実行が可能になります。
+
+```
+sail up -d
+```
+
+正常に動作すれば設定完了となります。
+
+
+
+</div>
+
+</div>
