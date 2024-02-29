@@ -7,7 +7,7 @@ https://zenn.dev/hathle/books/next-prisma-auth-book
 
 ### 導入技術
 
-#### ログイン機能　Next.js Prisma メールアドレス,Google認証　
+#### ログイン機能 Next.js Prisma メールアドレス,Google認証　
 
 参考記事
 https://zenn.dev/hathle/books/next-prisma-auth-book/viewer/11_login
@@ -17,7 +17,7 @@ https://github.com/haruyasu/nextjs-prisma-auth-tutorial
 
 AppRouter
 画像保存はCloudinaryを使用
-データベース　PostreSQL
+データベースPostreSQL
 
 #### MDXでの記事も書ける
 
