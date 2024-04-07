@@ -89,7 +89,7 @@ const Modal: React.FC<ModalProps> = ({
 
               <div className="flex flex-col gap-2 px-6 pb-6">
                 {/* ボタン */}
-                <div className="flex w-full flex-row items-center gap-4">
+                <div className="flex w-full flex-row items-center gap-4 justify-center">
                   {/* サブボタン */}
                   {secondaryAction && secondaryLabel && (
                     <Button

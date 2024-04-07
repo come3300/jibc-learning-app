@@ -143,7 +143,9 @@ const SignupButton: React.FC = () => {
   )
 
   return (
+    <div className='flex justify-center'>
     <Button label="サインアップ" onClick={openModal} />
+    </div>
   )
 }
 

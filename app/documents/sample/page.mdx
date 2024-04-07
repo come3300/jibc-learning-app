@@ -1,3 +1,5 @@
+{/* /documents/sample */}
+
 import AlertGreen from '@/app/components/page-parts/AlertGreen'
 import AccordionComponent from '@/app/components/page-parts/AccordionComponent'
 
@@ -39,8 +41,13 @@ RPGなどのゲームをやっているときも、ゲームをやり終える�
 
 (上に空行が必要)
 
-```rb
+```
 puts 'Hello, World'
+```
+
+```diff
++ puts 'Hello, World'
+- puts 'Hello, World'
 ```
 :::note info
 インフォメーション
@@ -111,11 +118,11 @@ graph TD;
     B-->D;
     C-->D;
 ```
-<AlertGreen />
+<AlertGreen title="テキストサンプル" text="テキストサンプル"/>
+{/* https://www.hyperui.dev/components/application-ui/alerts */}
+{/* 参考のAlertGreenコンポーネント */}
+
 <AccordionComponent />
-
-
-
 
 </div>
 

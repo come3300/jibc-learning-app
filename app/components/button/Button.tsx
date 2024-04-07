@@ -17,7 +17,8 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, outline, del,
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`relative w-full rounded-full border py-2 font-semibold hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70 
+      // ホームのサインアップのボタンのデザインがこちら
+      className={`inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base
       ${
         outline
           ? 'border-neutral-400 bg-white text-black'

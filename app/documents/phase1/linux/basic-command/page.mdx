@@ -4,6 +4,8 @@
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
     ## Linuxの基本的なコマンド
 
+    ***
+
     <img src="/phase1/linux/linux_logo.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     このセクションではLinuxの基本的な操作方法について
@@ -11,9 +13,34 @@
 
     ### 階層とは
 
-     <img src="/phase1/linux/ディレクトリ.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+    例えば下記のような構成のディレクトリがあったとします。
 
-    ### 絶対パス相対パス
+    <img src="/phase1/linux/ディレクトリ.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    **階層**とはディレクトリの保存されている場所の階層のことをいいます。
+    ファイルを保存する場所は**ディレクトリ**という単位で分けられています。
+
+    ***
+
+    #### 階層の関係
+    <img src="/phase1/linux/second-explain.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    例えば上記図で言うと
+    第2階層の親階層は第1階層になります。
+
+    第2階層を基準として第1階層と第2階層の関係は
+    > 親階層→第1階層
+    > 子階層→第3階層
+
+    となります。
+
+    ***
+
+    ### 絶対パス/相対パス
+    ファイルの指定の基本相対パスと絶対パスを紹介します
+
+    point:パスとは
+    ファイルを開いたりコマンドを実行したりするためのファイルやコマンドの場所を指定するための指定方法になります。
 
     <img src="/phase1/linux/絶対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
@@ -21,15 +48,32 @@
 
     <img src="/phase1/linux/絶対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-     #### 相対パスとは
+    ルートディレクトリを基準点として指定する方法です。
+    この表示方法は、カレントディレクトリ（現在表示しているディレクトリ）がどこであっても、
+    間違いなく目的のファイルを指定できます。
+
+    point:ルートディレクトリとは
+    ルートディレクトリとは、対象のディレクトリがある最上位のディレクトリのことを指します。
+
+    #### 相対パスとは
 
     <img src="/phase1/linux/相対パス.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-    #### VSCでの参照の仕方
+    カレントディレクトリを基準点として指定する方法になります。
+    つまり、ある対象のディレクトリからどういったパスでファイルを指定すれば
+    アクセスしたいファイルやディレクトリにアクセスできるかを示す方法です。
 
-     <img src="/phase1/linux/VSCのパスの解説.png" loading="lazy" alt="Photo by Minh Pham" class="" />
-     <img src="/phase1/linux/VSCのパスの解説 ズーム.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+    ### VSCでの参照の仕方
+    皆さんがお使いのエディターであるVSCでのパスの参照のやり方を紹介します。
 
+    1,左タブから指定したいファイルまたはディレクトリの上で右クリックをします。
+    <img src="/phase1/linux/VSCのパスの解説.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    2,表示されたメニューからパスのコピーまたは相対パスのコピーを選択することで
+        パスをコピーすることができます。
+    <img src="/phase1/linux/VSCのパスの解説 ズーム.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+    ※パスのコピーを選択すると絶対パスがコピーされます。
+    
     ### Linuxの基本的なコマンド
 
     #### pwdコマンド

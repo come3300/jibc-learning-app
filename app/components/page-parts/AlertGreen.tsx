@@ -1,22 +1,7 @@
 import React from 'react';
 
-const AlertGreen = () => {
+const AlertGreen = (props:{title:string,text:string}) => {
   return (
-//     <div>
-//     <div className="border border-sky-400 border-2 rounded p-3 pt-6 bg-sky-200 relative my-2">
-//      <div className="absolute left-0 top-0 px-2 bg-sky-400 font-semibold text-gray-800 rounded-br text-sm">INFO:</div>
-//      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, rerum atque. Placeat totam unde quam voluptates facere neque, nam sint doloribus, eum error doloremque assumenda. Sint deserunt quidem quisquam nam?
-//  </div>
-//  <div className="border border-yellow-400 border-2 rounded p-3 pt-6 bg-yellow-100 relative my-2">
-//     <div className="absolute left-0 top-0 px-2 bg-yellow-400 font-semibold text-gray-800 rounded-br text-sm">WARNING:</div>
-//     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, rerum atque. Placeat totam unde quam voluptates facere neque, nam sint doloribus, eum error doloremque assumenda. Sint deserunt quidem quisquam nam?
-// </div>
-// <div className="border border-red-400 border-2 rounded p-3 pt-6 bg-red-100 relative my-2">
-//     <div className="absolute left-0 top-0 px-2 bg-red-400 font-semibold text-gray-800 rounded-br text-sm">OOPS:</div>
-//     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, rerum atque. Placeat totam unde quam voluptates facere neque, nam sint doloribus, eum error doloremque assumenda. Sint deserunt quidem quisquam nam?
-// </div>
-// </div>
-
 
     <div role="alert" className="rounded-xl border border-gray-100 bg-white p-4">
     <div className="flex items-start gap-4">
@@ -38,13 +23,13 @@ const AlertGreen = () => {
       </span>
   
       <div className="flex-1">
-        <strong className="block font-medium text-gray-900"> Changes saved </strong>
+        <strong className="block font-medium text-gray-900"> {props.title} </strong>
   
-        <p className="mt-1 text-sm text-gray-700">Your product changes have been saved.</p>
+        <p className="mt-1 text-sm text-gray-700">{props.text}</p>
       </div>
   
       <button className="text-gray-500 transition hover:text-gray-600">
-        <span className="sr-only">Dismiss popup</span>
+        <span className="sr-only"></span>
   
         <svg
           xmlns="http://www.w3.org/2000/svg"
