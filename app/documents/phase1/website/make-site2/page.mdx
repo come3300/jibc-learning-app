@@ -1,10 +1,10 @@
 
-{/* http://localhost:3000/documents/phase1/website/make-site2
- */}
+{/* /documents/phase1/website/make-site2 */}
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
 
-    ## HTML/CSS基礎講座 Vol.2
+    ## WEBサイトを作ってみよう その2
+    ***
 
         前回はheader/footer、heroセクションを作成しました。
         残りのセクションを全てコーディングしましょう。
@@ -13,6 +13,7 @@
 
         最後にabout、blogセクションを作成していきましょう。
         この2つのセクションではどのように要素を分けていくかが重要になります。
+
         aboutセクション作成
 
         <img src="/phase1/website/make-site2/practice1-about.png" loading="lazy" alt="Photo by Minh Pham" class="" />
@@ -29,7 +30,7 @@
 
         といった階層になっています。
         インナーはいくつかのコンテンツ（aboutセクションであれば特徴の部分）が入る横幅を決め、
-        margin:0 auto;をつけることで画面サイズが変わっても綺麗に表示できるようにしたものです。
+        ```margin:0 auto;```をつけることで画面サイズが変わっても綺麗に表示できるようにしたものです。
         詳しいことはレスポンシブ講座で説明するので、
         今はセクションの次にinnerを入れると便利なんだなあ、
         程度で覚えてもらえれば大丈夫です。
@@ -37,7 +38,7 @@
         about-contentなどは同じHTMLを6回書くHTMLだけなので、
         1つ作ったらコピーアンドペースで複製すると作業効率が上がります。
 
-        ```
+        ```html
         <!--about-->
         <section id="about">
             <div class="inner">
@@ -96,8 +97,7 @@
         about・newsセクションのように複数の子要素をまとめる場合によく使われます。
         ではCSSの共通部分の場所にinnerのスタイルを入力していきましょう。
 
-        CSS
-        ```
+        ```css
         .inner{
             /* about-itemの横幅と間隔の合計 */
             width:1100px;
@@ -108,16 +108,15 @@
         }
         ```
         次はnewsセクションでも使うタイトルクラスのCSSを作成しましょう。
-        このタイトルの横にある線は擬似要素を用いて作成します。擬似要素で線を作る方法はいくつかありますが、
-        今回は擬似要素にborderをつけて実装していきます。
+        このタイトルの横にある線は擬似要素を用いて作成します。
+        擬似要素で線を作る方法はいくつかありますが、今回は擬似要素にborderをつけて実装していきます。
         titleとtitleの擬似要素2つを::befroreと::afterで作ります。
-        そこにwidthを指定してborder-topを付ければ線が出来上がります。
+        そこにwidthを指定して```border-top```を付ければ線が出来上がります。
         文字との間を作るためにwidthも追加しておきましょう。
-        擬似要素（::before,::afeter）は後で横並びに、
+        擬似要素```（::before,::afeter）```は後で横並びに、
         かつ横幅を指定しなければいけないので、inline-block要素にすることを忘れないようにしましょう。
 
-        CSS
-        ```
+        ```css
         /*共通パート*/
         .title {
             font-size: 18px;
@@ -148,12 +147,13 @@
             content:"";
         }
         ```
+
         デザイン部分ができたら要素を全て横並びにして、
         線を文字中央に持ってこれるようにしましょう。titleと擬似要素（::before,::after）の3つの要素を
         display:flex;で横並びにすることで、titleの横に線を作ることができます。
-        また横並びにできたらalign-items:center;で線を文字の縦方向中央に配置できるようにしましょう。
-        CSS
-        ```
+        また横並びにできたら```align-items:center;```で線を文字の縦方向中央に配置できるようにしましょう。
+
+        ```css
         /*共通パート*/
         .title{
             /* 擬似要素とtitleを横並びに */
@@ -168,8 +168,9 @@
             text-align:center;
         }
         ```
+
         タイトルのスタイルが完成したら、about-itemが綺麗に並ぶようにCSSを書いていきましょう。
-        ここでabout-wrapクラスにの中に内包している6つの子要素を横並びにするために、display:flex;を
+        ここでabout-wrapクラスにの中に内包している6つの子要素を横並びにするために、```display:flex;```を
         つけるだけでは全て横並びになってしまい、親要素からaboutーitemが飛び出してしまいます。
         そうならないように
         * 子要素が折り返されるように.about-wrapクラスでflex-wrap:wrapをつける
@@ -178,8 +179,8 @@
         :nth-child()でクラス指定でmarginで要素がくっつかないようにしましょう。
         今回使う::nth-child(n+4):nth-child(-n+6)では
         4~6個目のabout-itemを指定していることになります。
-        CSS
-        ```
+
+        ```css
         /* aboutのスタイル */
         #about{
             color:#191919;
@@ -225,10 +226,14 @@
 
         ### blogセクションの作成
         -画像-
-        blogセクションは先ほど作ったaboutセクションと同じような構成になっています。まずは答えを見ずにHTMLとCSSを書いてみましょう。
-        また親要素から子要素が飛び出してきた場合は、親要素にoverflow:hidden;をつけると親要素の中に収めることができます。
-        またblogセクションではブロックの分け方が重要になってくるので、まずどんな構造で作るか考えながらHTMLを書きましょう!
-        aboutセクションで作ったtitleクラスを転用しますが、aboutセクションとは色が違うのでwhite-titleクラスを入れてblogセクションの
+        blogセクションは先ほど作ったaboutセクションと同じような構成になっています。
+        まずは答えを見ずにHTMLとCSSを書いてみましょう。
+        また親要素から子要素が飛び出してきた場合は、
+        親要素に```overflow:hidden;```をつけると親要素の中に収めることができます。
+        またblogセクションではブロックの分け方が重要になってくるので、
+        まずどんな構造で作るか考えながらHTMLを書きましょう!
+        aboutセクションで作ったtitleクラスを転用しますが、
+        aboutセクションとは色が違うのでwhite-titleクラスを入れてblogセクションの
         titleだけが色が変わるようにしましょう。
         HTML解答
 
@@ -238,9 +243,7 @@
         もし配置がうまくいかない場合はHTMLの構造自体が間違っている可能性があるので、
         一度HTMLを見直してみましょう。
         
-
-        HTML
-        ```
+        ``` html
         <!-- contact -->
             <section id="contact">
                 <div class="inner">
@@ -280,8 +283,8 @@
         HTMLが書けたら、まずは全体のスタイルとAbout,Newsセクションに共通する部分のコーディングをしていきます。
         titleクラスと擬似要素の色を変更する際はこのように記述します。
         contactセクションの画像を先に入れておくと、他の要素の文字色がわかりやすくなります。
-        CSS
-        ```
+
+        ```css
         #contact{
             background-image: url("../img/bg3.png");
             /* 画像が真ん中に表示される */
@@ -322,8 +325,8 @@
         プルダウン型の選択式メニューであるセレクトボックスを作ります。
         selectタグに元々ついている矢印アイコンを消し、矢印アイコン画像を貼ることでデザインを綺麗にしていきます。
         nth-of-type()プロパティと擬似要素を使って、矢印アイコン画像を実装していきます。
-        CSS
-        ```
+
+        ```css
         select{
             /* デフォルトでついている矢印アイコンを消す */
             appearance: none;
@@ -345,10 +348,12 @@
             right:15px;
         }
         ```
+
         あとはお問い合わせ内容の詳細を記入するテキストボックスを綺麗に整えていきます。
-        input,selectタグのテキストボックスとは違い、縦方向のpaddingが違うこと、margin-bottomがいらないことに注意して記述します。
-        CSS
-        ```
+        input,selectタグのテキストボックスとは違い、縦方向のpaddingが違うこと、
+        ```margin-bottom```がいらないことに注意して記述します。
+        
+        ```css
         input,select,textarea{
             width:100%;
             border-radius:7px;
@@ -364,13 +369,16 @@
             margin-bottom:0px;
         }
         ```
+
         最後に*を赤色にして余白をつけましょう。
-        redクラスにはmargin-leftをつけると良いですが、contact-cautionクラスと*の余白だけデザイン通りになりません。なのでcontact-cautionクラス内のredクラスにcaution-redクラスを追加してスタイルをつけましょう。
-        ```
+        redクラスにはmargin-leftをつけると良いですが、
+        ```contact-cautionクラス```と*の余白だけデザイン通りになりません。
+        なのでcontact-cautionクラス内のredクラスにcaution-redクラスを追加してスタイルをつけましょう。
+        ```html
         <p class="contact-caution"><span class="red caution-red">*</span></p>
         ```
         が付いたフィールドは必須項目です。
-        ```
+        ```css
         .red{
             color:red;
             margin-left:8px;
@@ -381,9 +389,8 @@
             margin-right:8px;
         }
         ```
-        サンプルコード
-        HTMLサンプルコード
-        ```
+
+        ```html
         <!DOCTYPE html>
         <html lang="ja">
         <head>
@@ -558,9 +565,8 @@
         </body>
         </html>
         ```
-        CSSサンプルコード
-        CSS
-        ```
+
+        ```css
         /*全体のスタイル（CSSリセット用）*/
         *{
             /* padding,borderが要素の中に入る */
@@ -932,5 +938,7 @@
         }
 
         ```
+  {/* TODO git hubにサンプルコードを掲載するべきもう一度見直す必要あり */}
+  {/* ファイルの場所もコードごとに書いてあげる*/}
     </div>
 </div>

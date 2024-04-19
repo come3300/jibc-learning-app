@@ -4,19 +4,19 @@
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
     ## Hello World!!と出力してみよう！
 
-    <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+    ***
 
-    ### Hello Worldとは？
-    ### ディレクトリを作成しよう
-    ### Hello Worldの出力方法
+    <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     ### Hello Worldとは？
     Hello Worldとは？環境構築が完了した上でブラウザ上に
     しっかりと出力できるかを確かめるための手段です。
 
     場合によってはこれが最初の関門だったりします。
-    HTML/CSSの場合はそこまで難しくはありませんが、システムやアプリを作成するとなると
-    より難しくなります。
+    HTML/CSSの場合はそこまで難しくはありませんが、システムやアプリを作成する
+    となるとより難しくなります。
+
+    まずはhtml/cssを出力できるようになりましょう。
 
     ### ディレクトリを作成しよう
 
@@ -25,26 +25,40 @@
 
     #### GUIで作成してみる
 
-    まずはGUIでの作成していきましょう。
-    場所はどこでもいいので
+    まずはGUIでの作成をしていきましょう。
+    ディレクトリを作成する場所はどこでもいいので
 
     1,新規フォルダを作成>helloという名前のディレクトリを作成
+    <img src="/phase1/website/hello-world/new-folder.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-    2,helloディレクトリ内にhello.htmlというファイルを作成する
+    2,helloディレクトリをVSCにドラックアンドドロップ
+    <img src="/phase1/website/hello-world/new-folder-mv.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    3,helloディレクトリ内にhello.htmlというファイルを作成する
+
+    下記をボタンをクリックして
+    <img src="/phase1/website/hello-world/new-folder-click.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+
+    画像のようになっていれば問題ないです。
+    <img src="/phase1/website/hello-world/new-folder.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     下記画像のようになっていれば問題ないです。
+    <img src="/phase1/website/hello-world/new-folder-mv-confirm.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     #### CUIで作成してみる
     
-    こちらは余裕がある人がやってみてもらえればと思います。
-    まずはGUIの方で作成できれば問題ありません。
+    こちらは余裕がある人が挑戦してもらえればと思います。
+    最初のうちはGUIの方で作成できれば問題ありません。
 
-    ```
+    ```bash
     $ mkdir hello 
     //helloディクレトリの作成
 
+    $ ls
+    //helloというディレクトリが作成されいてるか確認
+
     $ cd hello
-    //helloに移動する
+    //helloディレクトリに移動する
 
     $ touch hello.html
     hello.htmlというファイルを作成する
@@ -67,7 +81,7 @@
 
     次にhello.htmlに下記のコードを書きます。
 
-    ```
+    ```html
     <p>Hello World</p>
     ```
 
@@ -76,7 +90,7 @@
 
     <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-    ブラウザに下記画像のようにHello Worldと表示されれば成功です。
+    ブラウザに上記画像のようにHello Worldと表示されれば成功です。
 
 
     </div>

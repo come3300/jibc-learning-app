@@ -4,6 +4,7 @@
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
     ## DB操作
+    ***
     <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     ### データベースの作成
@@ -58,10 +59,13 @@
     ```
 
     ### PHPファイルの配置
+
     データベースの作成が完了しました。
     では、PHPプログラムから先ほど作成したtestDBデータベースに接続をしてみます。
-    今回は、プログラムの実行をWebブラウザから起動する方法にします。そのため、記述するPHPプログラムファイルはMAMPで実行される
-    WEBサーバーのドキュメントルート直下に置くことにします。ドキュメントルートは、以下MAMPの設定画面から確認することが出来ます。
+    今回は、プログラムの実行をWebブラウザから起動する方法にします。
+    ]そのため、記述するPHPプログラムファイルはMAMPで実行される
+    WEBサーバーのドキュメントルート直下に置くことにします。
+    ドキュメントルートは、以下MAMPの設定画面から確認することが出来ます。
     赤枠箇所（図5）をクリックするとドキュメントルートのフォルダーが開きますので、念のため確認しておきましょう。
     標準では、/Applications/MAMP/htdocs になっています。
 
@@ -77,7 +81,7 @@
 
     db_access.php
 
-    ```
+    ```php
     try {
 
         // データベースに接続
@@ -99,12 +103,14 @@
     }
     ```
 
-    では、作成したdb_access.phpを実行してみましょう。MAMPのWebサーバー（今回は、Apacheを選択しています。）が起動していることを確認し、
+    では、作成したdb_access.phpを実行してみましょう。
+    MAMPのWebサーバー（今回は、Apacheを選択しています。）が起動していることを確認し、
     ブラウザを起動します。そして、ブラウザからhttp://localhost:8080/db_access.php にアクセスしてみてください。
     画面にsuccess connecting DBと表示されたらDB接続成功です!
 
     ### データを作成
-    ```
+
+    ```php
     // データベース作成
     CREATE DATABASE foodatabase;
     // ユーザ作成
@@ -119,7 +125,7 @@
 
     PDOはデータベースを取り扱いやすくするPHPの拡張機能です。
 
-    ```
+    ```php
     // PDOのインスタンス生成
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     ```
@@ -130,7 +136,7 @@
 
     なので、PDOのインスタンス生成時は以下のように記述します。
 
-    ```
+    ```php
     try {
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     } catech (PDOException $e) {
@@ -155,7 +161,7 @@
     これらのデータを格納するためのテーブルを以下のように作成します。
 
 
-    ```
+    ```php
     try {
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -189,7 +195,7 @@
     好き度（4）
     このコードでデータを格納します。
 
-    ```
+    ```php
     try {
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -208,8 +214,7 @@
     ではデータの取得を行なっていきましょう
     データを取得するときはSELECT文を書いていきます。
 
-    ```
-
+    ```php
     try {
         // データベース接続
         $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
@@ -229,7 +234,6 @@
         // エラーハンドリング
         print '取得できませんでした' . $e->getMessage();
     }
-
     ```
 
 
@@ -241,7 +245,7 @@
 
     このコードでデータを更新します。
 
-    ```
+    ```php
     try {
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -256,6 +260,7 @@
     これでデータの更新ができます。
 
     #### データの削除
+    
     データを削除したい場合は削除のSQLクエリを発行します。
 
     ただし、削除の場合は対象を明確に指定しないとすべてのデータを削除する危険があるので気をつけましょう。
@@ -264,7 +269,7 @@
 
     ここでは赤べこのデータを削除します。
 
-    ```
+    ```php
     try {
     $db = new PDO('mysql:host=localhost;dbname=foodatabase', 'foo-user', 'foo-pass');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

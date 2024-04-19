@@ -9,12 +9,6 @@ const AccordionSection: React.FC = () => {
       <Accordion title="Section 1">
         <p>Content for Section 1</p>
       </Accordion>
-      <Accordion title="Section 2">
-        <p>Content for Section 2</p>
-      </Accordion>
-      <Accordion title="Section 3">
-        <p>Content for Section 3</p>
-      </Accordion>
     </div>
   );
 };

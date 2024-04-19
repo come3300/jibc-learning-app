@@ -1,16 +1,21 @@
 
-{/*http://localhost:3000/documents/phase1/website/make-site1*/}
+{/*/documents/phase1/website/make-site1*/}
 
 {/* TODO flex,padding,marginの解説 */}
 
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
-    はじめに（ゴール）
+
+
+## WEBサイトを作ってみよう その1
+***
+
+## はじめに（ゴール）
 企業のコーポレートサイト風のページを作ります。
 HTML/CSSを用いて簡単なランディングページ（LP; Landing Page）の
 コーディングをしていきます。
 
-これから作るもの
+### これから作るもの
 
 <img src="/phase1/website/make-site1/practice1-web.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
@@ -18,20 +23,33 @@ HTML/CSSを用いて簡単なランディングページ（LP; Landing Page）�
 詳細なカンプはAdobe XDで作成してあります。次のリンクから、ブラウザ上で開くことができます。
 カラーコードや文字サイズなどの詳しい情報を確認できます。
 
-事前課題XDデザインカンプ
-解説動画
-この動画教材ではHTML/CSSの基礎を解説しながら、
-今回のWebサイトをコーディングしています。
-まだHTML/CSSの基礎が不安な方、あまり触ったことがない方は
-この動画教材を元に学習を進めてください。
-事前準備・header/footerの作成
-
-first-v/entryセクションの作成
-
 ### Step1 事前準備
 
-ファイル作成
-まずはHTMLファイルとCSSファイルと画像を格納するフォルダを作成しましょう。
+必要なファイルを作成していきましょう。
+まずはHTMLファイルとCSSファイル、画像を格納するフォルダを作成しましょう。
+
+今回は練習がてらCUI（コマンド生成）の方で
+ファイルを作成していきましょう。
+
+```bash
+mkdir practice1
+//practice1というディクトりを作成
+
+cd practice1
+//practice1に移動
+
+touch index.html 
+//ここにHTMLを書いていく
+
+mkdir css   
+//CSSファイルを格納するディクトり
+
+touch css/style.css 
+//CSSファイルを格納
+
+mkdir img
+ //画像を格納するディクトり
+```
 
 <img src="/phase1/website/make-site1/directory.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
@@ -40,17 +58,19 @@ first-v/entryセクションの作成
 ####  head内,レイアウト部分のHTML作成
 
 HTMLとCSSを書いていく中で土台となるコードを書いておきましょう。
-VSCodeを使う場合は半角!を書いた後にタブキーを押すと以下のコードが展開できます。
+VSCを使う場合は半角!を書いた後にタブキーを押すと以下のコードが展開できます。
 デフォルトではhtml lang="en"と表示されますが、今回は日本語のサイトを作成するのでenをjaに書き換えましょう。
+```diff
+-<html lang="en">//enをjaに書き換える
++<html lang="ja">
+```
 titleの部分をDocumentからHTML/CSSに変更しましょう。
 今のindex.htmlではstyle.cssが読み込まれていないので、
 読み込まれるように記述しましょう。
 
 
-HTML
-```
+```html
 <!DOCTYPE html>
-<!-- enをjaに書き換える -->
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -69,11 +89,11 @@ HTML
 h1,h2などのタグには元々CSSがついていますが、正確なデザインを実装する時には邪魔になるので、
 一度元からあるCSSをリセットするために以下のCSSコードをコピーアンドペーストしましょう。
 
-リセットCSSを記述
+### リセットCSSを記述
 リセットCSSを記述することによって、元々HTMLについているCSSをリセットすることができます。
-box-sizing:border-box;をつけることでpadding,marginの付け方が変わってくるので注意しておきましょう。
-```
-CSS
+```box-sizing:border-box;```をつけることで```padding,margin```の付け方が変わってくるので注意しておきましょう。
+
+```css
 /*全体のスタイル（CSSリセット用）*/
 *{
     /* padding,borderが要素の中に入る */
@@ -104,9 +124,11 @@ body{
 }
 ```
 
-ここまでできたら一度index.htmlに<h1>Hello world.</h1>を打ち込み、
+ここまでできたら一度index.htmlに```<h1>Hello world.</h1>```を打ち込み、
 index.htmlを開いて文字が表示されるか確認してみましょう。
-デザインの切り分け
+
+
+### デザインの切り分け
 ここからコーディングに入りますが、まずは今回用いるデザインをコーディングしやすくするために、
 全体のデザインをそれぞれのセクションごとに切り分けましょう。
 今回はこのような切り分け方をします。デザインがセクションごとに
@@ -115,13 +137,12 @@ index.htmlを開いて文字が表示されるか確認してみましょう。
 
 <img src="/phase1/website/make-site1/practice1 web-1.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-レイアウト部分のHTML作成
+### レイアウト部分のHTML作成
 セクションごとに切り分けたら、
 HTMLファイルにそれぞれのセクションをsectionタグを用いて記述しましょう。
 セクションは何度も使い回す要素ではないので、classではなくidで名前を定義しましょう。
 
-HTML
-```
+```html
 <body>
     <!-- header section -->
     <header>
@@ -152,7 +173,8 @@ HTML
 <img src="/phase1/website/make-site1/practice1-header-color.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
 まずは一番上のセクションであるheaderを作りましょう。
-headerは大きく分けると左側（ロゴ部分）と右側（リスト部分）にブロック分けすることができます。
+headerは大きく分けると左側（ロゴ部分）と右側（リスト部分）に
+ブロック分けすることができます。
 
 まずは構造を整理するためにbodyタグの下にheaderのHTMLを書いてみましょう。
 右側の要素は一般的にナビゲーションセクションと呼ばれるため、navタグを使用しましょう。
@@ -163,8 +185,7 @@ headerは大きく分けると左側のロゴ部分と右側の項目でブロ�
 まずは構造を整理するためにbodyタグの下にheaderのHTMLを書いてみましょう。
 また右側のリストは必ずul,liを使います。
 
-HTML
-```
+```html
 <!-- header -->
 <header id="header" class="wrapper">
       <h1 class="site-title"><a href="index.html"><img src="img/logo.svg" alt="Profile"></a></h1>
@@ -182,8 +203,8 @@ header-logo、header-navを内包しているheaderと、
 header-navのli要素を内包しているheader-navクラスは横並びにするためにdisplay:flexをつけましょう。
 またheaderにjustify-content:space-between;をつけることで、
 headerの各要素を両端に置くことが可能です。
-CSS
-```
+
+```css
 /*-------------------------------------------
 ヘッダー
 -------------------------------------------*/
@@ -194,6 +215,7 @@ CSS
   margin: 0 auto;
 }
 ```
+
 画面の両端にheader-logoとheader-navが表示されましたか？
 表示されたら次はデザインカンプの詳細情報を元に、
 padding,marginやfont-size,
@@ -201,11 +223,10 @@ font-weightを調整していきましょう。
 header-nav li要素の間が55pxなので、
 padding横幅20px+margin-left35pxを合わせて55pxにしています。
 また今回の文字色が白色で背景色と同化して綺麗に実装できているか確認できないので、
-本来background-color:inherit;(透明)と書く所をbackground-color:black;に
+本来```background-color:inherit;```(透明)と書く所を```background-color:black;```に
 一時的に書き換えて綺麗に表示されているか確認しましょう。
 
-CSS
-```
+```css
 /*-------------------------------------------
 ヘッダー
 -------------------------------------------*/
@@ -231,18 +252,17 @@ CSS
 
 ```
 これでheaderは完成です。
-footer作成
+
+
+### footer作成
 headerが作れたら次はfooterを作りましょう。
 footerは特に難しい要素がないので、
 一度サンプルコードを見ずに作ってみましょう。
 
-
 headerが作れたら次はfooterです。
 footerは特に難しい要素がないのでサンプルコードを見ずに作ってみましょう。
 今回は縦方向の中央揃えをline-heightとheightを用いて実装してみましょう。
-HTML解答
 
-CSS解答
 
 ###  heroセクション作成
 #### hero作成
@@ -252,11 +272,10 @@ CSS解答
 次にページを開いて一番初めに目に入ってくるアイキャッチ部分の作成をしましょう。
 このセクションでは中央にあるキャッチコピーとボタン、またその2つを囲むブロックを中央に作成します。
 ではまずはHTMLでボックス構造を作っていきましょう。
-青色のボタンであるfirst-v-btnクラスは後に作るentryセクションでも使う共通クラス(.first-v-btn)です。
-またfirst-viewセクションだけで使うクラス(first-v-btn)も指定しています。
-HTML
+青色のボタンである```first-v-btn```クラスは後に作るentryセクションでも使う共通クラス```.first-v-btn```です。
+またfirst-viewセクションだけで使うクラス```first-v-btn```も指定しています。
 
-```
+```html
  <div id="mainvisual">
         <img src="img/mainvisual.jpg" alt="テキストテキストテキスト">
       </div>
@@ -278,11 +297,11 @@ HTML
 ```
 このようにHTMLが組めたらまずはセクション全体に画像を入れサイズを整えましょう。
 background-imageで画像を挿入するだけでは画像が画面上に全て表示されないので
-background-size:cover;をつけます。
-また中央のボックスであるfirst-v-wrapクラスを中央揃いにするために、
-first-v-wrapにでmargin:0 auto;を適用しましょう。
-CSS
-```
+```background-size:cover;```をつけます。
+また中央のボックスである```first-v-wrap```クラスを中央揃いにするために、
+```first-v-wrap```にで```margin:0 auto;```を適用しましょう。
+
+```css
 /*-------------------------------------------
 hero
 -------------------------------------------*/
@@ -303,11 +322,11 @@ first-v-titleクラスの擬似要素を用いて作成します。
 first-v-titleクラスの後に「::after」と
 つけることで擬似要素を作成できます。
 今回はborderを用いて線を作っていきます。
-擬似要素は元々inline要素なのでdisplay:block;をつけないと
+擬似要素は元々inline要素なので```display:block;```をつけないと
 横幅や余白が調整できません。
 
-CSS
-```
+
+```css
 /* heroのスタイル */
 .first-v-title {
     margin-bottom:150px;
@@ -325,12 +344,12 @@ CSS
 }
 ```
 次にボタンの作成です。後に作るentryセクションでも使う.
-first-v-btnクラスのスタイルを最初にCSSに書いた
+```first-v-btn```クラスのスタイルを最初にCSSに書いた
 全体のスタイルの下に記述してきましょう。
-背景色を横方向にグラデーションさせるにはbackground:linear-gradient(角度, 色, 色)を使います。
+背景色を横方向にグラデーションさせるには```background:linear-gradient```(角度, 色, 色)を使います。
 角度の部分を変えることで様々な方向へグラデーションを作ることができます。
-CSS
-```
+
+```css
 /*共通パート*/
 .first-v-btn {
     width:200px;
@@ -355,9 +374,9 @@ CSS
 ロゴサイトからデザインを引っ張ってきて用いて実装します。
 FontAwesome公式サイトから「Start for Free」のボタンを押し、
 メールアドレスを入力するとFontAwesomeを読み込めるコードを取得することができます。
-コードが取得できたらHTMLに読み込めるようにそのままコードを<head></head>内に貼り付けましょう。
-HTML
-```
+コードが取得できたらHTMLに読み込めるようにそのままコードを```<head></head>```内に貼り付けましょう。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -370,10 +389,9 @@ HTML
 </head>
 ```
 またFont-Awesomeとテキストの間に間があるのでCSSで調整し、
-first-v-btnのmargin-topも追加しておきましょう。
-CSS
+```first-v-btn```の```margin-top```も追加しておきましょう。
 
-```
+```css
 /* heroのスタイル */
 .fa-door-open {
     padding-right:4px;
@@ -428,11 +446,7 @@ header{
 }
 ```
 
-CSS解答
-
-サンプルコード
-HTMLサンプルコード
-```
+```html
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -506,8 +520,8 @@ HTMLサンプルコード
   </body>
 
 </html>
-
-
+```
+```css
 CSSサンプルコード
 CSS
 @charset "UTF-8";
@@ -662,7 +676,7 @@ SP
   }
 }
 ```
-
-
+{/* TODO git hubにサンプルコードを掲載するべき
+もう一度見直す必要あり */}
     </div>
 </div>

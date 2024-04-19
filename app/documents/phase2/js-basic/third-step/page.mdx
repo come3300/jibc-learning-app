@@ -1,12 +1,14 @@
 
 
-{/* http://localhost:3000/documents/phase2/js-basic/third-step */}
+{/* /documents/phase2/js-basic/third-step */}
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
     ## DOMとは
-    <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+    ***
+    <img src="/phase2/js-basic/js-logo3.jpg" loading="lazy" alt="Photo by Minh Pham" class="" />
 
-    はじめに
+    ## はじめに
+    
     前のレクチャーではJavaScriptの基本的な文法について学びましたね。
     しかし、それだけではJavaScriptしか動かせず、
     出来る事が限られてきます。
@@ -14,30 +16,28 @@
     削除したりなどの操作することが出来るDOMという仕組みについて学びます。
     DOMは現代のWebフロントエンド開発をする時には必須の知識になります。
     例を通して基本的な使い方を身につけていきましょう。
-    解説動画
-    この動画教材ではテキストと同じようにDOMについて解説しています。
-    テキストと動画の両方で学習をして理解を深めていきましょう。
-    DOM講座
 
-    DOMの基礎
-    DOM=DocumentObjectModel
+    ### DOMの基礎
+
+    ***DOM=DocumentObjectModel***
     DOMは、簡単に言えばJavaScriptからHTMLを扱うための仕組みのことです。
     これまで学習してきたトピックはJavaScript一般に使える知識でしたが、
     DOMはWebフロントエンド開発に特化した知識です。
     DOMでできることの例:
 
-    ```
-    * HTMLの特定の<h1>タグの中身のテキストを変える
-    * HTMLの特定の<ul>タグの中に<li>タグを追加する
-    * HTMLの特定の<button>タグがクリックされたときに確認アラートを表示する
-    ```
+    * HTMLの特定の```<h1>```タグの中身のテキストを変える
+    * HTMLの特定の```<ul>```タグの中に```<li>```タグを追加する
+    * HTMLの特定の```<button>```タグがクリックされたときに確認アラートを表示する
+
 
     #### コンテンツツリー
-    DOMでは、HTMLを親子関係のある「ツリー」とみなします。プログラミングの文脈でのツリーとは、
+
+    DOMでは、HTMLを親子関係のある「ツリー」とみなします。
+    プログラミングの文脈でのツリーとは、
     現実世界の「木」を模したデータの構造のことを指します。
     以下のHTML、およびそれに対応するツリーの図をみるとイメージがつくでしょう。
 
-    ```
+    ```javascript
     <html>
     <head>
     <title>タイトル</title>
@@ -60,9 +60,9 @@
     HTMLを触るのは久しぶりですが、DOMはHTMLとJavaScriptの連携なので、
     HTML側にもコードが必要になります。
 
-    index.html
+    //index.html
 
-    ```
+    ```javascript
     <html>
     <body>
     <h1 id="title">買い物リスト</h1>
@@ -80,9 +80,8 @@
 
     次に、以下のようなmain.jsを用意してください。
 
-    main.js
-
-    ```
+    //main.js
+    ```javascript
     // HTMLの特定の`<h1>`タグの中身のテキストを変える
     const title = document.getElementById('title')
     console.log(`<h1>タグの中身のテキストは ${title.textContent} です。`)
@@ -116,14 +115,14 @@
     getElementByIdは、HTML側にid属性をつけておくと、
     そのID指定することで要素を取り出すことができます。
 
-    ```
+    ```javascript
     const title = document.getElementById('title')
     console.log(`<h1>タグの中身のテキストは ${title.textContent} です。`)
     ```
 
     titleが
 
-    ```
+    ```javascript
     <h1 id="title">買い物リスト</h1>
     ```
     
@@ -132,32 +131,35 @@
     上記の例では、textContentプロパティで、開始タグ〜終了タグ内に
     書いたテキスト（買い物リスト）を取得しています。
 
-    ```
+    ```javascript
     const list = document.querySelector('.list')
     ```
-    getElementByIdの他に、document.querySelectorでも要素を取り出すことができます。
-    querySelectorでは、CSSのセレクターと同じ記法で要素を特定しとりだすことが可能です。
+    ```getElementById```の他に、```document.querySelector```でも要素を取り出すことができます。
+    ```querySelector```では、CSSのセレクターと同じ記法で要素を特定しとりだすことが可能です。
     上記の例では.listセレクターを指定して、「listクラスのついた要素」を探しています。
     もしセレクターに当てはまる要素が複数ある場合は、一番最初の要素が取り出されます。
     console.log(`<ul>タグの2つめの子要素のテキストは ${list.children[1].textContent} です。`)
 
     #### 親要素と子要素
+
     コンテンツツリーで、ある要素の上位（上側）にいる要素をその要素の「親要素」、
     ある要素の下位（下側）にいる要素をその要素の「子要素」と呼びます。
     childrenプロパティは、その要素の子要素を、配列（のようなもの）として取り出すことができます。
-    例えば、2番目の子要素にアクセスしたければ、上記のようにchildren[1]と書きます。
+    例えば、2番目の子要素にアクセスしたければ、上記のように```children[1]```と書きます。
     また、ここでは出てきていませんが、
     ある要素の親要素にアクセスしたければ、parentNodeプロパティを使います。
 
     #### 要素の追加
-    ```
+
+    ```javascript
     const newItem = document.createElement'li'
     newItem.textContent = 'もも'
     list.appendChildnewItem
     ```
+
     index.htmlを表示すると、HTMLには書かれていない4つめの要素（もも）が
     ulに追加されていることに気づいたでしょうか。
-    document.createElementを使うと、HTML要素をJavaScript側で作ることができます。
+    ```document.createElement```を使うと、HTML要素をJavaScript側で作ることができます。
     つまり、あらかじめHTMLに書かれていない要素でも追加できるということです。
     textContentプロパティの値を設定することで、
     その要素のliここ/liにあたる部分を上書きすることができます。
@@ -166,7 +168,8 @@
     既にいくつか子要素がある場合は、その最後に追加されます。
 
     #### イベントリスナ
-    ```
+
+    ```javascript
     const button = document.getElementById('button')
     document.addEventListener('click', event => {
     confirm("削除してよろしいですか？") // 実際は削除しない
@@ -181,7 +184,7 @@
 
     ### DOMのAPI
 
-    API=ApplicationProgrammingInterface
+    ```API=ApplicationProgrammingInterface```
     この章では、DOMのAPIを、実用でよく使うものを中心に網羅的に見ていきます。
     APIとは、「その機能でアプリケーションを書くために用意されているインターフェース」のことです。
     インターフェースとは、この場合は大雑把にはオブジェクトやメソッドのことと考えてください。
@@ -197,10 +200,12 @@
     いろいろな発見があるかもしれません。
 
     #### HTMLの準備
-    以下ののindex.htmlを用意してください。この章を通してこのHTMLを利用します。
 
-    ```
+    以下ののindex.htmlを用意してください。
+    この章を通してこのHTMLを利用します。
 
+    //index.html
+    ```javascript
     <!DOCTYPE html>
     <html>
     <head>
@@ -224,9 +229,9 @@
     <script src="main.js"></script>
     </body>
     </html>
-
     ```
-    また、main.jsを用意しておいてください。main.jsには、この後出てくるコード例を適宜記載していきます。
+    また、main.jsを用意しておいてください。
+    main.jsには、この後出てくるコード例を適宜記載していきます。
 
     #### window, document
 
@@ -235,7 +240,7 @@
     これらはDOM APIの中心となるオブジェクトで、DOMの機能はこの2つのオブジェクトを通じて利用します。
     いくつか利用例を見ていきます。
 
-    ```
+    ```javascript
     // アラート表示
     window.alert('これはwindow.alert()で表示したアラートです')
 
@@ -245,7 +250,6 @@
     // documentのプロパティにアクセスする例
     console.log(document.doctype) //=> <!doctype html>
     console.log(document.title) //=> DOM API
-
     ```
 
     window.alert()とalert()はまったく同じ意味です。alertに限らず、window.xxxxと書くものは、
@@ -254,7 +258,7 @@
     #### 要素を見つける
 
     documentには、HTMLの要素を見つける方法がいくつか用意されています。
-    ```
+    ```javascript
     * document.getElementById(ID): HTML側にid="xxx"のように書いておき、そのIDを指定して要素を取得します。
     * document.getElementsByTagName(タグ名): HTML内のタグElementのノードを取得します。
     * document.getElementsByClassName(class): HTML側にclass="xxx"のように書いておき、そのclass名を指定して要素を取得します。
@@ -264,8 +268,7 @@
     
     利用例:
 
-    ```
-    
+    ```javascript
     // <p id="intro">...</p>要素を取得
     const intro = document.getElementById('intro')
     console.log(intro.textContent) //=> これは紹介文です。
@@ -280,7 +283,6 @@
     items.forEach((item) => {
     console.log(item.textContent) // アイテム1, アイテム2, アイテム3 が順番に表示される
     })
-
     ```
 
     querySelectorAllの結果（戻り値）は、配列と同じように扱えるため、
@@ -290,22 +292,22 @@
     上記のようにHTMLから見つけてきた要素に対しては、以下のような情報を取得したり、操
     作を行うことができます。以下、要素を代入した変数をelemとします。
 
-    ```
-
-    * elem.textContent: タグで囲まれた中身のテキストを取得します。また、elem.textContent = "..."とすることで中身のテキストを書き換えることができます。
-    * elem.innerHTML: タグで囲まれた中身のHTMLを取得します。また、elem.innerHTML = "..."とすることで中身のHTMLを書き換えることができます。
+    ```javascript
+    * elem.textContent: タグで囲まれた中身のテキストを取得します。
+      また、elem.textContent = "..."とすることで中身のテキストを書き換えることができます。
+    * elem.innerHTML: タグで囲まれた中身のHTMLを取得します。
+       また、elem.innerHTML = "..."とすることで中身のHTMLを書き換えることができます。
     * elem.children: 子要素の配列（のようなもの）を取得します。
     * elem.firstElementChild: 子要素のうち、最初に書かれている要素を取得します。
     * elem.lastElementChild: 子要素のうち、最後に書かれている要素を取得します。
     * elem.parentElement: 親要素を取得します。
     * elem.getAttribute(属性):<タグ 属性="値">の属性の部分を引数に渡して、値の部分を取得します。
     * elem.setAttribute(属性, 値):属性と値を引数に渡すと、それがHTMLに<タグ 属性="値">のように反映されます。
-
     ```
 
     利用例:
 
-    ```
+    ```javascript
     const elem = document.querySelector('.list')
 
     console.log(elem.textContent) //=> アイテム1 アイテム2 アイテム3
@@ -321,7 +323,6 @@
 
     console.log(elem2.getAttribute('src')) //=> https://placehold.it/200x200
     elem2.setAttribute('src', 'https://placehold.it/400x200') // 表示される画像が変わる
-
     ```
 
     要素のリファレンス
@@ -338,8 +339,7 @@
     * elem.appendChild(子要素):elemに子要素で指定した要素を子要素として追加します。
     * elem.removeChild(子要素):elemの子要素から子要素で指定した要素を削除します。
 
-    ```
-    
+    ```javascript
     const list = document.querySelector('.list') // ※既に書いている場合は省略
     const newItem = document.createElement('li') // <li>要素を作成（まだHTMLには追加されない）
     newItem.textContent = '新しいアイテム'
@@ -363,7 +363,6 @@
     removeButton.addEventListener('click', (event) => { // <button id="remove">がクリックされたとき…
     list.removeChild(list.lastElementChild)
     })
-
     ```
 
     </div>
