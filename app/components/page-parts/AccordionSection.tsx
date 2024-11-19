@@ -6,9 +6,9 @@ import Accordion from './AccordionComponent';
 const AccordionSection: React.FC = () => {
   return (
     <div className="accordion-section">
-      <Accordion title="Section 1">
+      {/* <Accordion title="Section 1">
         <p>Content for Section 1</p>
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import ToasterContext from '@/app/context/ToasterContext'
 import SignupModal from '@/app/components/modals/SignupModal'
 import LoginModal from '@/app/components/modals/LoginModal'
 import ProfileModal from '@/app/components/modals/ProfileModal'
-import getCurrentUser from '@/app/actions/getCurrentUser'
+// import getCurrentUser from '@/app/actions/getCurrentUser'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,7 +15,7 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const currentUser = await getCurrentUser()
+  // const currentUser = await getCurrentUser()
 
   return (
     <html>
@@ -26,10 +26,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* モーダル */}
           <SignupModal />
           <LoginModal />
-          <ProfileModal currentUser={currentUser} />
+          {/* <ProfileModal currentUser={currentUser} /> */}
 
           <div className="flex min-h-screen flex-col">
-            <Navigation currentUser={currentUser} />
+            {/* <Navigation currentUser={currentUser} /> */}
 
             <main className="container mx-auto max-w-screen-xl flex-1 px-1">
               {/* 新しい Layout コンポーネントを追加 */}
