@@ -1,3 +1,4 @@
+import { link } from "fs";
 import React from "react";
 
 const HomePage = () => {
@@ -10,19 +11,20 @@ const HomePage = () => {
           {[
             {
               id: 1,
-              imgSrc: "https://dummyimage.com/720x400",
-              category: "CATEGORY",
-              title: "The Catalyzer",
+              imgSrc: "home-imgs/tutorial_ホーム画像.png",
+              category: "Phase1",
+              title: "チュートリアル",
               description:
                 "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
               views: "1.2K",
               comments: "6",
+              linksrc: "/documents/lists/phase1/tutorial",
             },
             {
               id: 2,
-              imgSrc: "https://dummyimage.com/721x401",
-              category: "CATEGORY",
-              title: "The 400 Blows",
+              imgSrc: "home-imgs/Github_ホーム画像.png",
+              category: "Phase1",
+              title: "Github 入門",
               description:
                 "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
               views: "1.2K",
@@ -30,9 +32,9 @@ const HomePage = () => {
             },
             {
               id: 3,
-              imgSrc: "https://dummyimage.com/722x402",
-              category: "CATEGORY",
-              title: "Shooting Stars",
+              imgSrc: "home-imgs/Internet_ホーム画像.png",
+              category: "Phase1",
+              title: "インターネットの仕組み",
               description:
                 "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
               views: "1.2K",
@@ -40,9 +42,9 @@ const HomePage = () => {
             },
             {
               id: 4,
-              imgSrc: "https://dummyimage.com/723x403",
-              category: "CATEGORY",
-              title: "Neptune's Star",
+              imgSrc: "home-imgs/Linux_ホーム画像.png",
+              category: "Phase1",
+              title: "Linux",
               description:
                 "Quinoa polaroid messenger bag flannel mustache cloud bread typewriter hammock air plant.",
               views: "1.5K",
@@ -50,9 +52,9 @@ const HomePage = () => {
             },
             {
               id: 5,
-              imgSrc: "https://dummyimage.com/724x404",
-              category: "CATEGORY",
-              title: "Galactic Dreams",
+              imgSrc: "home-imgs/website_ホーム画像.png",
+              category: "Phase1",
+              title: "Website",
               description:
                 "Tumeric prism bicycle rights chia enamel pin pork belly cardigan aesthetic irony.",
               views: "1.8K",
@@ -60,9 +62,9 @@ const HomePage = () => {
             },
             {
               id: 6,
-              imgSrc: "https://dummyimage.com/725x405",
-              category: "CATEGORY",
-              title: "Cosmic Explorations",
+              imgSrc: "home-imgs/js基礎_ホーム画像.png",
+              category: "Phase2",
+              title: "JavaScript基礎",
               description:
                 "Vinyl kickstarter pinterest crucifix before they sold out mixtape hammock umami.",
               views: "1.3K",
@@ -70,9 +72,9 @@ const HomePage = () => {
             },
             {
               id: 7,
-              imgSrc: "https://dummyimage.com/726x406",
-              category: "CATEGORY",
-              title: "Lunar Shadows",
+              imgSrc: "home-imgs/js応用_ホーム画像.png",
+              category: "Phase2",
+              title: "JavaScript応用",
               description:
                 "Adaptogen woke mixtape PBR&B, migas sriracha unicorn raclette authentic palo santo.",
               views: "1.1K",
@@ -80,9 +82,9 @@ const HomePage = () => {
             },
             {
               id: 8,
-              imgSrc: "https://dummyimage.com/727x407",
-              category: "CATEGORY",
-              title: "Aurora Glow",
+              imgSrc: "home-imgs/php基礎_ホーム画像.png",
+              category: "Phase2",
+              title: "php基礎",
               description:
                 "Artisan kinfolk bitters, raw denim enamel pin quinoa pour-over snackwave.",
               views: "1.9K",
@@ -90,8 +92,78 @@ const HomePage = () => {
             },
             {
               id: 9,
-              imgSrc: "https://dummyimage.com/728x408",
-              category: "CATEGORY",
+              imgSrc: "home-imgs/php応用_ホーム画像.png",
+              category: "Phase2",
+              title: "php実践",
+              description:
+                "Marfa banh mi master cleanse four loko, iceland tattooed farm-to-table lomo taiyaki.",
+              views: "1.7K",
+              comments: "9",
+            },
+            {
+              id: 10,
+              imgSrc: "home-imgs/SQL_ホーム画像.png",
+              category: "Phase2",
+              title: "SQL入門",
+              description:
+                "Marfa banh mi master cleanse four loko, iceland tattooed farm-to-table lomo taiyaki.",
+              views: "1.7K",
+              comments: "9",
+            },
+            {
+              id: 11,
+              imgSrc: "home-imgs/Laravel基礎_ホーム画像.png",
+              category: "Phase3",
+              title: "Laravel基礎",
+              description:
+                "Quinoa polaroid messenger bag flannel mustache cloud bread typewriter hammock air plant.",
+              views: "1.5K",
+              comments: "8",
+            },
+            {
+              id: 12,
+              imgSrc: "home-imgs/Laravel実践_ホーム画像.png",
+              category: "Phase3",
+              title: "Laravel実践",
+              description:
+                "Tumeric prism bicycle rights chia enamel pin pork belly cardigan aesthetic irony.",
+              views: "1.8K",
+              comments: "12",
+            },
+            {
+              id: 13,
+              imgSrc: "home-imgs/React基礎_ホーム画像.png",
+              category: "Phase3",
+              title: "React.js基礎",
+              description:
+                "Vinyl kickstarter pinterest crucifix before they sold out mixtape hammock umami.",
+              views: "1.3K",
+              comments: "10",
+            },
+            {
+              id: 14,
+              imgSrc: "home-imgs/React実践_ホーム画像.png",
+              category: "Phase3",
+              title: "React.js基礎",
+              description:
+                "Adaptogen woke mixtape PBR&B, migas sriracha unicorn raclette authentic palo santo.",
+              views: "1.1K",
+              comments: "4",
+            },
+            {
+              id: 15,
+              imgSrc: "home-imgs/ポートフォリオ_ホーム画像.png",
+              category: "Phase4",
+              title: "Aurora Glow",
+              description:
+                "Artisan kinfolk bitters, raw denim enamel pin quinoa pour-over snackwave.",
+              views: "1.9K",
+              comments: "14",
+            },
+            {
+              id: 16,
+              imgSrc: "home-imgs/就活対策_ホーム画像.png",
+              category: "Phase4",
               title: "Celestial Journey",
               description:
                 "Marfa banh mi master cleanse four loko, iceland tattooed farm-to-table lomo taiyaki.",
@@ -100,12 +172,12 @@ const HomePage = () => {
             },
           ].map((post) => (
             // 各カードのラッパー
-            <div key={post.id} className="p-4 md:w-1/3">
+            <div key={post.id} className="p-4 md:w-1/4">
               {/* カードコンテナ */}
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <div className="h-full border-1  border-opacity-60 rounded-lg overflow-hidden">
                 {/* カードの画像部分 */}
                 <img
-                  className="lg:h-48 md:h-36 w-full object-cover object-center"
+                  className="w-full object-cover object-center"
                   src={post.imgSrc}
                   alt={post.title}
                 />
@@ -124,8 +196,8 @@ const HomePage = () => {
                   {/* カードのアクション（Learn Moreリンク、ビュー数、コメント数） */}
                   <div className="flex items-center flex-wrap">
                     {/* Learn More リンク */}
-                    <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-                      Learn More
+                    <a href={post.linksrc} className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                      一覧へ
                       <svg
                         className="w-4 h-4 ml-2"
                         viewBox="0 0 24 24"

@@ -12,3 +12,5 @@ const AuthContext = ({ children }: AuthContextProps) => {
 }
 
 export default AuthContext
+
+// TODO ここら辺の処理の親子関係(props)の理解
