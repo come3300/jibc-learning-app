@@ -15,7 +15,7 @@ const all = () => {
               section="Section1"
               title="Git Hubとは"
               description="これから受けるこの講座についてまずは皆様にどのようなことを学ぶのかを確認してもらいます。"
-              duration="48:32 minutes"
+              duration="40m"
               featuring={["Barry", "Sandra", "August"]}
               link="#"
             />
