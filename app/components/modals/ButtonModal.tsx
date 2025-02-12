@@ -1,6 +1,6 @@
-import { useCallback } from 'react';
-import { IoMdClose } from 'react-icons/io';
-import Button from '@/app/components/button/Button';
+import { useCallback } from "react";
+import { IoMdClose } from "react-icons/io";
+import Button from "@/app/components/button/Button";
 
 type ModalProps = {
   isOpen?: boolean;
@@ -31,31 +31,29 @@ const ButtonModal: React.FC<ModalProps> = ({
 }) => {
   const handleClose = useCallback(() => {
     if (disabled) {
-      return
+      return;
     }
 
-    onClose()
-  }, [onClose, disabled])
+    onClose();
+  }, [onClose, disabled]);
 
   const handleSubmit = useCallback(() => {
     if (!disabled) {
-      return
+      return;
     }
 
-    onSubmit()
-  }, [onSubmit, disabled])
+    onSubmit();
+  }, [onSubmit, disabled]);
   return (
     <>
-        <Button
-            disabled={disabled}
-            label={primaryLabel}
-            onClick={handleSubmit}
-            del={del}
-                  />
-
+      <Button
+        disabled={disabled}
+        label={primaryLabel}
+        onClick={handleSubmit}
+        del={del}
+      />
     </>
   );
 };
 
 export default ButtonModal;
-

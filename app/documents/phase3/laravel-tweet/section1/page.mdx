@@ -1,5 +1,4 @@
-
-{/*/documents/phase3/laravel-tweet/section1/page.mdx */}
+{/* /documents/phase3/laravel-tweet/section1/page.mdx */}
 
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
@@ -8,7 +7,6 @@
 
 Laravelでtwitter風アプリを作るために
 まずは環境構築を行なっていきましょう。
-
 
 ### wslのインストール
 
@@ -38,6 +36,7 @@ Docker version 20.10.12, build e91ed57
 ```
 
 ### ubuntuのセットアップ
+
 次にUbuntuをインストールしましょう
 Windowsの「スタートボタン」→「Microsoft Store」と進む
 
@@ -89,12 +88,10 @@ cd example-app
 
 http://localhost:3000/
 
-
 ## Laravelとは
 
 LaravelとはPHPを使用したフレームワークになります。
 Laravelを使用することによりより効率的にシステムやアプリWebサイトを構築することができます。
-
 
 ### LaravelとPHPの違い
 
@@ -103,15 +100,13 @@ Laravelを使用することによりより効率的にシステムやアプリW
 
 laravelを使用するメリットとしては以下を挙げることができます
 
- #### コード量がPHPよりも少なくて済む
+#### コード量がPHPよりも少なくて済む
 
- #### 他のツールや開発との連携が容易
+#### 他のツールや開発との連携が容易
 
- #### 豊富なライブラリやパッケージが存在している
+#### 豊富なライブラリやパッケージが存在している
 
-
-
-  ##### コード量がPHPよりも少なくて済む
+##### コード量がPHPよりも少なくて済む
 
 phpで書いたコード
 
@@ -147,8 +142,6 @@ foreach($users as $user) {
 }
 ```
 
-
-
 ## MVCとは
 
 MVCとはLaravelにて使用されている設計構造です。
@@ -179,6 +172,7 @@ PHPの強みの一つとしてはDBの処理ができるというものがあり
     });
 }
 ```
+
 上記処理を実行することによって
 DB内に簡単にuserのアカウントのテーブルを作成することができます。
 この処理はModelという設計構造を使ってより簡単に扱えているのです。
@@ -194,6 +188,7 @@ welcome.blade.phpにHTMLコードとデータ表示のための
 Bladeテンプレートを記述します。
 
 welcome.blade.php
+
 ```
 <!DOCTYPE html>
 <html>
@@ -247,13 +242,13 @@ Controllerとは日本語で制御といった意味があります。
 
 ## Hello Worldを出力しよう!
 
-
 ## コマンドを省略しよう
 
 毎回./vendor/bin/sail upと起動するのもコマンド入力が面倒だという方はエイリアスを
 設定しましょう。
 
 まず、次のコマンdを実行してシェルの設定ファイルを開きます。
+
 ```
 vim ~/.zshrc //macの場合
 vi ~/.profile //Winの場合
@@ -268,6 +263,7 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 完了したらescキーを押してインサートモードを終了し
 『:wq』と入力することで保存して終了します。
 次のコマンドで設定ファイルを再読み込みし設定を反映させましょう。
+
 ```
 source ~/.zshrc //macの場合
 source ~/.profile
@@ -281,8 +277,6 @@ sail up -d
 ```
 
 正常に動作すれば設定完了となります。
-
-
 
 </div>
 

@@ -1,5 +1,4 @@
-
-{/*/documents/phase3/laravel-tweet/section1/page.mdx */}
+{/* /documents/phase3/laravel-tweet/section1/page.mdx */}
 
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
@@ -9,10 +8,10 @@
 まずはデーターベース等を駆使して
 つぶやき機能を実装していきましょう。
 
-
 ### データベースからつぶやきを取得する
 
 #### これから作成するアプリの機能
+
 これからtwitterアプリの4つの基本的な機能を実装していきます。
 ①つぶやきを投稿できる
 ②つぶやきの一覧が表示できる
@@ -33,6 +32,7 @@ sail artisan make:controller Sample/IndexController
 make:contorollerの後に作成したいコントーラ名を指定すると雛形を作成してくれます。
 つまりユーザーからのリクエストを受け付ける入り口となるレイヤーです。
 LaravelではArtisanコマンドを利用してコントローラを簡単に作成することができます。
+
 ```
 sail artisan make:controller Sample/IndexController
 ```
@@ -79,16 +79,14 @@ class IndexController extends Controller
 
 続いてルーティングを追加します。
 routes/web.phpで書いたコード
+
 ```
 Route::get('/sample', [\App\Http\Controllers\Sample\IndexController::class, 'show']);
 ```
 
-
-
 これは/sampleにGETメソッドでリクエストされた場合に、
 App/Http/Controllers/SamplelIndexControllerコントローラの
 showメソッドへルーティングされるという設定です。
-
 
 http://localhost/sampleにアクセスしてみましょう。
 画面にはHelloの文字が表示されます
@@ -96,6 +94,7 @@ http://localhost/sampleにアクセスしてみましょう。
 画像添付
 
 app/Http/Controllers/Sample/IndexController.php
+
 ```
 class IndexController extends Controller
 {
@@ -111,6 +110,7 @@ class IndexController extends Controller
 ```
 
 ●routes/web.php
+
 ```
 Route::get('/sample/{id}', [\App\Http\Controllers\Sample\IndexController::class, 'showId']);
 ```
@@ -122,8 +122,8 @@ $idとして受け取れるようになります。
 
 下記画像と同じように表示されれば成功です。
 
-
 #### HTMLを表示しよう
+
 コントローラについて学びましたので、続いてはWebアプリケーションとして
 HTMLをレスポンスできるように作ってみましょう。
 LaravelではBladeと呼ばれるテンプレートエンジンを利用して動的な
@@ -140,6 +140,7 @@ resources/viewsに「tweet」ディレクトリを新規作成して、
 そこに「index.blade.php」ファイルを新規作成します。
 
 //resources/views/tweet/index.blade.php
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -160,20 +161,20 @@ resources/viewsに「tweet」ディレクトリを新規作成して、
 続いてTweet/IndexControllerを次のように変更しましょう
 
 app/Http/Controllers/Tweet/IndexController.php
+
 ```
 public function __invoke(Request $request)
 {
     return view('tweet.index', ['name' => 'laravel']);
 }
 ```
+
 画像添付
 
-
+#### つぶやき一覧の表示機能を実装する
 
 #### つぶやき一覧の表示機能を実装する
 
-
-#### つぶやき一覧の表示機能を実装する
 ここまでコントローラの作成とBladeテンプレートについて学びました。
 今度はつぶやき一覧を表示できる画面を作成するために以下について学んでいきます。
 ①アプリケーションのデータベースを作成
@@ -181,22 +182,25 @@ public function __invoke(Request $request)
 ③シーディングで閉発用のデータを一括挿入
 ④アプリケーションとデータベースを接続してつぶやき一覧を表示
 
-
 #### データベースを作成する
+
 本書ではLaravel Sailを利用した開発環境を利用するため、
 Laravel Sailに同梱されているMySQLというデータベースを利用します。
 それではMySQLにログインしてみましょう。
+
 ```
 sail mysql
 ```
 
 MySQLのバージョンは次のとおりです。
+
 ```
 mysql> select version ();
 / version () /
 | 8.0.27
 1 row in set (0.00 sec)
 ```
+
 Laravel Sailではアプリケーションと同名のデータベースが作成されます。
 コマンドで確認すると次の通りexample_appという
 データベースが作成されていることがわかります。
@@ -204,6 +208,7 @@ Laravel Sailではアプリケーションと同名のデータベースが作�
 続いてLaravelのマイグレーション機能を利用してテーブルを作成していきます。
 
 #### テーブルを作成する
+
 Laravelではデータベースのテーブルを作成する際にマイグレーションの機能を利用できます。
 マイグレーションはデータベースのスキーマのバージョン管理のようなもので、
 Artisanコマンドを利用して再構築することが可能です。
@@ -212,9 +217,11 @@ Artisanコマンドを利用して再構築することが可能です。
 ```
 sail artisan make:migration create_tweets_table
 ```
+
 つぶやきを保存するためのテーブルを作成します。
 上記のコマンドを実行し、
 成功すると次のように表示されます。
+
 ```
 Created Migration: yyyy_mn_dd_O000_create_tweets_table
 ```
@@ -223,7 +230,8 @@ Created Migration: yyyy_mn_dd_O000_create_tweets_table
 同名のPHPファイルが作成されます。
 ファイルを開くと以下のようになっています。
 
-//database/migrations/yyyy_mm_dd_◯◯◯◯_create_tweets_table.php
+//database/migrations/yyyy*mm_dd*◯◯◯◯_create_tweets_table.php
+
 ```
 <?php
 
@@ -258,14 +266,14 @@ return new class extends Migration
 };
 ```
 
-
 このファイルを拡張して好きなようにスキーマを定義していきます。
 マイグレーションクラスにはupとdownの2つのメソッドがあり、
 upメソッドでは新規に追加するテーブルや拡張するカラムなどのスキーマを指定し、
 down メソッドではupメソッドとは反対に戻す際の処理を記述します。
 今回はupメソッドを以下のように変更します。
 
-//database/migrations/yyyy_mm_dd_◯◯◯◯_create_tweets_table.php
+//database/migrations/yyyy*mm_dd*◯◯◯◯_create_tweets_table.php
+
 ```
     public function up()
     {
@@ -283,6 +291,7 @@ Stable->id()はbigincrementsのエイリアスであり、
 Stable->string()はVARCHAR型のカラムを作成します。
 
 Artisan コマンドからマイグレーションを実行します。
+
 ```
 sail artisan migrate
 Migration table created successfully.
@@ -297,11 +306,13 @@ Migrated: 2019_12_14_000001_create_personal_access_tokens_table (64.81ms)
 Migrating: vyyy_mm_dd_040313_create_tweets_table
 Migrated: vyyy_mm_dd_040313_create_tweets_table (35.35ms)
 ```
-create_users_table, create_password_resets_table, create_failed_jobs_table, 
+
+create_users_table, create_password_resets_table, create_failed_jobs_table,
 create_personal_access_tokens_tableはフレームワークが最初から持っているマイグレーションです。
 不要な場合はdatabase/migrations内の対応するファイルを削除することで消すことができます。
 今回追加したyyyy_mm_dd_OOOO_create_tweets_tableも実行できていることがわかります。
 MySQLにログインしてテーブルを確認してみましょう。
+
 ```
 sail mysql
 mysql> show tables from example_app;
@@ -314,6 +325,7 @@ users
 ```
 
 tweetsテーブルが作成されていることが確認できます。
+
 ```
 mysql> use example_app;
 Database changed
@@ -339,18 +351,20 @@ I auto_ increment
 ```
 
 #### シーディングを利用して開発用のデータを一括挿入
+
 tweetsテーブルを作成したので開発用のデータを挿入していきます。
 LaravelではSeederを利用して開発用のデータの挿入を行うことができます。
 シーディングとは種を蒔くという意味があり、データの初期値を設定することを指します。
 
-
 それではシーディングを行うためのシーダーを作成しましょう。シーダーも
 Artisan コマンドから作成します。
+
 ```
 sail artisan make:seeder TweetsSeeder
 ```
 
 //database/seeders/TweetsSeeder.php
+
 ```
 <?php
 
@@ -375,11 +389,10 @@ class TweetsSeeder extends Seeder
 }
 ```
 
-
 run メソッドに追加したいデータを記述します
 
-
 //database/seeders/TweetsSeeder.php
+
 ```
 <?php
 
@@ -408,6 +421,7 @@ class TweetsSeeder extends Seeder
 Seederのrunメソッドに追加します
 
 database/seeder/DatabaseSeeder.php
+
 ```
 public function run()
 {
@@ -428,11 +442,13 @@ sail artisan db:seed
 
 このコマンドでDatabaseSeederのrun メソッドを実行し、シーディングが行われます。
 個別のシーダーを呼び出す際には-classオプションを利用できます。
+
 ```
 sail artisan db:seed --class=TweetsSeeder
 ```
 
 現在の状態でいちど、データベースの中身を見てみましょう。
+
 ```
 sail mysql
 mysql> use example_app;
@@ -443,20 +459,25 @@ mysql> select * from tweets;
 シーダーは、次に紹介するEloquentモデルとFactoryを利用することで、
 開発時により実用的なダミーデータを生成することが容易になります。
 現在のデータは不要なので、次のコマンドを実行してテーブルを初期化しておきましょう。
+
 ```
 mysql> truncate table tweets;
 ```
 
 #### Factoryを作成する
+
 Eloquentモデルが作成できたので、続いてFactoryを作成します。
 こちらもArtisanコマンドから作成が可能です。
+
 ```
 sail artisan make:factory TweetFactory --model=Tweet
 ```
+
 database/factoriesディレクトリ内にTweetFactoryファイルが作成され
 ファイルは以下のようになっています。
 
 //database/factories/TweetFactory.php
+
 ```
 <?php
 
@@ -482,8 +503,10 @@ class TweetFactory extends Factory
     }
 }
 ```
+
 データベースからつぶやきを取得する
 //database/factories/TweetFactory.php
+
 ```
     public function definition()
     {
@@ -496,12 +519,11 @@ class TweetFactory extends Factory
 $this->fakerは、ダミーのテキストを生成してくれるライブラリである
 Fakerを呼び出すことができます。
 
-
 デフォルトでは英語のダミーテキストになるので、プロジェクトディレクトの
 config/app.phpのfaker_localeをja_JPに変更しましょう
 
-
 //config/app.php
+
 ```
 //    'faker_locale' => 'en_US',
       'faker_locale' => 'ja_JP',
@@ -511,8 +533,8 @@ Factoryを利用してシーディングを行う
 それでは再度シーダーファイルを編集し、
 作成したEloquentモデル、Factoryを利用してデータを挿入してみましょう
 
-
 //database/seeders/TweetsSeeder.php
+
 ```
 <?php
 
@@ -535,6 +557,7 @@ class TweetsSeeder extends Seeder
     }
 }
 ```
+
 run メソッドでTweetのEloquentモデルを呼び出し、factoryメソッドから
 countメソッドをチェーンし、createメソッドを実行します。
 
@@ -542,10 +565,13 @@ factoryメソッドはその名の通り作成したFactoryクラスが利用さ
 countメソッドの引数で挿入するデータの個数を指定できます。ここでは
 10としているので、10レコード作成されます。
 最後にcreate メソッドを呼び出してデータを挿入します。
+
 ```
 sail artisan db:seed
 ```
+
 挿入されたデータを確認してみましょう。
+
 ```
 sail mysql
 mysql> use example_app;
@@ -553,10 +579,12 @@ mysql> select * from tweets;
 ```
 
 #### データベースを接続してつぶやき一覧を表示
+
 まずはEloquentモデルを利用してデータを取得してみましょう。
 app/Http/Controllers/Tweet/IndexControllerに 以下のように追加します。
 
 //app/Http/Controllers/Tweet/IndexController.php
+
 ```
 <?php
 
@@ -591,6 +619,7 @@ itemsの中に複数のデータが入っていることが確認できます。
 app/Http/Controllers/Tweet/IndexControllerのinvokeのメソッド
 を以下のように変更し、bladeテンプレートに$tweetsを渡します。
 //app/Http/Controllers/Tweet/IndexController.php
+
 ```
         $tweets = Tweet::all();
         return view('tweet.index')
@@ -601,6 +630,7 @@ Bladeテンプレート側は 41のように変更しました。
 コントローラから受け渡された$tweetsを@foreachディレクティブを利用して一つずつ取り出します。
 
 //resources/views/tweet/index.blade.php
+
 ```
 <body>
     <h1>つぶやきアプリ</h1>
@@ -625,23 +655,29 @@ P70画像
 つぶやきを投稿できる機能を作成しましょう。
 
 #### コントローラの作成
+
 まずは投稿を受け付けるコントローラを作成します。
 Artisan コマンドから新規でコントローラを作成しましょう。
+
 ```
 sail artisan make:controller Tweet/CreateController --invokable
 ```
+
 app/Http/Controllers/Tweet/CreateControllerが作成されました。
 続いて画面からリクエストされたデータをバリデーションするために
 FormRequestというクラスを作成します。
 FormRequestもArtisanコマンドから作成できます。
+
 ```
 sail artisan make:request Tweet/CreateRequest
 ```
+
 コマンドを実行するとapp/Http/Requestsにファイルが作成されます。
 今回はapp/Http/Requests/Tweet/CreateRequestというファイルが作成されました。
 コードを見てみると以下のように初期実装されています。
 
 //app/Http/Requests/Tweet/CreateRequest.php
+
 ```
 <?php
 
@@ -687,8 +723,8 @@ rulesメソッドではリクエストされる値を検証するための設定
 制限をかけたり、その文章は必須であるなどの条件があったとします。
 その場合は以下のように記述します。
 
-
 //app/Http/Requests/Tweet/CreateRequest.php
+
 ```
     public function authorize()
     {
@@ -710,6 +746,7 @@ rulesメソッドは配列を返却します。配列の中身は、keyが投稿
 
 それでは独自に拡張したFormRequestクラスをコントローラで利用してみましょう
 //app/Http/Controllers/Tweet/CreateController.php
+
 ```
 <?php
 
@@ -726,32 +763,36 @@ class CreateController extends Controller
     }
 }
 ```
-呼び出し方は非常に簡単で、__invokeメソッドの引数に指定するだけで
+
+呼び出し方は非常に簡単で、\_\_invokeメソッドの引数に指定するだけで
 す。
 Laravelではサービスコンテナ(P.100参照） によって自動的に指定したクラスをメソッドインジェクションしてくれます。
 ここまで作成したら、Routeにこのコントローラを登録して、画面からリクエストできるようにしてみましょう。
 routes/web.phpに以下のように追加します。
 
 //routes/web.php
+
 ```
 Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class);
 ```
+
 今度は/tweet/createにPOSTメソッドでリクエストされた場合にTweet/Create コントローラが呼ばれるように設定します。
 また、Routeには名前をつけることができるので追加しましょう。名前をつけることで、別のコントローラやBladeテンプレートから
 Routeを呼び出す際にパスではなくその名前で指定できるので、記述を簡路化できます
 
-
 routes/web.php
+
 ```
 Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class) ->name('tweet.index');
 Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class) ->name('tweet.create');
 ```
 
-
 #### 投稿フォームの作成
-続いてはresources/views/tweet/index.blade.phpにつぶやきが投稿できるフォームを追加しましょう 
+
+続いてはresources/views/tweet/index.blade.phpにつぶやきが投稿できるフォームを追加しましょう
 
 resources/views/tweet/index.blade.php（ここでは<body>〜</body>の全体を掲載）
+
 ```
 <body>
     <h1>つぶやきアプリ</h1>
@@ -772,7 +813,9 @@ resources/views/tweet/index.blade.php（ここでは<body>〜</body>の全体を
     </div>
 </body>
 ```
+
 #### CSRF トークンチェック
+
 Laravelでは初期設定としてすべてのリクエストに対しCSRFトークンチェックを行います。
 CSRF (クロスサイトリクエストフォージェリ）はWebサイトにおける脆弱性の一つであり、
 Laravelではこの脆弱性の対処としてトークンチェックを行うことでその攻撃から防ぐ仕組みを持っています。
@@ -782,6 +825,7 @@ Laravelではセッションを利用してアプリケーション固有のト�
 CSRF対策で重要なことは、クライアントからトークンを送ってもらうことが必要であるということです。
 LaravelではBladeテンプレートのディレクティブに@csrfを用意していますので、これを設定するだけで対策が完了できます。
 この@csrfはHTMLとして生成する際に以下のように変換されます。
+
 ```
 <input type="hidden" name="_token" value="xZPyILblC4GXVFqP3h6ZXQpoQtts8mzsJsAm4YBi">
 ```
@@ -798,10 +842,12 @@ Laravel側のトークンが更新されることでトークンが一致しな�
 ログイン機能などを有する場合はそちらとの兼ね合いも考えなければなりません。よく理解して利用しましょう
 
 #### バリデーションのメッセージを表示
+
 フォームは作成しましたが、このままではバリデーションによって失敗したり
 クエストをユーザーに伝えることができません。続いてバリデーションメッセージの表示を追加します
 
 resources/views/tweet/index.blade.php
+
 ```
             <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea>
             @error('tweet')
@@ -809,8 +855,9 @@ resources/views/tweet/index.blade.php
             @enderror
 ```
 
-```@error```ディレクティブに対象の名前を入れて、```{$message }```とすることでバリデーションのエラーメッセージが表示されます。
-複数の項目をまとめたい場合はこの```@error```に複数の名前を入れることで対応できます。
+`@error`ディレクティブに対象の名前を入れて、`{$message }`とすることでバリデーションのエラーメッセージが表示されます。
+複数の項目をまとめたい場合はこの`@error`に複数の名前を入れることで対応できます。
+
 ```
 @error('email', 'login')
 ```
@@ -818,6 +865,7 @@ resources/views/tweet/index.blade.php
 画像P78
 
 #### バリデーションメッセージの日本語化
+
 Laravelは標準では英語設定になっていますが、多言語化に対応しているので、
 バリデーションメッセージも日本語化させることが可能です。
 まず多言語ファイルは、langディレクトリの中にenというディレクトリで管理されているのが英語向けのファイルです。
@@ -825,6 +873,7 @@ Laravelは標準では英語設定になっていますが、多言語化に対�
 fallback_localeです。初期設定ではenとなっているものをjaと変更しましょう
 
 config/app.php
+
 ```
     'locale' => 'ja',
     // 省略
@@ -857,6 +906,7 @@ P79 画像
 lang/ja/validation.phpの末尾にattributesを定義し、tweetの翻訳を追加しましょう
 
 lang/ja/validation.php
+
 ```
 	],
     'attributes' => [
@@ -868,7 +918,6 @@ lang/ja/validation.php
 この状態で実行すると113」のようになります。すべて翻訳されました。140
 文字制限のバリデーションは以下のように表示されます。
 
-
 P79 画像
 
 #### 画面からのデータを取得して保存
@@ -878,6 +927,7 @@ P79 画像
 を取得できるメソッドを追加します
 
 //app/Http/Requests/Tweet/CreateRequest.php
+
 ```
     public function tweet(): string
     {
@@ -892,6 +942,7 @@ P79 画像
 取得できない場合は想定されないので不要です。
 
 app/Http/Controllers/Tweet/CreateController.php
+
 ```
 <?php
 
@@ -929,14 +980,13 @@ Eloquentモデルを利用したことで、このようにデータ
 名前を指定することで、簡単にURLのパスに変換してくれます。
 これで投稿画面から追加した文字「画面から追加」が一覧に追加されました
 
-
 P81 画像17
 
 投稿処理ができたことで、つぶやきの表示順を作成の降順に変更したいと思います。
 app/Http/Controllers/Tweet/IndexControllerを以下のように変更しましょう。
 
-
 app/Http/Controllers/Tweet/IndexController.php
+
 ```
 $tweets = Tweet::orderBy('created_at', 'DESC')->get();
 ```
@@ -946,7 +996,6 @@ $tweets = Tweet::orderBy('created_at', 'DESC')->get();
 SQL句のようにselect, where, orderBy, limitなどを使って
 条件付きでデータを取得することができます。
 また、順番を変更するだけなら次のような方法もあります。
-
 
 ```
 $tweets = Tweet::all()->sortByDesc('created_at');
@@ -961,17 +1010,19 @@ Byはクエリビルダの機能を利用しているため、SQL実行時にソ
 このように特性を理解してメソッドを使い分けることが大切です。
 
 ### つぶやきを編集する処理を作成する
+
 投稿する処理を作成できたので、続けて投稿を編集する機能を作成しましょう。
 
 #### コントローラの作成
+
 まずはコントローラから作成しましょう。編集する画面と編集のリクエストを受け付ける2つのコントローラが必要です。
 
 ```
 sail artisan make:controller Tweet/Update/IndexController --invokable
 sail artisan make:controller Tweet/Update/PutController --invokable
 ```
-投稿と同じようにRequestFormクラスも作成します。
 
+投稿と同じようにRequestFormクラスも作成します。
 
 ```
 sail artisan make:request Tweet/UpdateRequest
@@ -980,6 +1031,7 @@ sail artisan make:request Tweet/UpdateRequest
 UpdateRequestの内容はCreateRequestと同様になります。
 
 //app/Http/Requests/Tweet/UpdateRequest.php
+
 ```
 <?php
 
@@ -1017,10 +1069,12 @@ class UpdateRequest extends FormRequest
     }
 }
 ```
+
 コントローラが作成できたのでRouteに追加します。
 routes/web.phpに以下のように追加します。
 
 routes/web.php
+
 ```
 Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexController::class)->name('tweet.update.index');
 Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class)->name('tweet.update.put');
@@ -1033,7 +1087,6 @@ RouteではURIのパスパラメータにルールを設定することができ
 tweetIdは整数値のみを受け付ければよいので、他の文字列などは不要です。
 その場合はメソッドチェーンでwhere()を使うことで制限させることができます。
 
-
 ```
 Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexController::class)->name('tweet.update.index')->where('tweetId', '[0-9]+');
 Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class)->name('tweet.update.put')->where('tweetId', '[0-9]+');
@@ -1044,6 +1097,7 @@ Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutCont
 毎回パスパラメータのルールを書くのが面倒な場合は、グローバルにtweetId=整数値という設定を作ることも可能です。
 
 app/Providers/RouteServiceProvider.php（boot()ブロック全体・本書では記述不要）
+
 ```
     public function boot()
     {
@@ -1065,6 +1119,7 @@ app/Providers/RouteServiceProvider.php（boot()ブロック全体・本書では
 処理から作成していきます
 
 app/Http/Controllers/Tweet/Update/IndexController.php
+
 ```
     public function __invoke(Request $request)
     {
@@ -1078,6 +1133,7 @@ Routeでftweetld」と指定したのでRequestから$request->route
 この$tweetldを利用してデータベースからデータを取得してみましょう
 
 app/Http/Controllers/Tweet/Update/IndexController.php（省略していない状態）
+
 ```
 <?php
 
@@ -1120,6 +1176,7 @@ Eloquentモデルは検索結果が存在しない場合はnullを返すので�
 ModelNotFoundExceptionの例外になり、その例外をキャッチしない場合は自動的に404 NotFoundになります。
 
 app/Http/Controllers/Tweet/Update/IndexController.php
+
 ```
     public function __invoke(Request $request)
     {
@@ -1139,6 +1196,7 @@ P87 画像
 resources/views/tweet/update.blade.phpを作成します
 
 resources/views/tweet/update.blade.php
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -1160,7 +1218,7 @@ resources/views/tweet/update.blade.php
         @csrf
         <label for="tweet-content">つぶやき</label>
         <span>140文字まで</span>
-        <textarea id="tweet-content" type="text" name="tweet" 
+        <textarea id="tweet-content" type="text" name="tweet"
         placeholder="つぶやきを入力">{{ $tweet->content }}</textarea>
         @error('tweet')
         <p style="color: red;">{{ $message }}</p>
@@ -1186,6 +1244,7 @@ resources/views/tweet/update.blade.php
 それではコントローラを109のように変更してviewを返します
 
 app/Http/Controllers/Tweet/Update/IndexController.php
+
 ```
     public function __invoke(Request $request)
     {
@@ -1203,20 +1262,23 @@ P90 画像11
 #### 編集内容の更新処理
 
 続いて実際に更新する処理を追加しましょう。
-app/Http/Requests/Tweet/UpdateRequestにidを取得できるメソッドを追加します 
+app/Http/Requests/Tweet/UpdateRequestにidを取得できるメソッドを追加します
 
 app/Http/Requests/Tweet/UpdateRequest.php
+
 ```
     public function id(): int
     {
         return (int) $this->route('tweetId');
     }
 ```
+
 この処理はコントローラで実装しても変わりませんが、RequestForm側に
 実装することでコントローラでの処理が簡路化されるためおすすめです。
 app/Http/Controllers/Tweet/Update/PutControllerを113 のように変更します。
 
 app/Http/Controllers/Tweet/Update/PutController.php（省略していない状態）
+
 ```
 <?php
 
@@ -1246,6 +1308,7 @@ class PutController extends Controller
     }
 }
 ```
+
 先ほどのapp/Http/Controllers/Tweet/Update/IndexControllerと
 同様にまずは対象のEloquentモデルを取得します。
 そのEloquentモデルのcontentを更新してsave メソッドから保存を実行し、
@@ -1255,6 +1318,7 @@ class PutController extends Controller
 resources/views/tweet/update.blade.phpでフラッシュセッションデータを表示できるように追加します
 
 resources/views/tweet/update.blade.php
+
 ```
     <a href="{{ route('tweet.index') }}">< 戻る</a>
     <p>投稿フォーム</p>
@@ -1268,6 +1332,7 @@ P92 16画像
 最後に一覧画面から編集画面へ遷移できるように動線を追加しましょう
 
 resources/views/tweet/index.blade.php（省略していない状態）
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -1307,6 +1372,7 @@ resources/views/tweet/index.blade.php（省略していない状態）
 </html>
 
 ```
+
 ブラウザで表示すると以下のようになります。detailsタグを利用して編集
 ボタンを隠しています。つぶやきをクリックすることで編集のリンクが出現します。
 http://localhost/tweet
@@ -1317,27 +1383,32 @@ P93 18画像
 Elocuentモデルを利用することで、対象のデータを取得し、
 それを上書きするという動作を容易に作成することができます。
 
-
 ### つぶやきを削除する処理を作作成する
+
 一覧の表示、投稿、編集と作成したので、最後につぶやきの削除処理を実装します。
 
 #### コントローラの作成
+
 Artisan コマンドを利用してコントローラを作成します。
+
 ```
 sail artisan make:controller Tweet/DeleteController --invokable
 ```
 
-routes/web.phpにエンドポイントを追加します 
+routes/web.phpにエンドポイントを追加します
 
 routes/web.php
+
 ```
 Route::delete('/tweet/delete/{tweetId}', \App\Http\Controllers\Tweet\DeleteController::class)->name('tweet.delete');
 ```
 
 #### 削除処理の実装
+
 app/Http/Controllers/Tweet/DeleteController/ は以下のようになります。
 
 app/Http/Controllers/Tweet/DeleteController.php（省略していない状態）
+
 ```
 <?php
 
@@ -1370,6 +1441,7 @@ class DeleteController extends Controller
 
 </div>
 ```
+
 削除の場合はEloquentモデルを取得してdelete メソッドを実行することで対象のモデルを削除、
 つまりデータベースからデータを削除する処理になります。
 実装方法は他にもあり、直接主キーを指定して削除を実行することも可能です。
@@ -1379,7 +1451,3 @@ Tweet::destroy($tweetId);
 ```
 
 最後に削除ボタンと削除が成功した際の通知の表示を追加して一通りの流れが完了です。
-
-
-
-

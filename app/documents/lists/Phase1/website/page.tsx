@@ -1,8 +1,10 @@
-{/* /documents/lists/Phase1/website  */}
-import React from 'react';
-import Image from 'next/image'
+{
+  /* /documents/lists/Phase1/website  */
+}
+import React from "react";
+import Image from "next/image";
 
-import ArticleCard from '@/app/components/lists/ArticleCard';
+import ArticleCard from "@/app/components/lists/ArticleCard";
 
 const all = () => {
   return (
@@ -10,7 +12,9 @@ const all = () => {
       <section className="default-inch text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">インターネット入門</h1>
+            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">
+              インターネット入門
+            </h1>
 
             <ArticleCard
               section="Part1"

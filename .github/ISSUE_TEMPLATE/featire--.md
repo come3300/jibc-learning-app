@@ -1,10 +1,9 @@
 ---
-name: 'featire: '
+name: "featire: "
 about: 機能追加のためのissueテンプレ用
-title: 'feature: '
-labels: ''
-assignees: ''
-
+title: "feature: "
+labels: ""
+assignees: ""
 ---
 
 # 達成すること

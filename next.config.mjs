@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-
 import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -9,8 +8,6 @@ import rehypePrism from "@mapbox/rehype-prism";
 import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
 import remarkBreaks from "remark-breaks";
-
-
 
 const withMDX = nextMDX({
   extensions: /\.mdx?$/,
@@ -35,13 +32,12 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['lh3.googleusercontent.com', 'res.cloudinary.com'],
+    domains: ["lh3.googleusercontent.com", "res.cloudinary.com"],
   },
-   // Configure pageExtensions to include md and mdx
-   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-   // Optionally, add any other Next.js config below
-   reactStrictMode: true,
-}
-
+  // Configure pageExtensions to include md and mdx
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  // Optionally, add any other Next.js config below
+  reactStrictMode: true,
+};
 
 export default withMDX(nextConfig);

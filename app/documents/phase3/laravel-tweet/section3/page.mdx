@@ -1,5 +1,4 @@
-
-{/*/documents/phase3/laravel-tweet/section1/page.mdx */}
+{/* /documents/phase3/laravel-tweet/section1/page.mdx */}
 
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
@@ -8,7 +7,6 @@
 
 まずはデーターベース等を駆使して
 つぶやき機能を実装していきましょう。
-
 
 ### サービスコンテナを理解する
 
@@ -28,11 +26,12 @@
 まずは最初にプログラムにおける「依存」についてです。
 
 #### 依存とは
+
 プログラムにおける「依存」をひとことで表現すると、「クラスAがクラスBに
 依存している」という状態をいいます。
 
 実際のコードを交えて説明していきましょう。
-まずはクラスAとクラスBのサンプルコードを見てみます 
+まずはクラスAとクラスBのサンプルコードを見てみます
 
 ```
 class ClassA {
@@ -69,6 +68,7 @@ public function __construct()
     $this->classB = new ClassB(); // クラスBのインスタンスを生成
 }
 ```
+
 そしてクラスAのrun()メソッドの中でクラスBのrun()メソッドを実行しています。
 
 ```
@@ -86,8 +86,8 @@ Aのrun()メソッドは実行できません。
 逆にクラスBは他のクラスに依存していないため、「クラスBはどのクラスにも依存していない」と言えます。
 以上のクラスAとクラスBの関係のように、プログラムにも「依存」の関係が存在することを意識しましょう。
 
-
 #### 依存性の注入とは？
+
 次は「依存性の注入」についてです。「依存性の注入」はDependency
 Injectionを訳したもので、暗して「DI」とも言われます。
 この「依存性の注入」をひとことで表現すると、
@@ -95,7 +95,6 @@ Injectionを訳したもので、暗して「DI」とも言われます。
 先ほど「依存」の説明で利用したクラスAとクラスBを使って「依存性の注入」についても見てみましょう。
 クラスAのコンストラクタを確認してみるとわかるとおり、
 現在のクラスAは「クラス内でクラスBのインスタンスを生成」しています。
-
 
 ```
 public function __construct()
@@ -112,6 +111,7 @@ public function __construct(ClassB $classB)// コンストラクタの引数で�
     $this->classB = $classB;
 }
 ```
+
 コンストラクタの引数でクラスBを受け取るように書き換えた状態です。
 この変更が加わることで、クラスAのインスタンスを生成する際のコードは次のようになります。
 
@@ -125,14 +125,16 @@ AがクラスBをコンストラクタで受け取るようになっているの
 このように、「依存するクラスをクラスの内部でインスタンス化するのではなく、
 外部でインスタンス化したオブジェクトを受け取るようにすること」が「依存性の注入」です。
 「依存性の注入」とは、インスタンス化したオブジェクトをクラスの外側から
-入れる（注入する)ということを意識しましょう 
+入れる（注入する)ということを意識しましょう
 
 #### laravelのサービスコンテナとは
+
 では、Laravelのサービスコンテナについて見てみます。
 つぶやきアプリのつぶやきー覧表示機能を拡張しながら、サービスコンテナについて解説していきましょう。
 まず、現状のつぶやき一覧表示のシングルアクションコントローラを確認します
 
 //app/Http/Controllers/Tweet/IndexController.php（すでに記述済み）
+
 ```
 public function __invoke(Request $request)
 {
@@ -151,6 +153,7 @@ TweetService.phpを作成します。
 app/Services/TweetService.phpにはのコードを記述します。
 
 app/Services/TweetService.php
+
 ```
 <?php
 
@@ -170,6 +173,7 @@ class TweetService
 作成したTweetServiceクラスをつぶやき一覧表示のシングルアクションコントローラで利用してみます
 
 app/Http/Controllers/Tweet/IndexController.php
+
 ```
 <?php
 
@@ -208,6 +212,7 @@ TweetServiceクラスを外部から受け取る
 以下のように指定しています。
 
 //routes/web.php（すでに記述済み）
+
 ```
 Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)-> name('tweet.index');
 ```
@@ -216,6 +221,7 @@ Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)-> name(
 とりあえずつぶやきー覧のシングルアクションコントローラを書き換えてみましょう。
 
 ●app/Http/Controllers/Tweet/IndexController.php
+
 ```
     public function __invoke(Request $request, TweetService $tweetService)
     {
@@ -226,7 +232,7 @@ Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)-> name(
 ```
 
 クラスを受け取る側の処理は、先ほどのクラスAがクラスBをコンストラクタで受け取ったのと同様の書き方で、
-つぶやき一覧のシングルアクションコントローラの_invoke メソッドでStweetServiceを受け取るように書き換えました。
+つぶやき一覧のシングルアクションコントローラの\_invoke メソッドでStweetServiceを受け取るように書き換えました。
 「$tweetService = new TweetService();」は削除しています。
 これだけだとエラーが発生しそうに見えるかもしれませんが、
 再度http://localhost/tweetを表示してみると、エラーは発生せずに表示も変わっていないことがわかります。
@@ -252,6 +258,7 @@ DIとDIコンテナは一緒に語られることも多いため混同しがち�
 それ自体を指します。DIコンテナはそれを自動的に解決する仕組みと分けて捉えておきましょう。
 
 #### サービスコンテナのメリット
+
 つぶやき一覧機能のシングルアクションコントローラで利用していたTweet
 モデルの処理を、TweetServiceに切り出して、Laravelのサービスコンテナ
 を利用して依存性の注入をおこなう処理を見てきました。
@@ -277,24 +284,28 @@ Breeze」を使ってログイン機能を実装します。ログイン機能�
 #### Laravel Breezeを利用する
 
 ##### Laravel Breezeのインストール
+
 まず、Composerを使用してLaravel Breezeをインストールします。
+
 ```
 sail composer require laravel/breeze --dev
 ```
+
 ComposerでLaravel Breezeをインストールしたら以下のArtisanコマンドを実行して、
 Laravel Breezeの動作に必要なコード群を生成します。
 
 注意！
 左記のコマンドを実行すると、現在のroutes/webphpの内容が消去されるため、
 実行する前にroutes/web.phpの内容をコピーしておきましょう。
+
 ```
 sail artisan breeze:install
 ```
 
-
 コードの自動生成によって、既存のコードが消えてしまうので注意してください。最終的に下記のような状態になっていればよいです。
 
 routes/web.php
+
 ```
 <?php
 
@@ -339,6 +350,7 @@ Laravel BreezeではLaravelによるサーバーサイドのロジックだけ�
 ログインに必要なフォーム等のフロントエンドの部分の機能も提供されます。
 すでに、先ほどのコマンドによってフロントエンドのコードが書き換わっているので、
 このフロントエンドのコードを反映させるために次のコマンドを実行します。
+
 ```
 sail pm install sail pm run dev
 ```
@@ -349,22 +361,23 @@ http://localhost
 
 P113 画像 2
 
-
 Laravel Breezeをインストールすると、フロントエンドのリッチなUIのためにCSSやJavaScriptが追加されます。
 これらをビルドすると巨大なCSSファイルとJavaScriptファイルが生成されますので、gitでコードを管理している
 場合は.gitignoreファイルに下記を追記することをおすすめします
 03.gitignore ファイルへ追記 （推奨）
 
 .gitignoreファイルへ追記
+
 ```
 /public/css
 /public/js
 ```
 
 ##### ユーザー登録
+
 トップページの右上のRegisterをクリックし、登録フォームから名前、
 メールアドレス、パスワード等を登録すると、アカウントが作成され管理画面にログインできます。
-管理画面には「You're logged in!」と表示されているはずです 
+管理画面には「You're logged in!」と表示されているはずです
 
 P113 4 画像
 
@@ -378,12 +391,14 @@ Laravel Breezeによって、ログインに関連する機能に必要なコー
 といったことがわかるようになります。それでは順に見ていきましょう。
 
 ##### ルーティング
+
 ログイン関係のコードはどのようにルーティングされてControllerが選ばれているのかをまずは見ていきましょう。
 routes/web.phpを見るとroutes/auth.phpというファイルを読み込んでいる箇所が見つかります。
 ログイン関係のコードはこのroutes/auth.php内に書かれており、ここには登録、ログイン、パスワードの変更、メールアドレスの認証、ログアウトまでが書かれています。
 例として登録フォームの表示を担う/registerの部分のルーティングを見てみましょう。
 
 routes/auth.php
+
 ```
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -409,6 +424,7 @@ sail artisan make:middleware SampleMiddleware
 app/Http/Middleware/SampleMiddleware.phpが生成され、中に以下のようなコードが書かれているはずです。
 
 app/Http/Middleware/SampleMiddleware.php
+
 ```
 public function handle(Request $request, Closure $next)
 {
@@ -423,6 +439,7 @@ public function handle(Request $request, Closure $next)
 ミドルウェアを呼び出すためのエイリアスを登録します
 
 app/Http/Kernel.php
+
 ```
 class Kernel extends HttpKernel
 {
@@ -446,6 +463,7 @@ Controllerが実行したい所定の処理は$next$request)の部分で実行�
 元々の処理の前後どちらにも処理を追加することができます
 
 app/Http/Middleware/SampleMiddleware.php
+
 ```
 public function handle(Request $request, Closure $next, ...$guards)
 {
@@ -454,6 +472,7 @@ public function handle(Request $request, Closure $next, ...$guards)
     /** 後に処理をはさみたい場合ここに記述する **/
 }
 ```
+
 前に処理を挟むミドルウェアは以下のようなシーンで使われます。
 
 前に処理を挟むミドルウェアを使用するケースの例
@@ -478,6 +497,7 @@ public function handle(Request $request, Closure $next, ...$guards)
 この中でもおもなguestとauthの2つのミドルウェアについて処理を見ていきます。
 
 ##### guest
+
 guestはapp/Kernal.phpファイルを見ると\App\Http\Middlewarel
 RedirectIfAuthenticated::class のエイリアスになっていることがわかります。処理を見てみると「ガード」を使ってログイン状況を確認し、
 ログインしていた場合はHOMEに飛ばすという処理になっています。「ガード」については後ほど説明します。
@@ -486,6 +506,7 @@ RedirectIfAuthenticated::class のエイリアスになっていることがわ�
 このミドルウェアを登録しておくと、登録画面は表示されずホーム画面に飛ばされるということです。
 
 ##### auth
+
 authはKernel.phpファイルを見ると\ApplHttp\Middlewarel
 Authenticate:classが指定されています。このクラスのHandle関数を見ると、
 ログインしているかどうか確認し、ログインしていない場合はAuthenticationExceptionの例外を発生させるように記述されています。
@@ -494,8 +515,8 @@ AuthenticationExceptionをThrowするとログイン画面に飛ばされる部�
 ログインしているユーザーしかアクセスできないページにはこのミドルウェアを登録します。
 まとめると、guestとauthは対になるミドルウェアになっています
 
-
 ##### ガード
+
 ガードはユーザーがログインしているかどうかを制御する機能を提供しています。複雑なアプリケーションを作らない限りはあまり触ることがない機能ですが、
 ログイン関係の機能を触るときには時々目にするので、軽く見ておきましょう。
 ガードの設定はconfig/auth.phpに書かれており、ログイン状態の管理の仕方を複数種類設定することができます。
@@ -503,6 +524,7 @@ AuthenticationExceptionをThrowするとログイン画面に飛ばされる部�
 ログイン情報の管理も分けたいといった場合、このガードを追加することで実現できます！
 
 config/auth.php
+
 ```
 'guards' => [
     'web' => [
@@ -525,7 +547,6 @@ config/auth.php
 ],
 ```
 
-
 #### ログイン処理で使われているミドルウェア
 
 #### ログイン機能をつぶやきアプリと連携する
@@ -545,6 +566,7 @@ config/auth.php
 変更は簡単で、RouteServiceProviderのHOME変数を/dashboardから/tweetに変更するだけです。
 
 app/Providers/RouteServiceProvider.php
+
 ```
 public const HOME = '/tweet';
 ```
@@ -554,12 +576,12 @@ public const HOME = '/tweet';
 現在のつぶやきアプリは、誰でもなんでも書き込めるようになっていますが、
 これでは見知らぬ第三者に書き込まれてしまう危険があったりと改善の余地ありです。
 ログイン機能を使い、アカウントを作ってログインしている人のみが書き込めるように変更しましょう。
-ログインしていないと書き込みできないようにするには、どうすればいいでしょうか？ 
+ログインしていないと書き込みできないようにするには、どうすればいいでしょうか？
 ミドルウェアを使い、つぶやきを書き込むルーティングをログインユーザーにしか使えないようにしましょう。
 つぶやきを書き込むルーティングにauthエイリアスのmiddlewareを指定します。
 
-
 routes/web.php
+
 ```
 Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class)
     ->middleware('auth')
@@ -575,6 +597,7 @@ viewを書き換えて、ログインしている人にだけ投稿フォーム�
 authディレクティブを使って投稿フォームを囲います。
 
 resources/views/tweet/index.blade.php
+
 ```
     @auth
         <div>
@@ -595,10 +618,10 @@ resources/views/tweet/index.blade.php
         </div>
     @endauth
 ```
+
 これでログインしているときのみ投稿フォームが表示されるようになります。
 
 p126画像
-
 
 #### ログインユーザーの情報を保存する
 
@@ -608,6 +631,7 @@ IDはユーザー情報として登録されるその他の情報（名前、Ema
 ただ一つ不変でさらに他のユーザーと重複することもないので、ユーザーの識別に利用できます。
 
 ##### tweetsテーブルにユーザーIDを追加する
+
 つぶやきを誰が投稿したのかわかるように、tweetsテーブルにユーザーID
 を追加していきます。artisanコマンドを使ってマイグレーションを追加します。
 
@@ -617,7 +641,8 @@ sail artisan make:migration add_user_id_to_tweets
 
 migrationを追加したら、user_idを追加する記述をしていきます。
 
-database/migrations/YYYY_～_add_user_id_to_tweets.php
+database/migrations/YYYY\_～\_add_user_id_to_tweets.php
+
 ```
 <?php
 
@@ -636,7 +661,7 @@ class AddUserIdToTweets extends Migration
     {
         Schema::table('tweets', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
-            
+
             // usersテーブルのidカラムにuser_idカラムを関連付けます。
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -665,6 +690,7 @@ after(id)の部分はidカラムの後ろに追加するという意味です。
 つぶやきには必ず投稿者がいるということが保証されるようになります。
 
 ##### Seederにユーザーを追加
+
 先ほどの変更によって、Tweetには必ず投稿者が必要になりました。今までは投稿者が必要なかったので、
 その部分のSeederを修正しなければいけません。まずはSeederを使ってユーザーを追加しましょう。
 Tweetのシーディングをしたときのように（P.056）、FactoryとSeederの
@@ -679,6 +705,7 @@ sail artisan make: seeder UsersSeeder
 さらに以下のように実行部分を記述していきます。
 
 database/seeders/UsersSeeder.php
+
 ```
 <?php
 
@@ -701,9 +728,11 @@ class UsersSeeder extends Seeder
     }
 }
 ```
+
 Tweetのシーディングの方もUserldを登録するように変更します。
 
 database/factories/TweetFactory.php
+
 ```
 <?php
 
@@ -735,11 +764,13 @@ class TweetFactory extends Factory
     }
 }
 ```
+
 これらの変更を終えたら、UsersSeeder クラスをDatabaseSeeder に登録することで実行されます。
 実行の順序を考えると、ユーザーが先に作られて、その後にユーザーIDを持ったつぶやきが作られるはずなので、
 UsersSeeder、TweetsSeederの順番に実行されるように登録します。
 
 database/seeders/DatabaseSeeder.php
+
 ```
 <?php
 
@@ -782,6 +813,7 @@ sail artisan migrate: fresh --seed
 まず、ユーザー情報についてですが、Requestクラスから取得することができます。
 
 app/Http/Requests/Tweet/CreateRequest.php
+
 ```
 <?php
 
@@ -832,6 +864,7 @@ providerの設定からusersテーブルの情報をEloquentモデルにして�
 こちらのidを、つぶやきを保存するときの他の情報と一緒に保存します。
 
 app/Http/Controllers/Tweet/CreateController.php
+
 ```
 <?php
 
@@ -857,13 +890,13 @@ class CreateController extends Controller
 これでモデル同士で関連するモデルのデータを取得することができるようになりました。
 最後に、つぶやきを表示している部分にユーザー情報を表示します。
 
-
 #### つぶやきの表示に投稿者の情報を追加する
 
 せっかくつぶやきに投稿のIDを追加したので、つぶやきアプリで誰が
 つぶやいたものかわかるようにしましょう。
 
 app/Models/User.php
+
 ```
 <?php
 
@@ -889,6 +922,7 @@ class User extends Authenticatable
 次にTweetモデルからUserモデルへの関連づけを行います。
 
 app/Models/Tweet.php
+
 ```
 <?php
 
@@ -913,6 +947,7 @@ class Tweet extends Model
 resources/views/tweet/index.blade.phpのつぶやきの部分につぶやいたユーザーの名前を追加します。
 
 resources/views/tweet/index.blade.php
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -967,15 +1002,18 @@ resources/views/tweet/index.blade.php
 画像p136
 
 #### 自分の投稿だけを編集・削除可にする
+
 ログインしているかどうかのチェックは投稿フォームのところで先ほど実装しましたが、その中でも「適切なユーザーとしてログインしているか？」は
 また別の問題です。今回はログインしているかどうかをチェックするだけでなく、
 「つぶやきの作成者と同じユーザーでログインしているか？」を確認していきます。
 
 ##### ルーティングを書き換える
+
 まず、編集画面、削除画面などのユーザー情報が必要な画面については、
 ログインしていないとアクセスできないようにルーティングを書き換えます。
 
 routes/web.php
+
 ```
 Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)->name('tweet.index');
 Route::middleware('auth')->group(function () {
@@ -986,6 +1024,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/tweet/delete/{tweetId}', \App\Http\Controllers\Tweet\DeleteController::class)->name('tweet.delete');
 });
 ```
+
 Route::middleware()を使うと複数のルートにミドルウェアを指定することができます。
 追加する機能
 次に、つぶやきの編集の部分に以下の処理を追加して、つぶやきの作成者
@@ -998,8 +1037,8 @@ Route::middleware()を使うと複数のルートにミドルウェアを指定�
 複数のControllerに同じ処理を書くことになってしまい、コードの重複が発生してしまいます。
 それを避けるために今回はServiceクラスに上記のコードを実装していきます。
 
-
 app/Services/TweetService.php
+
 ```
 <?php
 
@@ -1025,10 +1064,12 @@ class TweetService
     }
 }
 ```
+
 このサービスクラスを使って app/Http/Controllers/Tweet/Update/PutController.php
 の実装を進めていきます。
 
 app/Http/Controllers/Tweet/Update/IndexController.php
+
 ```
 <?php
 
@@ -1048,7 +1089,7 @@ class IndexController extends Controller
         if (!$tweetService->checkOwnTweet($request->user()->id, $tweetId)) {
             throw new AccessDeniedHttpException();
         }
-        
+
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
         return view('tweet.update')->with('tweet', $tweet);
     }
@@ -1066,6 +1107,7 @@ P139 画像
 
 更新と削除の部分にも同様の処理を追加します
 app/Http/Controllers/Tweet/Update/PutController.php
+
 ```
 <?php
 
@@ -1093,7 +1135,9 @@ class PutController extends Controller
     }
 }
 ```
+
 app/Http/Controllers/Tweet/DeleteController.php
+
 ```
 <?php
 
@@ -1122,9 +1166,11 @@ class DeleteController extends Controller
 }
 
 ```
+
 また、このままだと、編集や削除の権限がない人にもボタンが表示されてしまうので、ボタン自体も非表示にします
 
 resources/views/tweet/index.blade.php
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -1181,7 +1227,7 @@ resources/views/tweet/index.blade.php
 
 これで、つぶやきの作成者のみが編集と削除をできるようになりました。
 
-p142  画像
+p142 画像
 
 </div>
 

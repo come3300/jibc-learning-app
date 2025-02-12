@@ -1,7 +1,7 @@
 {/* /documents/sample */}
 
-import AlertGreen from '@/app/components/page-parts/AlertGreen'
-import AccordionComponent from '@/app/components/page-parts/AccordionComponent'
+import AlertGreen from "@/app/components/page-parts/AlertGreen";
+import AccordionComponent from "@/app/components/page-parts/AccordionComponent";
 
 <div class="bg-white">
 <div class="whitespace-nowrap mx-auto max-w-screen-md ">
@@ -9,7 +9,7 @@ import AccordionComponent from '@/app/components/page-parts/AccordionComponent'
 ## マーカー
 ## 表
 
->目次
+> 目次
 
 開発をしていく中でプログラムは日々アップデートしていきます。
 RPGなどのゲームをやっているときも、ゲームをやり終えるときにセーブをするのと一緒で、
@@ -32,12 +32,12 @@ RPGなどのゲームをやっているときも、ゲームをやり終える�
 `hsla(100, 24%, 40%, 0.5)`
 
 # これはH1タグです
+
 ## これはH2タグです
+
 ###### これはH6タグです
 
 打ち消し線を使うには ~~ で囲みます。 ~~打ち消し~~
-
-
 
 (上に空行が必要)
 
@@ -49,6 +49,7 @@ puts 'Hello, World'
 + puts 'Hello, World'
 - puts 'Hello, World'
 ```
+
 :::note info
 インフォメーション
 infoは省略可能です。
@@ -73,7 +74,10 @@ infoは省略可能です。
 
 <dl>
   <dt>リンゴ</dt>
-  <dd> とても<strong>赤い</strong>フルーツ </dd>
+  <dd>
+    {" "}
+    とても<strong>赤い</strong>フルーツ{" "}
+  </dd>
 </dl>
 
 - [ ] タスク1
@@ -83,33 +87,33 @@ infoは省略可能です。
 > 複数行にまたがる場合、改行のたびにこの記号を置く必要があります。
 > **引用の上下にはリストと同じく空行がないと正しく表示されません**
 > 引用の中に別のMarkdownを使用することも可能です。
-> 
+>
 > > これはネストされた引用です。
 
-* * *
-***
-*****
-- - -
----------------------------------------
+---
+
+---
+
+---
+
+---
+
+---
 
 [Qiita](http://qiita.com "Qiita Home")
 
-
-
 | Left align | Right align | Center align |
-|:-----------|------------:|:------------:|
-| This       | This        | This         |
-| column     | column      | column       |
-| will       | will        | will         |
-| be         | be          | be           |
-| left       | right       | center       |
-| aligned    | aligned     | aligned      |
-
+| :--------- | ----------: | :----------: |
+| This       |        This |     This     |
+| column     |      column |    column    |
+| will       |        will |     will     |
+| be         |          be |      be      |
+| left       |       right |    center    |
+| aligned    |     aligned |   aligned    |
 
 (空行)
 https://qiita.com/Qiita/items/c686397e4a0f4f11683d
 (空行)
-
 
 ```mermaid
 graph TD;
@@ -118,7 +122,8 @@ graph TD;
     B-->D;
     C-->D;
 ```
-<AlertGreen title="テキストサンプル" text="テキストサンプル"/>
+
+<AlertGreen title="テキストサンプル" text="テキストサンプル" />
 {/* https://www.hyperui.dev/components/application-ui/alerts */}
 {/* 参考のAlertGreenコンポーネント */}
 
@@ -127,4 +132,3 @@ graph TD;
 </div>
 
 </div>
-

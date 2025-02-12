@@ -1,34 +1,34 @@
-'use client'
+"use client";
 
-import { useCallback } from 'react'
-import { CldUploadWidget } from 'next-cloudinary'
-import { TbPhotoPlus } from 'react-icons/tb'
+import { useCallback } from "react";
+import { CldUploadWidget } from "next-cloudinary";
+import { TbPhotoPlus } from "react-icons/tb";
 
-import Image from 'next/image'
+import Image from "next/image";
 
 declare global {
-  var cloudinary: any
+  var cloudinary: any;
 }
 
 type ImageUploadProps = {
-  onChange: (value: string) => void
-  value: string
-}
+  onChange: (value: string) => void;
+  value: string;
+};
 
 type UploadResult = {
   info: {
-    secure_url: string
-  }
-}
+    secure_url: string;
+  };
+};
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
   const handleUpload = useCallback(
     (result: UploadResult) => {
-      console.log(result.info.secure_url)
-      onChange(result.info.secure_url)
+      console.log(result.info.secure_url);
+      onChange(result.info.secure_url);
     },
-    [onChange]
-  )
+    [onChange],
+  );
 
   return (
     <CldUploadWidget
@@ -36,7 +36,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
       uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
       options={{
         maxFiles: 1,
-        sources: ['local'],
+        sources: ["local"],
       }}
     >
       {({ open }) => {
@@ -54,10 +54,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
               </div>
             )}
           </div>
-        )
+        );
       }}
     </CldUploadWidget>
-  )
-}
+  );
+};
 
-export default ImageUpload
+export default ImageUpload;

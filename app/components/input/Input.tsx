@@ -1,22 +1,22 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 type InputProps = {
-  id: string
-  label: string
-  type?: string
-  disabled?: boolean
-  required?: boolean
-  register: UseFormRegister<FieldValues>
-  errors: any
-}
+  id: string;
+  label: string;
+  type?: string;
+  disabled?: boolean;
+  required?: boolean;
+  register: UseFormRegister<FieldValues>;
+  errors: any;
+};
 
 const Input: React.FC<InputProps> = ({
   id,
   label,
-  type = 'text',
+  type = "text",
   disabled,
   register,
   required,
@@ -34,17 +34,19 @@ const Input: React.FC<InputProps> = ({
         className={`w-full rounded-lg border-2 p-4 outline-none transition disabled:cursor-not-allowed disabled:opacity-70
           ${
             errors[id]
-              ? 'border-red-500 focus:border-red-500'
-              : 'border-neutral-300 focus:border-sky-500'
+              ? "border-red-500 focus:border-red-500"
+              : "border-neutral-300 focus:border-sky-500"
           }
         `}
       />
 
       {errors[id] && (
-        <div className="my-3 text-center text-sm text-red-500">{errors[id].message}</div>
+        <div className="my-3 text-center text-sm text-red-500">
+          {errors[id].message}
+        </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

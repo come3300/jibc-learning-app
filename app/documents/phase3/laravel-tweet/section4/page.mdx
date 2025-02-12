@@ -1,5 +1,4 @@
-
-{/*/documents/phase3/laravel-tweet/section1/page.mdx */}
+{/* /documents/phase3/laravel-tweet/section1/page.mdx */}
 
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
@@ -13,8 +12,8 @@
 
 Webアプリケーションの機能がひととおり完成したので、最後にLaravel Mixを利用してフロントエンドを作成していきましょう。
 
-
 #### Laravel Mixとは
+
 LaravelでWebアプリケーションを作り始めると、Webページをよりリッチ
 に見せたり、より複雑な動きをつけたりしたくなるかもしれません。
 LaravelにはLaravel Mixというフロントエンドの開発環境を簡単に
@@ -23,6 +22,7 @@ Laravel Mixはフロントエンドのビルドツールとして特にメジャ
 Webpackは便利な半面設定が難しく、初めての人にはとっつきづらい部分がありますが、Laravel Mixはその点を見事に解消してくれています。
 
 ##### Laravel Mixの特徴
+
 Laravel Mixを使えば、JavaScriptのコンパイルやSCSSのCSSへのコンパイル、CSSとJavaScriptの配信用圧縮などが簡単に行えます。
 Laravel Mixは名前にLaravelと付いていますが、純粋なJavaScriptで作られたライブラリで、Laravelでの開発以外のプロジェクトでも利用できます。
 また、Laravelにはデフォルトで同梱されていますので、すぐに使えます。
@@ -35,16 +35,17 @@ npm (NodePackage Manager)という依存パッケージを管理するツール�
 Laravel Mixのインストールにもnpmを利用します。
 Laravel SailにはNode.jsとnpmがあらかじめインストールされています。
 試しにLaravel Sailで作られたDockerコンテナ内で以下のコマンドを実行してみましょう。
+
 ```
 sail node -v
 V16.14.0
 ```
 
-
 Node.jsのバージョンが表示されたら成功です。以降Node.jsやnpmの実行は、
 このLaravel Sailで作られたDocker コンテナ内で実行します。
 
 ##### package.json とは
+
 package.jsonはnpmでパッケージを管理する際の設計図のようなものです。
 このjsonファイルに依存するパッケージを記入することで、
 開発に必要なパッケージをインストールすることができます。
@@ -54,6 +55,7 @@ Laravelをインストールした直後では、
 //初期状態のpackage.json
 
 package.json（Laravel Breezeをインストールしていない初期状態）
+
 ```
 {
     "private": true,
@@ -79,19 +81,20 @@ npm installを行う
 package.jsonの確認ができたら、npmを使ってパッケージをインストールしてみましょう。
 このpackage.jsonにはaxios、laravel-mix、 lodash、postcssの4つのパッケージが指定されているので、
 npmを使うことでこれら4つのパッケージがインストールされます。
+
 ```
 sail npm install
 ```
+
 これでlaravel-mixがインストールされたので、
 Laravel Mixを使ってフロントエンド開発を進めることができます。
-
 
 webpack.mix.js
 Laravel Mixで行うフロントエンド開発の設定は、webpack.mix.jsに記述していきます。
 Laravelをインストールした直後では以下のような設定が書かれています。
 
-
 webpack.mix.js（Laravel Breezeをインストールしていない初期状態）
+
 ```
 const mix = require('laravel-mix');
 
@@ -107,9 +110,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    
-        // 
-        
+
+        //
+
 ]);
 
 ```
@@ -121,6 +124,7 @@ resources/js/app.jsにはresources/is/bootstrap.jsをrequireすることが記�
 ビルドするとbootstrapのコードが展開されます。
 
 resources/js/app.js
+
 ```
 require('./bootstrap');
 ```
@@ -139,11 +143,13 @@ public/is/app.jsとpublic/css/app.cssの2つのファイルが生成されたは
 動きをつけたりといったことができるようになります。
 
 ##### npm scripts
+
 先ほどの「npm run development」というコマンドはnpmのscriptsという機能を利用しています。
 package.jsonのscripts プロパティに実行したい内容を指定することで、任意のコマンドをnode.jsの実行環境のもとで実行できます。
 現状では、scriptsプロパティには以下のように記述されています。
 
 現状のpackage.json
+
 ```
 "scripts": {
     "dev": "npm run development",
@@ -155,6 +161,7 @@ package.jsonのscripts プロパティに実行したい内容を指定するこ
     "production": "mix --production"
 },
 ```
+
 scriptsプロパティはキーがscriptの名前、値が実行内容になっているので、npm run developmentを実行すると、
 実際にはmixが実行されることlaravel-mix等のnpm経由でインストールされたパッケージにはこのように
 scripts経由でアクセスします。
@@ -163,6 +170,7 @@ scripts経由でアクセスします。
 ```
 sail npm run watch
 ```
+
 特定の環境においてwatchが正しく動作しない場合は「npm run
 watch-poll」が利用できます。watch-pollは1000ms、つまり1秒間隔でファイルに変更がないかポーリングにより検知する仕組みです。
 
@@ -170,6 +178,7 @@ watchの実行を止めるときは、WindowsではCtrL
 +Cキー、MacではcontrOL+Cキーを押します。
 
 ##### Tailwind CSSを導入する
+
 Tailwind CSSは「Utility First」をコンセプトに設計されていることが特徴の、近年注目されているCSSフレームワークです。
 Utility Firstとは、利用者自らスタイルを創り出す実用性の高さを指します。
 他のフレームワークと大きく違う点は「.button」のようなクラスを持たず、「width」や「margin」といったCSSのプロパティをクラス化した「.w-o」や
@@ -181,9 +190,11 @@ Tailwind CSSは、P.111でLaravel Breezeを導入した場合は一緒に導入�
 sail npm install -D tailwindcss
 sail npx tailwindcss init
 ```
+
 次にresources/css/app.cssを開いて以下のコードを追加します。
 
 resources/css/app.css（Laravel Breezeをインストールしていない場合に追記）
+
 ```
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
@@ -193,6 +204,7 @@ resources/css/app.css（Laravel Breezeをインストールしていない場合
 そしてwebpack.mix.jsにTailwind CSSを読み込みます。
 
 webpack.mix.js（Laravel Breezeをインストールしていない場合に追記）
+
 ```
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
@@ -204,6 +216,7 @@ mix.js('resources/js/app.js', 'public/js')
 
 最後にHTMLからCSSを呼び出せば完成です。
 resources/views/tweet/index.blade.php（<head>〜</head>部分）
+
 ```
 <head>
     <meta charset="UTF-8">
@@ -214,7 +227,9 @@ resources/views/tweet/index.blade.php（<head>〜</head>部分）
     <link href="/css/app.css" rel="stylesheet">
 </head>
 ```
+
 ##### キャッシュバスティング
+
 Webアプリケーションを運営していく上でJavaScriptやCSSファイルのキャッシュクリアは重要です。
 ここではおもにブラウザキャッシュを指します。クライアントのブラウザキャッシュがクリアされなければ、
 新しく配信したJavaScriptやCSSが適用されずに、古い状態を見ることになります。
@@ -223,6 +238,7 @@ Laravel Mixではファイル名にバージョニングをつけることでキ
 対応方法は簡単です。webpack.mix.jsに以下のように追加します。
 
 webpack.mix.js
+
 ```
 mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
@@ -235,6 +251,7 @@ mixのメソッドチェーンでversion()を付け足すだけです。
 そしてBladeテンプレート側でJavaScriptやCSSを呼び出す際にmixへルパー関数を利用します。
 
 resources/views/tweet/index.blade.php
+
 ```
 <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 <script src="{{ mix('/js/app.js') }}"></script>
@@ -256,6 +273,7 @@ mixヘルパー関数ではリソースのパス文字列からこのクエリ�
 webpack.mix.jsを変更しましょう。
 
 webpack.mix.js（本番向けのビルドのみでバージョニングする場合）
+
 ```
 mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
@@ -267,26 +285,28 @@ if (mix.inProduction()) {
 }
 ```
 
-
 #### Bladeテンプレートのコンポーネント機能を利用する
+
 ここまで作成したつぶやきアプリの画面を装飾していくにあたり、
 Bladeテンプレートのコンポーネント機能を利用して画面を組み立てていきましょう。
 Laravelのバージョン7系以前では、Bladeの継承機能を利用してテンプレートを組み立ててコンポーネントを
 再利用する手法が一般的でしたが、本書ではLaravelバージョン7以降に登場したコンポーネント機能を利用して画面を組み立てていきます。
 
 ##### 匿名コンポーネント
+
 コンポーネントの機能にはクラスコンポーネントと名コンポーネントの2種類があります。
 まずは名コンポーネントを利用して画面を作っていきます。
 r名コンポーネントではresources/views/componentsの中に作成したbladeファイルを
-```「<x-「namel></x-「namel>」```という形で呼び出すことができます。
+`「<x-「namel></x-「namel>」`という形で呼び出すことができます。
 たとえばresources/views/components/alert/success.blade.
 phpというファイルがある場合、resources/views/index.blade.phpから
-```「<x-alert.success></x-alert.success>」```といった形で呼び出すことができます。
+`「<x-alert.success></x-alert.success>」`といった形で呼び出すことができます。
 このようにcomponents以下のディレクトリを掘っていった場合はドットでつなぐことで該当のファイルに到達します。
 それではHTMLとして一番の外枠であるbodyまでの要素を持った
 layout.blade.phpを作ってみましょう。index.blade.phpをコピーして書き換えます。
 
 resources/views/components/layout.blade.php
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -304,6 +324,7 @@ resources/views/components/layout.blade.php
 </body>
 </html>
 ```
+
 ほとんどのページで同じコードになるものをまとめています。このアプリではタイトルを変更できるようにしています。{{$title}}は外部から渡せる変数
 となります。これを「props」と呼びます。
 また、{{$slot}} はコンポーネントを利用する側がタグに挟んだ要素を入れ込むことができる領域となります。
@@ -312,11 +333,13 @@ resources/views/components/layout.blade.php
 blade.phpを、まずは以下のように3行のみに変更します。
 
 resources/views/tweet/index.blade.php
+
 ```
 <x-layout title="TOP | つぶやきアプリ">
     <h1>ここに内容が入ります</h1>
 </x-layout>
 ```
+
 propsはタグの属性につけるだけです。今回であればtitle=”〜"のようになります。
 ここでは固定の文字列をpropsに渡していますが、コントローラや
 親コンポーネントから渡された変数を更にpropsに渡す場合は「:title=“Stitle”」のように
@@ -347,6 +370,7 @@ resources/views/components/以下にフォルダを作成して配置してい�
 基本的にはすでに作った処理のまま、Tailwind CSSを利用して装飾していくだけなので、コードの紹介のみです
 
 resources/views/components/tweet/form/post.blade.php
+
 ```
 @auth
 <div class="p-4">
@@ -376,7 +400,9 @@ resources/views/components/tweet/form/post.blade.php
 </div>
 @endauth
 ```
+
 resources/views/components/alert/error.blade.php
+
 ```
 <div class="w-full mt-1 mb-2 p-2 bg-red-500 items-center text-white leading-none lg:rounded-full flex lg:inline-flex" role="alert">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -386,8 +412,8 @@ resources/views/components/alert/error.blade.php
 </div>
 ```
 
-
 ●resources/views/components/element/button.blade.php
+
 ```
 <button
         type="submit"
@@ -397,8 +423,8 @@ resources/views/components/alert/error.blade.php
 </button>
 ```
 
-
 ●resources/views/components/layout/single.blade.php
+
 ```
 <div class="flex justify-center">
     <div class="max-w-screen-sm w-full">
@@ -410,6 +436,7 @@ resources/views/components/alert/error.blade.php
 index.blade.phpを以下のように書き換えます。
 
 resources/views/tweet/index.blade.php
+
 ```
 <x-layout title="TOP | つぶやきアプリ">
     <x-layout.single>
@@ -429,11 +456,12 @@ http://localhost/tweet
 P156 画像
 
 ##### 未ログイン時の表示を作る
+
 末ログイン時にはログインボタンと会員登録ボタンを表示されるように対応します。
 まずはログインページと会員登録ページに遷移するためのaタグのボタンコンポーネントを作成します
 
-
 resources/views/components/element/button-a.blade.php
+
 ```
 @props([
     'href' => '',
@@ -472,6 +500,7 @@ themeは自作のgetThemeClassForButtonA関数によって適用するCSSクラ�
 続いてpost.blade.phpにこのボタンを利用してログインへの動線を追加します
 
 resources/views/components/tweet/form/post.blade.php
+
 ```
 @auth
 @endauth
@@ -498,6 +527,7 @@ p158 画像
 さらに、ログイン済みの場合にはログアウトボタンが表示されるようにします
 
 resources/views/components/layout/single.blade.php
+
 ```
 <div class="flex justify-center">
     <div class="max-w-screen-sm w-full">
@@ -531,6 +561,7 @@ p159 画像
 これを変更します」。
 
 app/Http/Controllers/Auth/AuthenticatedSessionController.php
+
 ```
 public function destroy(Request $request)
 {
@@ -543,14 +574,16 @@ public function destroy(Request $request)
     return redirect('/tweet');
 }
 ```
+
 return redirectの部分を/tweetに変更することで、
 遷移先を変更できま
 
 ##### つぶやき一覧をコンポーネント化する
+
 続けて、つぶやき一覧のコンポーネントを作っていきます128。
 
-
 resources/views/components/tweet/list.blade.php
+
 ```
 @props([
     'tweets' => []
@@ -573,6 +606,7 @@ resources/views/components/tweet/list.blade.php
     </ul>
 </div>
 ```
+
 編集と削除のコンポーネントは別途作成します。
 このコンポーネントはtweetsというpropsを渡さなくても初期値として空
 配列が定義されているので、コンポーネントを使う際に引数を宣言しなくても
@@ -581,12 +615,12 @@ resources/views/components/tweet/list.blade.php
 propsを利用して任意で変えられるようにする機能などを作ることができます。
 「!!nl2brle($tweet->content)) !!!」に関しても補足しておきます。ここではまず、
 Laravelが提供しているヘルパー関数「e」を利用して特殊文字をエスケープしています。さらにPHPの組み込み関数である「nl2br」を利用して
-改行コードをHTMLの```<br>```タグに変換して改行して表示させています。
+改行コードをHTMLの`<br>`タグに変換して改行して表示させています。
 一覧のコンポーネントを作成したのでresources/views/tweet/index.blade.phpから
 呼び出しましょう。
 
-
 resources/views/tweet/index.blade.php
+
 ```
 <x-layout title="TOP | つぶやきアプリ">
     <x-layout.single>
@@ -604,12 +638,13 @@ resources/views/tweet/index.blade.php
 P162 画像
 
 ##### クラスベースコンポーネントを作る
+
 続いて編集と削除のコンポーネントを「クラスベースコンポーネント」で作成してみましょう。
 クラスベースコンポーネントは電名コンポーネントと異なりArtisan コマンドから作成できます。
+
 ```
 sail artisan make: component Tweet/Options
 ```
-
 
 コマンドを実行するとresources/views/components/tweet/options.blade.phpと
 app/View/Components/Tweet/Options.phpが生成されます。
@@ -617,6 +652,7 @@ app/View/Components/Tweet/Options.phpが生成されます。
 生成されたOption.phpは以下のようになっています。
 
 app/View/Components/Tweet/Options.php
+
 ```
 <?php
 
@@ -645,6 +681,7 @@ class Options extends Component
     }
 }
 ```
+
 クラスベースコンポーネントでは、
 このようにapp/View/Components以下のクラスによりコンポーネントが呼び出されます。
 コンポーネント自体で特殊な処理などを行いたい場合は
@@ -653,6 +690,7 @@ class Options extends Component
 今回は以下のようになります。
 
 app/View/Components/Tweet/Options.php
+
 ```
 <?php
 
@@ -688,6 +726,7 @@ Bladeテンプレートに変数を渡すことができます。
 続いてBlade コンポーネントです。
 
 resources/views/components/tweet/options.blade.php
+
 ```
 @if($myTweet)
 <details class="tweet-option relative text-gray-500">
@@ -727,6 +766,7 @@ resources/views/components/tweet/options.blade.php
 このBladeテンプレートに続けて以下を挿入します。
 
 resources/views/components/tweet/options.blade.php
+
 ```
 @once
 @push('css')
@@ -760,6 +800,7 @@ pushしたコードがstack側に追記される仕組みのため、特定の�
 ですので、layout側に@stackを追加しましょう。
 
 resources/views/components/layout.blade.php（全体）
+
 ```
 <!doctype html>
 <html lang="ja">
@@ -782,6 +823,7 @@ resources/views/components/layout.blade.php（全体）
 最後に、一覧コンポーネントに編集と削除のコンポーネントの呼び出しを追加しましょう。
 
 resources/views/components/tweet/list.blade.php
+
 ```
             <div>
                 <!-- TODO 編集と削除 -->
@@ -800,6 +842,7 @@ P167 画像
 まずは投稿フォームと同様に編集フォームのコンポーネントを作成していきます。
 
 resources/views/components/tweet/form/put.blade.php
+
 ```
 @props([
     'tweet'
@@ -841,6 +884,7 @@ resources/views/components/tweet/form/put.blade.php
 次に編集に成功したときの表示です。
 
 resources/views/components/alert/success.blade.php
+
 ```
 <div class="w-full mt-1 mb-2 p-2 bg-green-500 items-center text-white leading-none lg:rounded-full flex lg:inline-flex" role="alert">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -854,6 +898,7 @@ resources/views/components/alert/success.blade.php
 続いてパンくずリストのコンポーネントを作成します。
 
 resources/views/components/element/breadcrumbs.blade.php
+
 ```
 @props([
     'breadcrumbs' => [
@@ -889,6 +934,7 @@ Sloopは@foreachディレクティブ内で利用することができ、ここ�
 最後に編集画面を組み立てます。
 
 resources/views/tweet/update.blade.php（全体書き換え）
+
 ```
 <x-layout title="編集 | つぶやきアプリ">
     <x-layout.single>
@@ -915,10 +961,6 @@ P171 画像
 
 これでWebアプリケーションがひとまず完成しました。
 BladeのコンポーネントとTailwind CSSを利用して、フロントエンドを柔軟に作れることが体験できたことと思います。
-
-
-
-
 
 </div>
 

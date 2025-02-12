@@ -4,7 +4,6 @@
 
 https://zenn.dev/hathle/books/next-prisma-auth-book
 
-
 ### 導入技術
 
 #### ログイン機能 Next.js Prisma メールアドレス,Google認証　
@@ -24,18 +23,18 @@ AppRouter
 参考記事
 https://zenn.dev/hayato94087/articles/1411f7af3eaee4#%E7%9B%AE%E6%AC%A1%E3%81%AE%E8%BF%BD%E5%8A%A0
 
-| 技術                  | 説明                                             |
-|-----------------------|--------------------------------------------------|
-| Next.js App Router    | Next.js フレームワーク。今回はApp Routerを利用   |
-| @next/mdx             | Next.jsでMDXを使えるようにする                 |
-| TailwindCSS           | HTMLのスタイリングに利用                         |
-| remark-gfm            | MDXでGitHub Flavored Markdownを利用できるようにするremarkプラグイン  |
-| remark-math           | MDXでTeXを利用できるようにするremarkプラグイン |
-| rehype-katex          | MDXでTeXを利用できるようにするrehypeプラグイン |
-| @mapbox/rehype-prism  | MDXでコードブロックのシンタックスをハイライト（色付け）できるようにするrehypeプラグイン |
-| rehype-slug           | MDXで目次を作成するためにheadingにidを付与するrehypeプラグイン |
-| remark-toc            | MDXで目次を作成するるremarkププラグイン         |
-| remark-breaks         | MDXで改行をサポートするremarkプラグイン         |
+| 技術                 | 説明                                                                                    |
+| -------------------- | --------------------------------------------------------------------------------------- |
+| Next.js App Router   | Next.js フレームワーク。今回はApp Routerを利用                                          |
+| @next/mdx            | Next.jsでMDXを使えるようにする                                                          |
+| TailwindCSS          | HTMLのスタイリングに利用                                                                |
+| remark-gfm           | MDXでGitHub Flavored Markdownを利用できるようにするremarkプラグイン                     |
+| remark-math          | MDXでTeXを利用できるようにするremarkプラグイン                                          |
+| rehype-katex         | MDXでTeXを利用できるようにするrehypeプラグイン                                          |
+| @mapbox/rehype-prism | MDXでコードブロックのシンタックスをハイライト（色付け）できるようにするrehypeプラグイン |
+| rehype-slug          | MDXで目次を作成するためにheadingにidを付与するrehypeプラグイン                          |
+| remark-toc           | MDXで目次を作成するるremarkププラグイン                                                 |
+| remark-breaks        | MDXで改行をサポートするremarkプラグイン                                                 |
 
 #### 注意点
 
@@ -43,7 +42,7 @@ https://zenn.dev/hayato94087/articles/1411f7af3eaee4#%E7%9B%AE%E6%AC%A1%E3%81%AE
 
 DATABASE_URL=再設定が必要
 
- DATABASE_URL=再設定が必要
+DATABASE_URL=再設定が必要
 
 NEXTAUTH_SECRET=再設定が必要
 NEXTAUTH_URL=再設定が必要
@@ -53,9 +52,3 @@ GOOGLE_CLIENT_SECRET=再設定が必要
 
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=再設定が必要
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=再設定が必要
-
-
-
-
-
-
