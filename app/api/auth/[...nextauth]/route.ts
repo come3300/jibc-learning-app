@@ -1,55 +1,55 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import NextAuth, { NextAuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-import CredentialsProvider from 'next-auth/providers/credentials'
-import bcrypt from 'bcrypt'
-import prisma from '@/app/lib/prisma'
-
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
+import prisma from "@/app/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
 
   providers: [
-
     CredentialsProvider({
-      name: 'credentials',
+      name: "credentials",
       credentials: {
-
-        email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' },
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
       },
 
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('メールアドレスとパスワードが存在しません')
+          throw new Error("メールアドレスとパスワードが存在しません");
         }
 
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
-        })
+        });
 
         if (!user || !user?.hashedPassword) {
-          throw new Error('ユーザーが存在しません')
+          throw new Error("ユーザーが存在しません");
         }
 
-        const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword)
+        const isCorrectPassword = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword,
+        );
 
         if (!isCorrectPassword) {
-          throw new Error('パスワードが一致しません')
+          throw new Error("パスワードが一致しません");
         }
 
-        return user
+        return user;
       },
     }),
   ],
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-}
+};
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

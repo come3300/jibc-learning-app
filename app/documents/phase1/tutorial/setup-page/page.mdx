@@ -1,5 +1,5 @@
+{/* Phase1 セットアップしよう！  / */}
 
- {/* Phase1 セットアップしよう！  /*/}
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
 
@@ -8,7 +8,7 @@
     <img src="/phase1/website/hello-world/helloworld.png" loading="lazy" alt="Photo by Minh Pham" class="" />
 
     このパートでは環境構築を行なっていきます。
-    
+
     #### 環境構築とは？
 
     <img src="/phase1/tutorial/install-tools.png" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
@@ -235,7 +235,7 @@
     旧来のMacにはIntelのCPUが搭載されていましたが、2020年後期からApple自身が設計した「Apple silicon」
     （Apple M1）チップが搭載されたモデルが発売されるようになりました。
     さらに、2022年以降にはApple M2のCPUが搭載されたモデルの発売も始まっています。
-    
+
     自分のMacが「Intel chip」なのか「Apple silicon」なのか調べるには以下にようにします。
 
     1.メニューバーのリンゴマークをクリックする
@@ -324,7 +324,6 @@
 
     <img src="/phase1/tutorial/mac-docker-dl14.jpg.webp" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
 
-
 </section>
 
 <section id="from-win">
@@ -348,7 +347,7 @@
     * Windows Subsystem for Linux
             * Windows10 以前の方「コントロールパネル」→「Windows のプログラムと機能」→
             「Windows の機能の有効化または無効化」を開く。
-            * Windows11 の方画面下の「Windowsマークを右クリック」→「設定」→「アプリ」 → 
+            * Windows11 の方画面下の「Windowsマークを右クリック」→「設定」→「アプリ」 →
             「オプション機能」→「Windowsのその他の機能」→Windows の機能の有効化または無効化」を開く。
         1. リストから「Windows Subsystem for Linux」または「Linux用Windowsサブシステム」を探し、
             チェックを入れる
@@ -468,62 +467,168 @@
     <img src="/phase1/tutorial/win-git-dl1.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
 
     「Download」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl2.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
+
+<img
+  src="/phase1/tutorial/win-git-dl2.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
 
     Downloadボタンのクリックと同時に「Git-2.37.1-64-bit.exe」がダウンロードされます。
     （※数分かかります）
-   <img src="/phase1/tutorial/win-git-dl3.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
+
+<img
+  src="/phase1/tutorial/win-git-dl3.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
 
     手順2:Gitのインストール
     手順1でダウンロードしたインストーラ(Git-2.37.1-64-bit.exe)を実行してください。
-   <img src="/phase1/tutorial/win-git-dl4.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl5.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl6.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl7.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl8.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    Git関連のファイルを開く際にデフォルトのエディタを設定します。
-    任意のエディタを指定してください。
-   <img src="/phase1/tutorial/win-git-dl9.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Next」をクリックしてください。
-    (本記事では Use Visual Studio Code as Git's default editor を指定しています。)
 
-   <img src="/phase1/tutorial/win-git-dl10.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    新規リポジトリ作成時のブランチの名前を自動で決める場合は「Let Git decide」を選択し、
-    自分で決める場合は「Override the default branch name for new repositories」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl11.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Git from the command line and also from 3rd-party software」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl12.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Use bundled OpenSSL」を選択して、「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl13.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Use the OpenSSL library」を選択して、「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl14.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Checkout Windows-style, commit Unix-style line endings」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl15.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Use MinTTY (the default terminal of MSYS2」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl16.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Default (fast-forward or merge)」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl17.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    「Git Credential Manager」を選択して、
-    「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl18.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    両方チェックして、「Next」をクリックしてください。
-   <img src="/phase1/tutorial/win-git-dl19.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    何もチェックせず、「Install」をクリックしてください。
-   <img src="/phase1/tutorialwin-git-dl20.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    インストールが開始されます。
-   <img src="/phase1/tutorial/win-git-dl21.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    以下のように表示されたらインストール完了です。
-   <img src="/phase1/tutorial/win-git-dl22.avif" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
-    スタートメニューなどで「Git Bash」が表示されていたらインストール成功です。
+<img
+  src="/phase1/tutorial/win-git-dl4.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl5.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl6.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl7.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl8.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+Git関連のファイルを開く際にデフォルトのエディタを設定します。
+任意のエディタを指定してください。
+<img
+  src="/phase1/tutorial/win-git-dl9.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Next」をクリックしてください。 (本記事では Use Visual Studio Code as Git's
+default editor を指定しています。)
+
+<img
+  src="/phase1/tutorial/win-git-dl10.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+新規リポジトリ作成時のブランチの名前を自動で決める場合は「Let Git
+decide」を選択し、 自分で決める場合は「Override the default branch name for new
+repositories」を選択して、 「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl11.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Git from the command line and also from 3rd-party software」を選択して、
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl12.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Use bundled OpenSSL」を選択して、「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl13.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Use the OpenSSL library」を選択して、「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl14.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Checkout Windows-style, commit Unix-style line endings」を選択して、
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl15.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Use MinTTY (the default terminal of MSYS2」を選択して、
+「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl16.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Default (fast-forward or merge)」を選択して、 「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl17.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+「Git Credential Manager」を選択して、 「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl18.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+両方チェックして、「Next」をクリックしてください。
+<img
+  src="/phase1/tutorial/win-git-dl19.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+何もチェックせず、「Install」をクリックしてください。
+<img
+  src="/phase1/tutorialwin-git-dl20.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+インストールが開始されます。
+<img
+  src="/phase1/tutorial/win-git-dl21.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+以下のように表示されたらインストール完了です。
+<img
+  src="/phase1/tutorial/win-git-dl22.avif"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class="h-full w-full object-cover object-center"
+/>
+スタートメニューなどで「Git Bash」が表示されていたらインストール成功です。
 
     このように表示されたらgitがインストールされています。
 
@@ -600,7 +705,7 @@
 
 
 
-    ### Docker DeskTopのインストール   
+    ### Docker DeskTopのインストール
 
     Docker Desktopは、公式サイトから専用インストーラをダウンロードして実行すれば利用が可能です。
     以下、Windows10にDocker Desktopをインストールする手順を紹介します。
@@ -650,7 +755,6 @@
 
     チュートリアル完了後（スキップ後）、Docker Desktopの管理画面が表示されます。
 
-   
 </section>
   </div>
 </div>

@@ -1,10 +1,10 @@
-
 {/* /documents/phase1/website/html-css */}
+
 <div class="bg-white">
     <div class="whitespace-nowrap mx-auto max-w-screen-md ">
  ## HTML/CSSとは
 
- ***
+---
 
 ## このセクションの目標
 
@@ -14,14 +14,19 @@
 HTML/CSSはよくプログラミング言語ではないと言われます。
 厳密にはそうなのですが、プログラミングを学ぶ上で非常に重要になってくるものです。
 
-<img src="/phase1/website/html-css/おしゃれなサイト.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/おしゃれなサイト.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 学習が進み慣れてきたら皆さんも上記のようなよりリッチなサイトを
 作成することができます。
 
 ### HTMLとは
 
-HTMLとは、***HyperText Markup Language***の略で、```マークアップ言語```の1つです。
+HTMLとは、**_HyperText Markup Language_**の略で、`マークアップ言語`の1つです。
 マークアップとは、文章の構成や役割を示すことを意味します。
 HTMLはWebサイトを作成する際に、コンピューターへ構成指示を出し、
 表示したい文章や写真などの情報を形作ります。
@@ -31,25 +36,36 @@ HTMLはWebサイトを作成する際に、コンピューターへ構成指示�
 
 家を建てる時の流れをざっくり整理すると
 
-<img src="/phase1/website/html-css/home-build-step.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/home-build-step.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
->1,土地を作る
->2,骨組みを組み立てる
->3,塗装する（色を塗る）
+> 1,土地を作る
+> 2,骨組みを組み立てる
+> 3,塗装する（色を塗る）
 
 HTMLは上記の1,2の役割を担います。
 つまりHTMLはサイト制作をするにあたって
-***土台部分を形成する非常に大切な部分***と言えます。
+**_土台部分を形成する非常に大切な部分_**と言えます。
 
-<img src="/phase1/website/html-css/ html-source.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/ html-source.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 実際には上記のような形でHTMLは記述していきます。
 
-***タグ***
+**_タグ_**
 タグとは、テキストに意味を与える目印です。タグの種類を示す文字や記号を、
 意味ごとに文字や記号を括って、Webサイトを作成します。
 
 例：ボタンタグ
+
 ```
 <button>
 ```
@@ -57,16 +73,27 @@ HTMLは上記の1,2の役割を担います。
 申し込みフォームで送信ボタンを見かけることはよくあると思います。
 この送信ボタンをbuttonで作成することが可能になります。
 
-***要素***
+**_要素_**
 
-<img src=" /phase1/website/html-css/html-ex1.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src=" /phase1/website/html-css/html-ex1.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 要素とは、見出しや段落などマークアップしたい対象の文字列を、
 タグで囲んだ情報の単位のことです。
 要素は基本的に開始タグと終了タグをセットにして、で括って使用します。
 
-***属性***
-<img src="/phase1/website/html-css/html-ex2.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+**_属性_**
+
+<img
+  src="/phase1/website/html-css/html-ex2.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 属性とは、HTMLの要素に追加する情報のことです。
 Webサイトで複雑な表示をしたい場合に、要素のみでは情報不足なため属性を追加します。
@@ -74,7 +101,12 @@ Webサイトで複雑な表示をしたい場合に、要素のみでは情報�
 
 ### CSSとは
 
-<img src="/phase1/website/html-css/css.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/css.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 CSSとはWebページの文字の色や大きさ、背景、配置といったスタイル（見た目）を
 設定する言語です。
@@ -85,12 +117,18 @@ CSSとはWebページの文字の色や大きさ、背景、配置といった�
 
 先ほどHTMLとはで家を使って解説したと思います。
 
-<img src="/phase1/website/html-css/home-build-step.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/home-build-step.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 家を建てる時の流れをざっくり整理すると
->1,土地を作る
->2,骨組みを組み立てる
->3,塗装する（色を塗る）
+
+> 1,土地を作る
+> 2,骨組みを組み立てる
+> 3,塗装する（色を塗る）
 
 家を建てるときの流れでいうと
 CSSは3,塗装するに該当します。
@@ -107,15 +145,26 @@ HTMLだけで構成してしまうと、とても寂しいサイトになって�
 ここにCSSで色や配置を加えることで
 見ていてワクワクするサイトを作成することができます。
 
-<img src="/phase1/website/html-css/css-ex-dev.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/css-ex-dev.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 実際には上記のような形でCSSは記述していきます。
 
-<img src="/phase1/website/html-css/css-explain.png" loading="lazy" alt="Photo by Minh Pham" class="" />
+<img
+  src="/phase1/website/html-css/css-explain.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
-CSSは、 ***「セレクタ」「プロパティ」「値』*** の3つで構成されます。
-それぞれを記述することで ***「どの要素（セレクタ）の、何を（プロパティ）、どのように（値）する」***
+CSSは、 **_「セレクタ」「プロパティ」「値』_** の3つで構成されます。
+それぞれを記述することで **_「どの要素（セレクタ）の、何を（プロパティ）、どのように（値）する」_**
 という命令文が成立します。
 
     </div>
+
 </div>

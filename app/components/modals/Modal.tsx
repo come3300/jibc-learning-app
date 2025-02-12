@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { useCallback } from 'react'
-import { IoMdClose } from 'react-icons/io'
+import { useCallback } from "react";
+import { IoMdClose } from "react-icons/io";
 
-import Button from '@/app/components/button/Button'
+import Button from "@/app/components/button/Button";
 
 type ModalProps = {
-  isOpen?: boolean
-  onClose: () => void
-  onSubmit: () => void
-  title?: string
-  body?: React.ReactElement
-  footer?: React.ReactElement
-  primaryLabel: string
-  secondaryAction?: () => void
-  secondaryLabel?: string
-  disabled?: boolean
-  del?: boolean
-}
+  isOpen?: boolean;
+  onClose: () => void;
+  onSubmit: () => void;
+  title?: string;
+  body?: React.ReactElement;
+  footer?: React.ReactElement;
+  primaryLabel: string;
+  secondaryAction?: () => void;
+  secondaryLabel?: string;
+  disabled?: boolean;
+  del?: boolean;
+};
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -34,30 +34,30 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const handleClose = useCallback(() => {
     if (disabled) {
-      return
+      return;
     }
 
-    onClose()
-  }, [onClose, disabled])
+    onClose();
+  }, [onClose, disabled]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) {
-      return
+      return;
     }
 
-    onSubmit()
-  }, [onSubmit, disabled])
+    onSubmit();
+  }, [onSubmit, disabled]);
 
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
-      return
+      return;
     }
 
-    secondaryAction()
-  }, [secondaryAction, disabled])
+    secondaryAction();
+  }, [secondaryAction, disabled]);
 
   if (!isOpen) {
-    return null
+    return null;
   }
 
   return (
@@ -80,7 +80,6 @@ const Modal: React.FC<ModalProps> = ({
 
               <div className="flex flex-col gap-2 px-6 pb-6">
                 <div className="flex w-full flex-row items-center gap-4 justify-center">
-
                   {secondaryAction && secondaryLabel && (
                     <Button
                       disabled={disabled}
@@ -105,7 +104,7 @@ const Modal: React.FC<ModalProps> = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

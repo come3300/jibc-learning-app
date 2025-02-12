@@ -1,8 +1,10 @@
-{/* /documents/phase1/github/all */}
-import Image from 'next/image'
+{
+  /* /documents/phase1/github/all */
+}
+import Image from "next/image";
 
-import React from 'react';
-import ArticleCard from '@/app/components/lists/ArticleCard';
+import React from "react";
+import ArticleCard from "@/app/components/lists/ArticleCard";
 
 const all = () => {
   return (
@@ -10,7 +12,9 @@ const all = () => {
       <section className="default-inch text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">チュートリアル</h1>
+            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">
+              チュートリアル
+            </h1>
 
             <ArticleCard
               section="Part1"
@@ -30,14 +34,14 @@ const all = () => {
               link="#"
             />
 
-              <ArticleCard
+            <ArticleCard
               section="Part3"
               title="セットアップしてみよう！"
               description=">これからプログラミングを学ぶ上で必要なツール、ソフトウェアをインストールしていきます。"
               duration="48:32 minutes"
               featuring={["Barry", "Sandra", "August"]}
               link="#"
-            />   
+            />
           </div>
         </div>
       </section>

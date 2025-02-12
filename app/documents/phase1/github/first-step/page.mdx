@@ -1,5 +1,6 @@
 {/* gitについて */}
 {/* /documents/phase1/github/first-step */}
+
 <main className="mx-auto max-w-screen-xl flex-1 px-1">
 <div class="bg-white flex justify-center items-center min-h-screen">
   <div class="max-w-screen-md w-full px-4">
@@ -8,28 +9,35 @@
 
 ### 目次
 
->gitとは
->基本的な概念
->用語を理解しよう
->グローバルにディレクトリをあげてみよう
+> gitとは
+> 基本的な概念
+> 用語を理解しよう
+> グローバルにディレクトリをあげてみよう
 
 ## Gitとは
 
-<img src=" /phase1/github/github-logo.jpeg" loading="lazy" alt="Photo by Minh Pham" class=""/>
+<img
+  src=" /phase1/github/github-logo.jpeg"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 gitと一口で行ってもこの場合2つの意味合いがあるため
 分けて解説します。
 
 #### gitとは
+
 <blockquote class="mb-6 border-l-4 pl-4 italic text-gray-500 sm:text-lg md:mb-8 md:pl-6">
-バージョン管理システムの一つで、プログラムのソースコードやプロジェクトファイルの
-変更履歴を管理し、複数人での協力作業を支援するツールです
+  バージョン管理システムの一つで、プログラムのソースコードやプロジェクトファイルの
+  変更履歴を管理し、複数人での協力作業を支援するツールです
 </blockquote>
 
 #### githubとは
+
 <blockquote class="mb-6 border-l-4 pl-4 italic text-gray-500 sm:text-lg md:mb-8 md:pl-6">
-ソフトウェア開発者やプロジェクトチームがコードを共有し、
-協力して作業するためのプラットフォームです
+  ソフトウェア開発者やプロジェクトチームがコードを共有し、
+  協力して作業するためのプラットフォームです
 </blockquote>
 
 ## Gitの目的
@@ -42,7 +50,12 @@ Git とは、バージョン管理システムです。聞き慣れない言葉�
 
 ① いつでもプログラムの更新を記録しておける
 
-<img src=" /phase1/tutorial/save-data.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+<img
+  src=" /phase1/tutorial/save-data.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 開発をしていく中でプログラムは日々アップデートしていきます。
 RPGなどのゲームをやっているときも、ゲームをやり終えるときにセーブをするのと一緒で、
@@ -53,7 +66,12 @@ RPGなどのゲームをやっているときも、ゲームをやり終える�
 
 ② チーム開発でのトラブルを防ぐ
 
-<img src=" /phase1/tutorial/git-team-trable.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+<img
+  src=" /phase1/tutorial/git-team-trable.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 Gitを使う目的はもう一つあります。それはチーム開発の時です。
 例えば、二人同時に作業していたとして、同時に編集したとしましょう。
@@ -68,14 +86,19 @@ Gitを使う目的はもう一つあります。それはチーム開発の時�
 そしてバージョン管理は現代の開発において当たり前に使われています。
 なので学習期間で慣れて現場に出たときには気軽に触れるようにしましょう。
 
-
 ## 基本的な概念
 
 Gitの理解を深めるために必要になってくるのがgitの概念を学習することです。
 gitは奥が深いため、ここでは5で必要になる最低限のものを解説していきます。
 
 #### リポジトリ
-<img src="/phase1/tutorial/repository.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src="/phase1/tutorial/repository.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 リポジトリとはファイルの変更履歴を保存しておく倉庫のような場所です。
 実際には『.git』という場所にこの変更履歴が保存されています。
 
@@ -84,21 +107,51 @@ gitは奥が深いため、ここでは5で必要になる最低限のものを�
 このこんにちわという単語が追加されたという記録が『.git』に保存されます。
 
 #### グローバルリポジトリ
-<img src=" /phase1/tutorial/git-global.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/tutorial/git-global.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 #### ローカルリポジトリ
-<img src=" /phase1/tutorial/git-local.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/tutorial/git-local.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 #### ブランチ
-<img src=" /phase1/github/ブランチの説明.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/ブランチの説明.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 #### コミット
-<img src=" /phase1/github/git-commit-figure.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/git-commit-figure.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 
 #### プッシュ
-<img src=" /phase1/github/git-push-figure.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
 
-##  グローバルリポジトリへプッシュしてみよう
+<img
+  src=" /phase1/github/git-push-figure.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
+
+## グローバルリポジトリへプッシュしてみよう
 
 では新しくリポジトリを制作をして、そのリポジトリへ
 プッシュしてみましょう！
@@ -111,7 +164,6 @@ gitは奥が深いため、ここでは5で必要になる最低限のものを�
 ### 2,ローカルにブランチを作る
 
 作成したい階層で
-
 
 ```bash
 mkdir test
@@ -154,7 +206,6 @@ readme.mdと.gitという隠しファイルが作成されていたら
 git add .
 ```
 
-
 このgit add .の『.』は全てのディレクトリとファイルをステージングへ追加する
 時に使用します。
 
@@ -163,6 +214,7 @@ git add .
 ```bash
 git add ファイル/ディレクトリ名
 ```
+
 で追加できます。
 
 次に下記コマンドを打ってみてください。
@@ -171,13 +223,12 @@ git add ファイル/ディレクトリ名
 git commit -m "first commit"
 ```
 
-
-この```git commit -m "first commit"```は
+この`git commit -m "first commit"`は
 
 git commitと入力することでgit addでステージングされたファイルやディレクトリが
 コミットされます。
 
-そしてこの```-m "first commit"```の部分にはコメントを追加することができます。
+そしてこの`-m "first commit"`の部分にはコメントを追加することができます。
 
 具体的にどういう役割があるかというと
 下記のようなリポジトリがあったとして
@@ -187,18 +238,18 @@ git commitと入力することでgit addでステージングされたファイ
 こうすることでどういった作業を前に行ったかがわかりやすくなるという
 メリットがあります。
 
-
 #### 4,ローカルで作ったブランチをpushしてみよう
 
 まずは下記コマンドを打ってみましょう。
+
 ```bash
 git branch -M main
 ```
 
 このコマンドを入力することでローカルに
-```main```という名のブランチを作成することができます。
+`main`という名のブランチを作成することができます。
 
-```-M```コマンドがメインブランチを登録するためのコマンドです。
+`-M`コマンドがメインブランチを登録するためのコマンドです。
 
 そしてgit branch -M mainのmainがブランチ名になります
 つまりメインブランチをmainという名前で作成したことになります!
@@ -208,11 +259,11 @@ git branch -M main
 ```bash
 git remote add origin git@github.com:ユーザー名/リポジトリ名.git
 ```
+
 と入力します。
 
 下記画像の部分に通常書いてあるので
 それをそのままコピペすれば問題ありません。
-
 
 ```bash
 git remote -v
@@ -222,9 +273,9 @@ git remote -v
 同じであればしっかりと反映されています。
 
 ※このgit remote -vは行わなくても問題ありませんが確認したい方は
-  ぜひ入力してみてください。
+ぜひ入力してみてください。
 
- 最後に下記コマンドを入力します。
+最後に下記コマンドを入力します。
 
 ```bash
 git push -u origin main
@@ -258,61 +309,124 @@ erorrも出ずに成功したら、無事グローバルの方に
 これで、git add とgit commitの違いがわかったかと思います。このあとpushコマンドを使って、
 ローカルリポジトリの内容をリモートリポジトリに送信（アップロード）する流れになります。
 
-
 ## 用語を理解しよう
 
 #### リポジトリ
-<img src="/phase1/tutorial/repository.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src="/phase1/tutorial/repository.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 ファイルの変更履歴を保存する場所
 
 #### ローカルリポジトリ
-<img src=" /phase1/tutorial/git-local.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/tutorial/git-local.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 個人の PC 上に作成し、自分だけがアクセスできるリポジトリ
 
 #### リモートリポジトリ
-<img src=" /phase1/tutorial/git-global.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/tutorial/git-global.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 サーバー上に作成し、複数人がアクセスできるリポジトリ
 
 #### ワークツリー
-<img src=" /phase1/github/ワークツリー.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/ワークツリー.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 ファイルの変更作業をしているディレクトリ
 {/* TODO 画像が必要 */}
 
-
 #### ステージング
-<img src=" /phase1/github/ステージング.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/ステージング.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 ステージングエリアとはGitレポジトリにコミットするファイルを置いておくためのエリアです。
 ステージングエリアがあることによって、いきなりセーブされずに、セーブするファイル（フォルダ）群を選択することができます。
 {/* TODO 画像が必要 */}
 
-
 #### ブランチ
-<img src=" /phase1/github/ブランチの説明.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/ブランチの説明.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 変更履歴を分岐して、複数の変更履歴を作る
 {/* TODO 画像が必要 */}
 
 #### チェックアウト
-<img src=" /phase1/github/チェックアウト.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/チェックアウト.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 ワークツリーにブランチを展開
 {/* TODO 画像が必要 */}
 
 #### マージ
-<img src=" /phase1/github/マージ.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/マージ.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 分岐した２つの変更履歴を１つにする
 {/* TODO 画像が必要 */}
 
 #### クローン
-<img src=" /phase1/github/クローン.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/github/クローン.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 リモートリポジトリの複製を、ローカルリポジトリに作成
 {/* TODO 画像が必要 */}
 
 #### ローカルリポジトリのブランチ
-<img src=" /phase1/tutorial/git-local.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src=" /phase1/tutorial/git-local.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 リモートリポジトリの更新情報を保管する
 {/* TODO 画像が必要 */}
 
 #### プル
-<img src="/phase1/github/プル.png" loading="lazy" alt="Photo by Minh Pham" class=""/>
+
+<img
+  src="/phase1/github/プル.png"
+  loading="lazy"
+  alt="Photo by Minh Pham"
+  class=""
+/>
 リモートリポジトリのコミットを、ローカルリポジトリに取り込む
 {/* TODO 画像が必要 */}
 

@@ -15,7 +15,7 @@ const HomePage = () => {
               category: "Phase1",
               title: "チュートリアル",
               description:
-              "これから学習するにあたっての考え方,ツールのダウンロードを行い開発環境を整える。",
+                "これから学習するにあたっての考え方,ツールのダウンロードを行い開発環境を整える。",
               views: "1.2K",
               comments: "6",
               linksrc: "/documents/lists/phase1/tutorial",
@@ -48,7 +48,7 @@ const HomePage = () => {
               category: "Phase1",
               title: "Linux",
               description:
-              "Linuxとは何か、そしてLinuxを操作するために必要なコマンドを学んでいく。",
+                "Linuxとは何か、そしてLinuxを操作するために必要なコマンドを学んでいく。",
               views: "1.5K",
               comments: "8",
               linksrc: "/documents/lists/phase1/linux",
@@ -113,8 +113,7 @@ const HomePage = () => {
               imgSrc: "home-imgs/SQL_ホーム画像.png",
               category: "Phase2",
               title: "SQL入門",
-              description:
-                "SQLの基礎的な使い方、考え方、書き方を学んでいく。",
+              description: "SQLの基礎的な使い方、考え方、書き方を学んでいく。",
               views: "1.7K",
               comments: "9",
               linksrc: "/documents/lists/phase1/sql",
@@ -147,7 +146,7 @@ const HomePage = () => {
               category: "Phase3",
               title: "React.js基礎",
               description:
-              "React.jsの基礎的な知識をはじめ、基礎構文を学びReact.jsの基礎力を培う。",
+                "React.jsの基礎的な知識をはじめ、基礎構文を学びReact.jsの基礎力を培う。",
               views: "1.3K",
               comments: "10",
               linksrc: "/documents/lists/phase3/react-basic",
@@ -158,7 +157,7 @@ const HomePage = () => {
               category: "Phase3",
               title: "React.js実践",
               description:
-              "React.jsを使って様々なアプリを開発していき、実践的に使い方を学んでいく。",
+                "React.jsを使って様々なアプリを開発していき、実践的に使い方を学んでいく。",
               views: "1.1K",
               comments: "4",
               linksrc: "/documents/lists/phase3/react-practice",
@@ -168,8 +167,7 @@ const HomePage = () => {
               imgSrc: "home-imgs/ポートフォリオ_ホーム画像.png",
               category: "Phase4",
               title: "Aurora Glow",
-              description:
-              "ポートフォリオの作り方、アイデアの探し方を学ぶ。",
+              description: "ポートフォリオの作り方、アイデアの探し方を学ぶ。",
               views: "1.9K",
               comments: "14",
               linksrc: "/documents/lists/phase4/portfolio",
@@ -180,7 +178,7 @@ const HomePage = () => {
               category: "Phase4",
               title: "Celestial Journey",
               description:
-              "就職・転職活動をしていく上で必要な考え方や対策、履歴書・スキルシートの作り方を学ぶ。",
+                "就職・転職活動をしていく上で必要な考え方や対策、履歴書・スキルシートの作り方を学ぶ。",
               views: "1.7K",
               comments: "9",
               linksrc: "/documents/lists/phase4/jobhunting",
@@ -202,7 +200,10 @@ const HomePage = () => {
                   </h1>
                   <p className="leading-relaxed mb-3">{post.description}</p>
                   <div className="flex items-center flex-wrap">
-                    <a href={post.linksrc} className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                    <a
+                      href={post.linksrc}
+                      className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                    >
                       一覧へ
                       <svg
                         className="w-4 h-4 ml-2"
@@ -259,4 +260,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
