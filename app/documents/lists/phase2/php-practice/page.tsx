@@ -9,7 +9,7 @@ const all = () => {
       <section className="default-inch text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">git Hub 入門</h1>
+            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">php実践</h1>
 
             <ArticleCard
               section="Section1"

@@ -13,7 +13,6 @@ type InputProps = {
   errors: any
 }
 
-// 入力フォーム
 const Input: React.FC<InputProps> = ({
   id,
   label,

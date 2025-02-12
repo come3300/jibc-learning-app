@@ -1,26 +1,22 @@
-import React from 'react';
+'use client'
 
-// メインページ
-const Home = async () => {
+import React from 'react'
+import LoginForm from '@/app/components/page-parts/login'
 
-    return (
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
-        <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-          <div className="mx-auto flex max-w-xl flex-col items-center text-center">
-            <p className="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Home</p>
+const Home = () => {
 
-            <h1 className="mb-8 text-3xl font-bold text-black sm:text-4xl md:mb-12 md:text-5xl">offline</h1>
-
-            <div className="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
-
-              <a href="#" className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">ログイン</a>
-            </div>
-          </div>
+  return (
+    <div className="bg-white py-6 sm:py-8 lg:py-12">
+    <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="mx-auto flex max-w-screen-lg flex-col items-center text-center">
+        <h1 className="mb-8 text-3xl font-bold text-black sm:text-4xl md:mb-12 md:text-5xl">offline</h1>
+        <div className="mt-12 w-full">
+          <LoginForm />
         </div>
       </div>
-    );
-  };
-
-
+    </div>
+  </div>
+  )
+}
 
 export default Home

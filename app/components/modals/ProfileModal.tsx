@@ -14,13 +14,11 @@ import ImageUpload from '@/app/components/input/ImageUpload'
 import axios from 'axios'
 import * as z from 'zod'
 
-// ステップの定義
 enum STEPS {
   CONTENT = 0,
   IMAGE = 1,
 }
 
-// 入力データの検証ルールを定義
 const schema = z.object({
   name: z.string().min(2, { message: '2文字以上入力する必要があります。' }),
   image: z.string().optional(),
@@ -30,7 +28,6 @@ type ProfileModalProps = {
   currentUser: User | null
 }
 
-// プロフィールモーダル
 const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
   const router = useRouter()
   const profileModal = useProfileModal()
@@ -45,14 +42,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     formState: { errors },
     reset,
   } = useForm<FieldValues>({
-    // 入力値の検証
     resolver: zodResolver(schema),
   })
 
-  // 画像の監視
   const image = watch('image')
 
-  // カスタム値の設定
   const setCustomValue = (id: string, value: string) => {
     setValue(id, value, {
       shouldDirty: true,
@@ -61,7 +55,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     })
   }
 
-  // 初期値設定
   useEffect(() => {
     if (currentUser) {
       reset({
@@ -71,17 +64,14 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     }
   }, [currentUser, reset])
 
-  // 戻る
   const onBack = () => {
     setStep((value) => value - 1)
   }
 
-  // 次へ
   const onNext = () => {
     setStep((value) => value + 1)
   }
 
-  // メインボタンのラベル
   const primaryLabel = useMemo(() => {
     if (step === STEPS.IMAGE) {
       return '編集'
@@ -90,7 +80,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     return '次へ'
   }, [step])
 
-  // サブボタンのラベル
   const secondaryLabel = useMemo(() => {
     if (step === STEPS.CONTENT) {
       return undefined
@@ -99,9 +88,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     return '戻る'
   }, [step])
 
-  // 送信
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    // 最後のステップ以外は次へ
     if (step !== STEPS.IMAGE) {
       return onNext()
     }
@@ -109,7 +96,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     setLoading(true)
 
     try {
-      // プロフィール編集
       const res = await axios.patch('/api/profile', data)
 
       if (res.status === 200) {
@@ -126,7 +112,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     }
   }
 
-  // モーダルの内容
   const getBodyContent = (): React.ReactElement => {
     if (step === STEPS.IMAGE) {
       return (

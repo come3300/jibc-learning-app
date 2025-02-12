@@ -4,9 +4,9 @@ import { useCallback, useState } from 'react'
 import { signOut } from 'next-auth/react'
 import { User } from '@prisma/client'
 
+import useProfileModal from '@/app/hooks/useProfileModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
 import useSignupModal from '@/app/hooks/useSignupModal'
-import useProfileModal from '@/app/hooks/useProfileModal'
 import MenuItem from '@/app/components/navigation/MenuItem'
 import Image from 'next/image'
 
@@ -14,14 +14,12 @@ type MenuProps = {
   currentUser: User | null
 }
 
-// メニュー
 const Menu: React.FC<MenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const profileModal = useProfileModal()
   const loginModal = useLoginModal()
   const signupModal = useSignupModal()
-  const profileModal = useProfileModal()
 
-  // メニューオープン
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value)
   }, [])
@@ -34,6 +32,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
           className="rounded-full object-cover"
           alt="avatar"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
         />
       </div>
 
@@ -52,7 +51,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
                 <MenuItem
                   label="ログアウト"
                   onClick={() => {
-                    signOut()
+                    signOut({ callbackUrl: '/' }) 
                     setIsOpen(false)
                   }}
                 />
