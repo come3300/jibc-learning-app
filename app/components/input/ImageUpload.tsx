@@ -21,7 +21,6 @@ type UploadResult = {
   }
 }
 
-// 画像アップロード
 const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
   const handleUpload = useCallback(
     (result: UploadResult) => {

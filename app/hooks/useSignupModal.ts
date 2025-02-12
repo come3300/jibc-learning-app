@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import { ModalType } from '@/app/types'
 
-// サインアップ状態管理
 const useSignupModal = create<ModalType>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),

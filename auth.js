@@ -18,13 +18,12 @@ export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   callbacks: {
     async signIn({ user, account, profile }) {
-      // メールアドレスでログイン可能かをチェック
+
       const allowedUser = await prisma.allowedUser.findUnique({
         where: { email: user.email },
       });
 
       if (!allowedUser) {
-        // 許可されていない場合、ログインを拒否
         console.log(`ログイン拒否: ${user.email}`);
         return false;
       }
@@ -33,7 +32,6 @@ export const authOptions: AuthOptions = {
       return true;
     },
     async session({ session, token }) {
-      // セッション情報にユーザーIDを追加
       if (session.user) {
         session.user.id = token.sub as string;
       }
@@ -41,12 +39,12 @@ export const authOptions: AuthOptions = {
     },
   },
   session: {
-    strategy: "jwt", // JWTセッション
+    strategy: "jwt",
   },
   pages: {
-    signIn: "/auth/signin", // ログインページをカスタマイズ（オプション）
+    signIn: "/auth/signin",
   },
-  debug: process.env.NODE_ENV === "development", // デバッグモード
+  debug: process.env.NODE_ENV === "development",
 };
 
 const handler = NextAuth(authOptions);

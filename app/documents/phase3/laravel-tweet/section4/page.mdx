@@ -474,7 +474,6 @@ themeは自作のgetThemeClassForButtonA関数によって適用するCSSクラ�
 resources/views/components/tweet/form/post.blade.php
 ```
 @auth
-// 省略
 @endauth
 @guest
 <div class="flex flex-wrap justify-center">
@@ -633,9 +632,7 @@ class Options extends Component
      * @return void
      */
     public function __construct()
-    {
-        //
-    }
+    {}
 
     /**
      * Get the view / contents that represent the component.

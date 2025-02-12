@@ -5,7 +5,6 @@ type MenuItemProps = {
   label: string
 }
 
-// メニューアイテム
 const MenuItem: React.FC<MenuItemProps> = ({ onClick, label }) => {
   return (
     <div

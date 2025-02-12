@@ -1,4 +1,3 @@
-// ButtonModal.tsx
 import { useCallback } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import Button from '@/app/components/button/Button';
@@ -30,7 +29,6 @@ const ButtonModal: React.FC<ModalProps> = ({
   disabled,
   del = false,
 }) => {
-  // 閉じる
   const handleClose = useCallback(() => {
     if (disabled) {
       return
@@ -39,7 +37,6 @@ const ButtonModal: React.FC<ModalProps> = ({
     onClose()
   }, [onClose, disabled])
 
-  // メインボタンのアクション
   const handleSubmit = useCallback(() => {
     if (!disabled) {
       return

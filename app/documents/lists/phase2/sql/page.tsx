@@ -9,30 +9,30 @@ const all = () => {
       <section className="default-inch text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">git Hub 入門</h1>
+            <h1 className="text-3xl font-bold text-gray-900 title-font mb-2">SQL基礎</h1>
 
             <ArticleCard
-              section="Section1"
-              title="Git Hubとは"
-              description="これから受けるこの講座についてまずは皆様にどのようなことを学ぶのかを確認してもらいます。"
+              section="Part1"
+              title="SQLとは"
+              description="SQLって何ができて、どんな特徴がなるのかを解説していきます"
               duration="48:32 minutes"
               featuring={["Barry", "Sandra", "August"]}
               link="#"
             />
 
             <ArticleCard
-              section="Section2"
-              title="Git Hubのセットアップをしよう!"
-              description="6ヶ月間の受講をして頂く前に、プログラミングを学ぶ上での挫折しないための考え方、効率よく"
+              section="Part2"
+              title="SQLを操作してみよう!"
+              description="GUIでSQLを操作して、SQLの操作イメージをつけていきましょう!"
               duration="48:32 minutes"
               featuring={["Barry", "Sandra", "August"]}
               link="#"
             />
 
             <ArticleCard
-              section="Section3"
-              title="Git Hubの基本コマンド"
-              description="これからプログラミングを学ぶ上で必要なツール、ソフトウェアをインストールしていきます。"
+              section="Part3"
+              title="SQLの基礎構文について学ぼう"
+              description="SQLの基礎構文について学んでいきましょう!"
               duration="48:32 minutes"
               featuring={["Barry", "Sandra", "August"]}
               link="#"

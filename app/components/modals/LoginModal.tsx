@@ -15,13 +15,11 @@ import Input from '@/app/components/input/Input'
 import Button from '@/app/components/button/Button'
 import * as z from 'zod'
 
-// 入力データの検証ルールを定義
 const schema = z.object({
   email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
   password: z.string().min(6, { message: '6文字以上入力する必要があります。' }),
 })
 
-// ログインモーダル
 const LoginModal = () => {
   const router = useRouter()
   const loginModal = useLoginModal()
@@ -33,30 +31,25 @@ const LoginModal = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
-    // 初期値
     defaultValues: { email: '', password: '' },
-    // 入力値の検証
     resolver: zodResolver(schema),
   })
 
-  // サインアップモーダルを開く
   const onToggle = useCallback(() => {
     loginModal.onClose()
     signupModal.onOpen()
   }, [loginModal, signupModal])
 
-  // 送信
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true)
 
     try {
-      // ログイン
       const res = await signIn('credentials', {
         ...data,
         redirect: false,
       })
 
-      // エラーチェック
       if (res?.error) {
         toast.error('エラーが発生しました。' + res.error)
         return
@@ -72,7 +65,6 @@ const LoginModal = () => {
     }
   }
 
-  // モーダルの中身
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Input
@@ -96,14 +88,11 @@ const LoginModal = () => {
     </div>
   )
 
-  // フッターの中身
   const footerContent = (
     <div className="mt-3 flex flex-col gap-4">
       <hr />
-      {/* Googleログイン */}
       <Button outline label="Googleでログイン" icon={FcGoogle} onClick={() => signIn('google')} />
 
-      {/* サインアップリンク */}
       <div className="mt-4 text-center">
         <div onClick={onToggle} className="cursor-pointer text-sm text-neutral-500 hover:underline">
           アカウントを作成する
