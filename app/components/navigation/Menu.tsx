@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
-import { signOut } from "next-auth/react";
-import { User } from "@prisma/client";
+import { useCallback, useState } from 'react';
+import { signOut } from 'next-auth/react';
+import { User } from '@prisma/client';
 
-import useProfileModal from "@/app/hooks/useProfileModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import useSignupModal from "@/app/hooks/useSignupModal";
-import MenuItem from "@/app/components/navigation/MenuItem";
-import Image from "next/image";
+import useProfileModal from '@/app/hooks/useProfileModal';
+import useLoginModal from '@/app/hooks/useLoginModal';
+import useSignupModal from '@/app/hooks/useSignupModal';
+import MenuItem from '@/app/components/navigation/MenuItem';
+import Image from 'next/image';
 
 type MenuProps = {
   currentUser: User | null;
@@ -28,7 +28,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
     <div className="relative">
       <div className="relative h-10 w-10 cursor-pointer" onClick={toggleOpen}>
         <Image
-          src={currentUser?.image || "/default.png"}
+          src={currentUser?.image || '/default.png'}
           className="rounded-full object-cover"
           alt="avatar"
           fill
@@ -51,7 +51,7 @@ const Menu: React.FC<MenuProps> = ({ currentUser }) => {
                 <MenuItem
                   label="ログアウト"
                   onClick={() => {
-                    signOut({ callbackUrl: "/" });
+                    signOut({ callbackUrl: '/' });
                     setIsOpen(false);
                   }}
                 />

@@ -2,8 +2,8 @@
   /* /documents//lists/Phase1/github/*/
 }
 
-import React from "react";
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import React from 'react';
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -20,7 +20,7 @@ const all = () => {
               title="ポートフォリオを作ろう！"
               description="ポートフォリオを作るときの考え方やどういうアプリを作っていくべきなのかを解説していきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

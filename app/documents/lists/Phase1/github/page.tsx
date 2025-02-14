@@ -2,8 +2,8 @@
   /* /documents//lists/Phase1/github/*/
 }
 
-import React from "react";
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import React from 'react';
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -20,7 +20,7 @@ const all = () => {
               title="Git Hubとは"
               description="エンジニアとして開発する上で欠かせない津rーるであるGithubとは何か解説ていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -29,7 +29,7 @@ const all = () => {
               title="Git Hubのセットアップをしよう!"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -38,7 +38,7 @@ const all = () => {
               title="Git Hubの基本コマンド"
               description="Githubにて実際にコマンドを使ってブランチをpushしてみましょう"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

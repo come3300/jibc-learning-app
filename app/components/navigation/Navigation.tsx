@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { User } from "@prisma/client";
+import { User } from '@prisma/client';
 
-import Menu from "@/app/components/navigation/Menu";
-import Link from "next/link";
+import Menu from '@/app/components/navigation/Menu';
+import Link from 'next/link';
 
 type NavigationProps = {
   currentUser: User | null;

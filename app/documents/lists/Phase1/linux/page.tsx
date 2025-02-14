@@ -2,10 +2,10 @@
   /* /documents/lists/Phase1/Linux */
 }
 
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -22,7 +22,7 @@ const all = () => {
               title="Linuxとは"
               description="説明:Linuxって何ができて、どんな特徴がなるのかを解説していきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -31,7 +31,7 @@ const all = () => {
               title="覚えておきたい基礎コマンド"
               description="Linuxの使い方を実際にアウトプットしながら基礎コマンドを理解していきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

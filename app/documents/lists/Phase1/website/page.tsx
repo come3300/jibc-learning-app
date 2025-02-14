@@ -1,10 +1,10 @@
 {
   /* /documents/lists/Phase1/website  */
 }
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -21,7 +21,7 @@ const all = () => {
               title="「Hello World!」を出力しよう!"
               description="これから受けるこの講座についてまずは皆様にどのようなことを学ぶのかを確認してもらいます"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -30,7 +30,7 @@ const all = () => {
               title="HTML/CSS入門"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -39,7 +39,7 @@ const all = () => {
               title="Webサイトを作ろ! その1"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -48,7 +48,7 @@ const all = () => {
               title="Webサイトを作ろう! その2"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -57,7 +57,7 @@ const all = () => {
               title="レスポンシブ対応してみよう！"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -66,7 +66,7 @@ const all = () => {
               title="実践問題"
               description="Githubを皆さんのPCでも使っていけるようにセットアップを行なっていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

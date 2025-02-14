@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { ModalType } from "@/app/types";
+import { create } from 'zustand';
+import { ModalType } from '@/app/types';
 
 const useProfileModal = create<ModalType>((set) => ({
   isOpen: false,

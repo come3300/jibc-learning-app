@@ -2,8 +2,8 @@
   /* /documents//lists/Phase1/github/*/
 }
 
-import React from "react";
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import React from 'react';
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -20,7 +20,7 @@ const all = () => {
               title="SQLとは"
               description="SQLって何ができて、どんな特徴がなるのかを解説していきます"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -29,7 +29,7 @@ const all = () => {
               title="SQLを操作してみよう!"
               description="GUIでSQLを操作して、SQLの操作イメージをつけていきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -38,7 +38,7 @@ const all = () => {
               title="SQLの基礎構文について学ぼう"
               description="SQLの基礎構文について学んでいきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

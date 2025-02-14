@@ -1,6 +1,6 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import prisma from "@/app/lib/prisma";
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import prisma from '@/app/lib/prisma';
 
 const getCurrentUser = async () => {
   try {
@@ -21,7 +21,7 @@ const getCurrentUser = async () => {
 
     return response;
   } catch (error) {
-    console.error("Error fetching current user:", error);
+    console.error('Error fetching current user:', error);
     return null;
   }
 };
