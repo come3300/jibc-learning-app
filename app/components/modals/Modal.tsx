@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useCallback } from "react";
-import { IoMdClose } from "react-icons/io";
+import { useCallback } from 'react';
+import { IoMdClose } from 'react-icons/io';
 
-import Button from "@/app/components/button/Button";
+import Button from '@/app/components/button/Button';
 
 type ModalProps = {
   isOpen?: boolean;

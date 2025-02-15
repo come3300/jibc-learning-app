@@ -1,10 +1,10 @@
 {
   /* /documents/phase1/github/all */
 }
-import Image from "next/image";
+import Image from 'next/image';
 
-import React from "react";
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import React from 'react';
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -21,7 +21,7 @@ const all = () => {
               title="まずはじめに"
               description="これから受けるこの講座についてまずは皆様にどのようなことを学ぶのかを確認してもらいます"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -30,7 +30,7 @@ const all = () => {
               title="エンジニアになるための考え方"
               description=">6ヶ月間の受講をしていただく前に、プログラミングを学ぶ上で挫折しないための考え方、効率よく学習する方法について解説していきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -39,7 +39,7 @@ const all = () => {
               title="セットアップしてみよう！"
               description=">これからプログラミングを学ぶ上で必要なツール、ソフトウェアをインストールしていきます。"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

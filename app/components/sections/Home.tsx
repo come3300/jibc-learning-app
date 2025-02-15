@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import LoginForm from "@/app/components/page-parts/login";
+import React from 'react';
+import LoginForm from '@/app/components/page-parts/login';
 
 const Home = () => {
   return (

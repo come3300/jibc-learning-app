@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const AlertGreen = (props: { title: string; text: string }) => {
   return (
@@ -26,8 +26,8 @@ const AlertGreen = (props: { title: string; text: string }) => {
 
         <div className="flex-1">
           <strong className="block font-medium text-gray-900">
-            {" "}
-            {props.title}{" "}
+            {' '}
+            {props.title}{' '}
           </strong>
 
           <p className="mt-1 text-sm text-gray-700">{props.text}</p>

@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useState } from 'react';
 
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 type InputProps = {
   id: string;
@@ -16,7 +16,7 @@ type InputProps = {
 const Input: React.FC<InputProps> = ({
   id,
   label,
-  type = "text",
+  type = 'text',
   disabled,
   register,
   required,
@@ -34,8 +34,8 @@ const Input: React.FC<InputProps> = ({
         className={`w-full rounded-lg border-2 p-4 outline-none transition disabled:cursor-not-allowed disabled:opacity-70
           ${
             errors[id]
-              ? "border-red-500 focus:border-red-500"
-              : "border-neutral-300 focus:border-sky-500"
+              ? 'border-red-500 focus:border-red-500'
+              : 'border-neutral-300 focus:border-sky-500'
           }
         `}
       />

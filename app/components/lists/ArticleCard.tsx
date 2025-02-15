@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type ArticleCardProps = {
   section: string;
@@ -58,13 +58,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             </span>
 
             <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-              Featuring-3{" "}
+              Featuring-3{' '}
               {featuring.map((name, index) => (
                 <React.Fragment key={index}>
                   <a href="#" className="underline hover:text-gray-700">
                     {name}
                   </a>
-                  {index < featuring.length - 1 && ", "}
+                  {index < featuring.length - 1 && ', '}
                 </React.Fragment>
               ))}
             </p>

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useCallback } from "react";
-import { CldUploadWidget } from "next-cloudinary";
-import { TbPhotoPlus } from "react-icons/tb";
+import { useCallback } from 'react';
+import { CldUploadWidget } from 'next-cloudinary';
+import { TbPhotoPlus } from 'react-icons/tb';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 declare global {
   var cloudinary: any;
@@ -36,7 +36,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
       uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
       options={{
         maxFiles: 1,
-        sources: ["local"],
+        sources: ['local'],
       }}
     >
       {({ open }) => {

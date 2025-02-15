@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
-import { User } from "@prisma/client";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { User } from '@prisma/client';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import useProfileModal from "@/app/hooks/useProfileModal";
-import Modal from "@/app/components/modals/Modal";
-import Input from "@/app/components/input/Input";
-import ImageUpload from "@/app/components/input/ImageUpload";
-import axios from "axios";
-import * as z from "zod";
+import useProfileModal from '@/app/hooks/useProfileModal';
+import Modal from '@/app/components/modals/Modal';
+import Input from '@/app/components/input/Input';
+import ImageUpload from '@/app/components/input/ImageUpload';
+import axios from 'axios';
+import * as z from 'zod';
 
 enum STEPS {
   CONTENT = 0,
@@ -20,7 +20,7 @@ enum STEPS {
 }
 
 const schema = z.object({
-  name: z.string().min(2, { message: "2文字以上入力する必要があります。" }),
+  name: z.string().min(2, { message: '2文字以上入力する必要があります。' }),
   image: z.string().optional(),
 });
 
@@ -45,7 +45,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     resolver: zodResolver(schema),
   });
 
-  const image = watch("image");
+  const image = watch('image');
 
   const setCustomValue = (id: string, value: string) => {
     setValue(id, value, {
@@ -59,7 +59,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     if (currentUser) {
       reset({
         name: currentUser.name,
-        image: currentUser.image || "",
+        image: currentUser.image || '',
       });
     }
   }, [currentUser, reset]);
@@ -74,10 +74,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
 
   const primaryLabel = useMemo(() => {
     if (step === STEPS.IMAGE) {
-      return "編集";
+      return '編集';
     }
 
-    return "次へ";
+    return '次へ';
   }, [step]);
 
   const secondaryLabel = useMemo(() => {
@@ -85,7 +85,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
       return undefined;
     }
 
-    return "戻る";
+    return '戻る';
   }, [step]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -96,16 +96,16 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
     setLoading(true);
 
     try {
-      const res = await axios.patch("/api/profile", data);
+      const res = await axios.patch('/api/profile', data);
 
       if (res.status === 200) {
-        toast.success("プロフィールを変更しました!");
+        toast.success('プロフィールを変更しました!');
         setStep(STEPS.CONTENT);
         profileModal.onClose();
         router.refresh();
       }
     } catch (error) {
-      toast.error("エラーが発生しました。" + error);
+      toast.error('エラーが発生しました。' + error);
       return;
     } finally {
       setLoading(false);
@@ -117,7 +117,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ currentUser }) => {
       return (
         <div>
           <ImageUpload
-            onChange={(value) => setCustomValue("image", value)}
+            onChange={(value) => setCustomValue('image', value)}
             value={image}
           />
         </div>

@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { toast } from "react-hot-toast";
-import { signIn } from "next-auth/react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Input from "@/app/components/input/Input";
-import Button from "@/app/components/button/Button";
-import * as z from "zod";
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { FcGoogle } from 'react-icons/fc';
+import { useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Input from '@/app/components/input/Input';
+import Button from '@/app/components/button/Button';
+import * as z from 'zod';
 
 const schema = z.object({
-  email: z.string().email({ message: "メールアドレスの形式ではありません。" }),
-  password: z.string().min(6, { message: "6文字以上入力する必要があります。" }),
+  email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
+  password: z.string().min(6, { message: '6文字以上入力する必要があります。' }),
 });
 
 const LoginForm = () => {
@@ -25,7 +25,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: '', password: '' },
     resolver: zodResolver(schema),
   });
 
@@ -33,21 +33,21 @@ const LoginForm = () => {
     setLoading(true);
 
     try {
-      const res = await signIn("credentials", {
+      const res = await signIn('credentials', {
         ...data,
         redirect: false,
       });
 
       if (res?.error) {
-        toast.error("エラーが発生しました。" + res.error);
+        toast.error('エラーが発生しました。' + res.error);
         return;
       }
 
-      toast.success("ログインしました!");
+      toast.success('ログインしました!');
       router.refresh();
-      router.push("/home");
+      router.push('/home');
     } catch (error) {
-      toast.error("エラーが発生しました。" + error);
+      toast.error('エラーが発生しました。' + error);
     } finally {
       setLoading(false);
     }

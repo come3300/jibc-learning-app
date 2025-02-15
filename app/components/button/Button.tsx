@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 type ButtonProps = {
   label: string;
@@ -26,10 +26,10 @@ const Button: React.FC<ButtonProps> = ({
       className={`inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base
       ${
         outline
-          ? "border-neutral-400 bg-white text-black"
+          ? 'border-neutral-400 bg-white text-black'
           : del
-            ? "border-red-500 bg-red-500 text-white"
-            : "border-sky-500 bg-sky-500 text-white"
+            ? 'border-red-500 bg-red-500 text-white'
+            : 'border-sky-500 bg-sky-500 text-white'
       }
       `}
     >

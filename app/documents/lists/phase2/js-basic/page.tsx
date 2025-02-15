@@ -2,8 +2,8 @@
   /* /documents//lists/Phase1/github/*/
 }
 
-import React from "react";
-import ArticleCard from "@/app/components/lists/ArticleCard";
+import React from 'react';
+import ArticleCard from '@/app/components/lists/ArticleCard';
 
 const all = () => {
   return (
@@ -20,7 +20,7 @@ const all = () => {
               title="JavaScriptとは"
               description="JavaScriptって何ができて、どんな特徴がなるのかを解説していきます"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -29,7 +29,7 @@ const all = () => {
               title="JavaScriptの仕組み"
               description="JavaScriptがどのように動いているのか、仕組みについて理解していきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -38,7 +38,7 @@ const all = () => {
               title="変数とは"
               description="プログラミング言語を学ぶ上でとても大切な「変数」という概念についてJavaScriptを用いて理解していきます"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -47,7 +47,7 @@ const all = () => {
               title="基礎構文について"
               description="if文やfor文の使い方を実際にアウトプットしながら理解していきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
 
@@ -56,7 +56,7 @@ const all = () => {
               title="簡単なアプリを作ってみよう！"
               description=" part4までに学んだ知識を活かして簡単なアプリを作っていきましょう!"
               duration="48:32 minutes"
-              featuring={["Barry", "Sandra", "August"]}
+              featuring={['Barry', 'Sandra', 'August']}
               link="#"
             />
           </div>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import React from 'react';
+import { Accordion, AccordionItem } from '@nextui-org/react';
 
 function AccordionComponent(props: { title: string; text: string }) {
   return (
