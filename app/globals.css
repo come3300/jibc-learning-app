@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #edf2f6; /* Zenn風の背景色 */
+  color: #333;
+}
+
+main {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.view-block {
+  max-width: 1000px; /* Zenn のような幅 */
+  width: 950px;
+  background-color: #ffffff; /* 記事部分の背景を白に */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影をつけて立体感を出す */
+  border-radius: 10px; /* 角を丸くする */
+  padding: 30px;
+}
