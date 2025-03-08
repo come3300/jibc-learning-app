@@ -12,7 +12,7 @@ type NavigationProps = {
 const Navigation: React.FC<NavigationProps> = ({ currentUser }) => {
   return (
     <header className="shadow-lg shadow-gray-100">
-      <div className="container mx-auto flex max-w-screen-sm items-center justify-between px-1 py-5">
+      <div className="bg-white mx-auto flex items-center justify-between px-20 py-5">
         <Link href="/home" className="cursor-pointer text-xl font-bold">
           offline
         </Link>
