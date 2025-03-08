@@ -7,8 +7,8 @@ export default withAuth(
     const { pathname } = req.nextUrl;
     const token = await getToken({ req });
 
-    if (!token && pathname !== '/login') {
-      return NextResponse.redirect(new URL('/login', req.url));
+    if (!token && pathname !== '/signin' && pathname !== '/signup') {
+      return NextResponse.redirect(new URL('/signin', req.url));
     }
 
     return NextResponse.next();
@@ -23,5 +23,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ['/((?!register|api|login|login).*)'],
+  matcher: ['/((?!register|api|signin|signup).*)'],
 };
