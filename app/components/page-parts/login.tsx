@@ -15,11 +15,9 @@ const schema = z.object({
   email: z.string().email({ message: 'メールアドレスの形式ではありません。' }),
   password: z.string().min(6, { message: '6文字以上入力する必要があります。' }),
 });
-
 const LoginForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -28,7 +26,6 @@ const LoginForm = () => {
     defaultValues: { email: '', password: '' },
     resolver: zodResolver(schema),
   });
-
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true);
 
@@ -54,7 +51,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md my-10">
       <h2 className="text-2xl font-bold mb-6 text-center">ログイン</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Input
@@ -65,7 +62,6 @@ const LoginForm = () => {
           errors={errors}
           required
         />
-
         <Input
           id="password"
           label="パスワード"
@@ -83,10 +79,7 @@ const LoginForm = () => {
         >
           ログイン
         </button>
-
         <hr />
-
-        {/* <Button outline label="Googleでログイン" icon={FcGoogle} onClick={() => signIn('google')} /> */}
       </form>
     </div>
   );
