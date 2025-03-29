@@ -25,18 +25,13 @@ export default async function RootLayout({
     <html>
       <body className={inter.className}>
         <AuthContext>
-          {/* Toaster */}
           <ToasterContext />
-          {/* モーダル */}
           <SignupModal />
           <LoginModal />
           <ProfileModal currentUser={currentUser} />
-
           <div className="flex min-h-screen flex-col">
             <Navigation currentUser={currentUser} />
-            {/* <main className="mx-auto max-w-screen-xl flex-1 px-1"> 前に当てたスタイル*/}
             <Layout>{children}</Layout>
-
             <footer className="py-5">
               <div className="text-center text-sm">offline</div>
             </footer>
@@ -59,7 +54,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css"
         rel="stylesheet"
       />
-      <article className="">{children}</article>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.25.0/tocbot.css"
+      />
+      <article>{children}</article>
     </>
   );
 }
