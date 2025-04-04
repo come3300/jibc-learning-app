@@ -1,8 +1,5 @@
 {/* /documents/phase3/laravel-tweet/section1/page.mdx */}
 
-<div class="bg-white">
-    <div class="whitespace-nowrap mx-auto max-w-screen-md ">
-
 ## つぶやき投稿を作ろう
 
 まずはデーターベース等を駆使して
@@ -635,7 +632,7 @@ Bladeテンプレート側は 41のように変更しました。
 <body>
     <h1>つぶやきアプリ</h1>
     <div>
-    @foreach($tweets as $tweet)
+    @($tweets as $tweet)
         <p>{{ $tweet->content }}</p>
     @endforeach
     </div>
@@ -1434,12 +1431,8 @@ class DeleteController extends Controller
         return redirect()
             ->route('tweet.index')
             ->with('feedback.success', "つぶやきを削除しました");
-    }
+ 
 }
-
-</div>
-
-</div>
 ```
 
 削除の場合はEloquentモデルを取得してdelete メソッドを実行することで対象のモデルを削除、

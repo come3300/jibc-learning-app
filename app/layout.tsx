@@ -14,6 +14,8 @@ export const metadata = {
   description: 'Prisma Auth',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({
   children,
 }: {
