@@ -38,8 +38,8 @@ model Account {
 }
 
 model AllowedUser {
-  id    String  @id @default(cuid())
-  email String  @unique
-  name  String?
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
   createdAt DateTime @default(now())
 }
