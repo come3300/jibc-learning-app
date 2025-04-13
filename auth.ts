@@ -9,7 +9,7 @@ export default prisma;
 export const authOptions: AuthOptions = {
   providers: [],
   adapter: PrismaAdapter(prisma),
-  secret: process.env.NEXT_AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ user, account, profile }) {
       if (!user.email) {
