@@ -4,6 +4,7 @@
 // import { PrismaAdapter } from '@next-auth/prisma-adapter';
 // import { PrismaClient } from '@prisma/client';
 // const prisma = new PrismaClient();
+// hoge
 
 // export default prisma;
 // export const authOptions: AuthOptions = {
