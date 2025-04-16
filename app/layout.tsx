@@ -6,7 +6,6 @@ import ToasterContext from '@/app/context/ToasterContext';
 import SignupModal from '@/app/components/modals/SignupModal';
 import LoginModal from '@/app/components/modals/LoginModal';
 import ProfileModal from '@/app/components/modals/ProfileModal';
-import getCurrentUser from '@/app/actions/getCurrentUser';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -21,8 +20,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const currentUser = await getCurrentUser();
-
   return (
     <html>
       <body className={inter.className}>
@@ -30,9 +27,7 @@ export default async function RootLayout({
           <ToasterContext />
           <SignupModal />
           <LoginModal />
-          <ProfileModal currentUser={currentUser} />
           <div className="flex min-h-screen flex-col">
-            <Navigation currentUser={currentUser} />
             <Layout>{children}</Layout>
             <footer className="py-5">
               <div className="text-center text-sm">offline</div>
