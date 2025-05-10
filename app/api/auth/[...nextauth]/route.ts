@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import prisma from '@/app/lib/prisma';
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -37,7 +38,6 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: process.env.NEXT_AUTH_SECRET,
   pages: {
     signIn: '/signin',
   },
@@ -50,6 +50,8 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+
+console.log('NEXTAUTH_SECRET:', process.env.NEXTAUTH_SECRET);
 
 const handler = NextAuth(authOptions);
 
